@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <style>
+      .sena-green { fill: #39A900; }
+    </style>
+  </defs>
+  
+  <!-- Círculo Superior (Cabeza) -->
+  <circle class="sena-green" cx="250" cy="88" r="48" />
+
+  <!-- Texto SENA -->
+  <g class="sena-green">
+    <!-- S -->
+    <path d="M 52 176 C 52 153 71 143 103 143 C 137 143 154 154 156 172 L 123 172 C 121 163 115 158 103 158 C 92 158 85 162 85 168 C 85 174 91 177 108 181 C 136 187 155 197 155 218 C 155 238 136 250 102 250 C 66 250 49 237 47 218 L 80 218 C 82 227 90 234 103 234 C 115 234 122 229 122 222 C 122 215 115 211 98 207 C 70 201 52 192 52 176 Z" />
+    
+    <!-- E -->
+    <path d="M 168 145 L 242 145 L 242 161 L 202 161 L 202 187 L 238 187 L 238 203 L 202 203 L 202 232 L 244 232 L 244 248 L 168 248 Z" />
+    
+    <!-- N -->
+    <path d="M 258 145 L 293 145 L 326 208 L 326 145 L 358 145 L 358 248 L 325 248 L 290 183 L 290 248 L 258 248 Z" />
+    
+    <!-- A -->
+    <path d="M 374 248 L 413 145 L 452 248 L 417 248 L 411 230 L 388 230 L 382 248 Z M 393 214 L 406 214 L 400 190 Z" />
+  </g>
+
+  <!-- Barra Horizontal Central -->
+  <rect class="sena-green" x="24" y="265" width="452" height="34" rx="2" />
+
+  <!-- Estructura Inferior (Piernas y V invertida característica del SENA) -->
+  <g class="sena-green">
+    <!-- Brazo/Pierna diagonal izquierda -->
+    <polygon points="234,299 82,468 142,468 266,328" />
+    
+    <!-- Brazo/Pierna diagonal derecha -->
+    <polygon points="266,299 418,468 358,468 234,328" />
+    
+    <!-- V invertida interior (cuerpo central) -->
+    <polygon points="250,378 184,452 214,452 250,412 286,452 316,452" />
+  </g>
+</svg>

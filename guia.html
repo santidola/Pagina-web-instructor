@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Guía de Aprendizaje Oficial · Formato GFPI-F-135 | SENA</title>
+  <meta name="description" content="Guía de Aprendizaje oficial del SENA para Alfabetización Informática (Código 22810239). Formato GFPI-F-135 con los 4 momentos formativos y matriz de evaluación." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR CON LOGO OFICIAL -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/logo-sena.svg" alt="SENA" class="navbar-logo-img" />
+        <div class="navbar-brand-text">
+          SENA · Alfabetización Informática
+          <div class="subtitle">Guía de Aprendizaje GFPI-F-135 · 70 Horas</div>
+        </div>
+      </a>
+
+      <div class="navbar-nav">
+        <a href="index.html">Inicio</a>
+        <a href="programa.html">Espacios de Sesión (1 a 5)</a>
+        <a href="guia.html" class="active">Guía GFPI-F-135</a>
+        <a href="glosario.html">Glosario & Recursos</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button onclick="window.print()" class="btn btn-secondary" type="button" style="padding: 8px 16px; font-size: 0.82rem;">
+          <span>🖨️ Imprimir Guía</span>
+        </button>
+
+        <button class="navbar-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+        <div class="hero-logo-badge" style="margin-bottom: 0;">
+          <img src="img/logo-sena.svg" alt="SENA" />
+          <span>Proceso de Gestión de Formación Profesional Integral (GFPI)</span>
+        </div>
+      </div>
+      <h1>Formato Oficial <span class="gradient-text">Guía de Aprendizaje</span></h1>
+      <p>
+        Documento técnico y pedagógico que orienta la ruta formativa de 70 horas, las 4 fases metodológicas y la matriz oficial de evaluación de competencias.
+      </p>
+    </div>
+  </header>
+
+  <!-- CONTENIDO DE LA GUÍA -->
+  <main class="section">
+    <div class="container">
+
+      <!-- SECCIÓN 1: IDENTIFICACIÓN -->
+      <section class="activity-card animate-on-scroll" id="identificacion">
+        <div style="display: flex; align-items: center; justify-content: space-between; border-bottom: 2px solid var(--green-soft); padding-bottom: 14px; margin-bottom: 24px; flex-wrap: wrap; gap: 12px;">
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary);">
+            1. Identificación de la Guía de Aprendizaje
+          </h2>
+          <span class="badge badge-green">Formato GFPI-F-135 · Versión 04</span>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px;">
+          <div class="activity-meta-item">
+            <strong>Denominación del Programa de Formación:</strong>
+            <span style="font-weight: 700; color: var(--text-primary);">ALFABETIZACIÓN INFORMÁTICA</span>
+          </div>
+          <div class="activity-meta-item">
+            <strong>Código del Programa de Formación:</strong>
+            <span>22810239 – Versión 1</span>
+          </div>
+          <div class="activity-meta-item">
+            <strong>Proyecto Formativo / Fase:</strong>
+            <span>No aplica – Programa de formación complementaria</span>
+          </div>
+          <div class="activity-meta-item">
+            <strong>Duración de la Guía:</strong>
+            <span style="font-weight: 700; color: var(--sena-green);">70 Horas Totales</span>
+          </div>
+        </div>
+
+        <div style="margin-top: 24px; padding: 22px; background: var(--green-bg); border-radius: var(--radius-sm); border-left: 4px solid var(--sena-green);">
+          <strong style="display: block; font-size: 0.85rem; color: var(--sena-green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px;">
+            Competencia Laboral a Desarrollar:
+          </strong>
+          <p style="font-weight: 600; color: var(--text-primary); font-size: 0.95rem; margin-bottom: 14px;">
+            220501046 — APLICAR HERRAMIENTAS OFIMÁTICAS, REDES SOCIALES Y COLABORATIVAS DE ACUERDO CON EL PROYECTO A DESARROLLAR.
+          </p>
+
+          <strong style="display: block; font-size: 0.85rem; color: var(--sena-green); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px;">
+            Resultados de Aprendizaje (RAP) de la Planeación Pedagógica:
+          </strong>
+          <ul style="padding-left: 20px; font-size: 0.88rem; color: var(--text-secondary); display: flex; flex-direction: column; gap: 8px; list-style: disc;">
+            <li><strong>2205010460201:</strong> MANEJAR LAS FUNCIONALIDADES BÁSICAS DE UN SISTEMA OPERATIVO DE ACUERDO CON LAS NECESIDADES DEL CLIENTE.</li>
+            <li><strong>2205010460202:</strong> APLICAR LAS FUNCIONES DE UN PROCESADOR DE TEXTO SEGÚN LAS CARACTERÍSTICAS DEL DOCUMENTO A ELABORAR.</li>
+            <li><strong>2205010460203:</strong> APLICAR LAS FUNCIONES DE UNA HOJA DE CÁLCULO SEGÚN LAS CARACTERÍSTICAS DE LAS OPERACIONES A DESARROLLAR.</li>
+            <li><strong>2205010460204:</strong> APLICAR LAS FUNCIONES DE UN PROGRAMA DE REALIZACIÓN DE DIAPOSITIVAS SEGÚN LAS CARACTERÍSTICAS DE LA PRESENTACIÓN A DESARROLLAR.</li>
+            <li><strong>2205010460101:</strong> UTILIZAR LOS SERVICIOS DE INTERNET DE ACUERDO CON LAS NECESIDADES.</li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 2: PRESENTACIÓN -->
+      <section class="activity-card animate-on-scroll" id="presentacion">
+        <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary); margin-bottom: 14px;">
+          2. Presentación
+        </h2>
+        <p class="activity-desc">
+          La presente guía de aprendizaje corresponde al programa de formación complementaria <strong>Alfabetización Informática</strong> y orienta el desarrollo práctico de habilidades para el uso de herramientas informáticas y servicios de Internet. Las actividades se articulan con la planeación pedagógica del programa y buscan que el aprendiz aplique los conocimientos en situaciones concretas, mediante demostraciones, ejercicios guiados, resolución de problemas y elaboración de productos digitales.
+        </p>
+        <p class="activity-desc">
+          Durante la guía se trabajarán de manera progresiva las funcionalidades básicas de un sistema operativo, el manejo de un procesador de texto, las funciones de una hoja de cálculo, la elaboración de presentaciones y el uso de servicios de Internet. Se priorizará el <strong>aprendizaje haciendo</strong>, de manera que cada concepto se relacione con una tarea observable y con una evidencia de aprendizaje.
+        </p>
+        <p class="activity-desc">
+          La formación se desarrollará en un ambiente de aprendizaje con equipos de cómputo y recursos TIC. Cuando las condiciones del centro lo permitan, se utilizarán conexión a Internet, proyector y herramientas ofimáticas. El instructor podrá organizar el trabajo individual o colaborativo según la disponibilidad de equipos y las necesidades del grupo.
+        </p>
+        <p class="activity-desc">
+          Al finalizar, el aprendiz integrará las habilidades desarrolladas en un producto práctico que evidencie organización de archivos, elaboración de un documento, manejo básico de datos, creación de una presentación y utilización responsable de servicios de Internet.
+        </p>
+      </section>
+
+      <!-- SECCIÓN 3: MOMENTOS FORMATIVOS -->
+      <section class="activity-card animate-on-scroll" id="momentos">
+        <div style="border-bottom: 2px solid var(--green-soft); padding-bottom: 14px; margin-bottom: 24px;">
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary);">
+            3. Formulación de las Actividades de Aprendizaje
+          </h2>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); margin-top: 4px;">
+            Distribución pedagógica en 4 momentos clave: Reflexión inicial (2h), Contextualización (4h), Apropiación (56h) y Transferencia (8h).
+          </p>
+        </div>
+
+        <div class="timeline">
+          <!-- 3.1 Reflexión Inicial -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+              <h3 style="color: var(--sena-green-dark);">3.1 Actividades de Reflexión Inicial: ¿Cómo utilizo actualmente la tecnología?</h3>
+              <span class="badge badge-green">⏱️ 2 Horas</span>
+            </div>
+            <p>
+              El instructor inicia una conversación orientada sobre las actividades que los aprendices realizan con computadores, celulares, Internet y herramientas digitales. Se identifican experiencias previas, dificultades y necesidades cotidianas.
+            </p>
+            <div style="background: var(--green-bg); padding: 14px 18px; border-radius: var(--radius-sm); margin-top: 10px; font-size: 0.88rem;">
+              <strong>Pautas didácticas:</strong>
+              <ul style="margin-top: 6px; padding-left: 18px; list-style: circle; color: var(--text-secondary);">
+                <li>Cada aprendiz identifica 3 tareas que realiza con tecnología y 1 tarea que quisiera aprender a realizar mejor.</li>
+                <li>En parejas, comparan respuestas y determinan cuáles herramientas digitales utilizan con mayor frecuencia.</li>
+                <li>El grupo construye una lista de necesidades digitales y las relaciona con los temas del curso.</li>
+                <li>Cada aprendiz formula una meta personal de aprendizaje para el desarrollo de la formación.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.2 Contextualización -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+              <h3 style="color: var(--sena-green-dark);">3.2 Actividades de Contextualización: Reconozco mis saberes digitales</h3>
+              <span class="badge badge-green">⏱️ 4 Horas</span>
+            </div>
+            <p>
+              Diagnóstico práctico para reconocer conocimientos iniciales frente al sistema operativo, organización de archivos, procesador de texto, hoja de cálculo, presentaciones y servicios de Internet. No tiene carácter sancionatorio.
+            </p>
+            <div style="background: var(--green-bg); padding: 14px 18px; border-radius: var(--radius-sm); margin-top: 10px; font-size: 0.88rem;">
+              <strong>Pautas didácticas:</strong>
+              <ul style="margin-top: 6px; padding-left: 18px; list-style: circle; color: var(--text-secondary);">
+                <li>Reconocer elementos básicos del escritorio, ventanas, archivos, carpetas y dispositivos de almacenamiento.</li>
+                <li>Identificar las funciones que conoce de Word, Excel y PowerPoint.</li>
+                <li>Explicar cómo realiza una búsqueda en Internet y cómo identifica información útil.</li>
+                <li>Resolver ejercicios cortos de reconocimiento y diligenciar la lista de chequeo diagnóstica.</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- 3.3 Apropiación -->
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+              <h3 style="color: var(--sena-green-dark);">3.3 Actividades de Apropiación: Aprendo haciendo (5 Sesiones)</h3>
+              <span class="badge badge-green">⏱️ 56 Horas</span>
+            </div>
+            <p>
+              En este momento se desarrollan las 5 sesiones prácticas articuladas con los resultados de aprendizaje de la planeación pedagógica:
+            </p>
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 12px; margin-top: 12px;">
+              <a href="programa.html#sesion-1" style="padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; display: block;">
+                <strong>Sesión 1 (10h):</strong> Sistema Operativo →
+              </a>
+              <a href="programa.html#sesion-2" style="padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; display: block;">
+                <strong>Sesión 2 (11h):</strong> Procesador de Texto →
+              </a>
+              <a href="programa.html#sesion-3" style="padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; display: block;">
+                <strong>Sesión 3 (14h):</strong> Hoja de Cálculo →
+              </a>
+              <a href="programa.html#sesion-4" style="padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; display: block;">
+                <strong>Sesión 4 (10h):</strong> Diapositivas →
+              </a>
+              <a href="programa.html#sesion-5" style="padding: 12px; background: #fff; border: 1px solid var(--border); border-radius: 6px; font-size: 0.85rem; display: block;">
+                <strong>Sesión 5 (11h):</strong> Servicios de Internet →
+              </a>
+            </div>
+          </div>
+
+          <!-- 3.4 Transferencia -->
+          <div class="timeline-item" id="transferencia">
+            <div class="timeline-dot" style="background: #E65100;"></div>
+            <div style="display: flex; justify-content: space-between; align-items: baseline; flex-wrap: wrap; gap: 8px;">
+              <h3 style="color: var(--sena-green-dark);">3.4 Transferencia del Conocimiento: Producto Integrador "Mi Solución Digital"</h3>
+              <span class="badge" style="background: #FFF3E0; color: #E65100; border: 1px solid #FFE0B2;">⏱️ 8 Horas</span>
+            </div>
+            <p>
+              El aprendiz integrará las habilidades desarrolladas en una situación práctica relacionada con una necesidad académica, laboral, productiva, familiar o comunitaria:
+            </p>
+            <div style="background: var(--green-bg); padding: 16px 20px; border-radius: var(--radius-sm); margin-top: 10px; font-size: 0.88rem; border-left: 3px solid #E65100;">
+              <ul style="padding-left: 18px; list-style: square; color: var(--text-secondary); display: flex; flex-direction: column; gap: 6px;">
+                <li>Crear una carpeta principal y organizar subcarpetas y archivos con nombres claros.</li>
+                <li>Elaborar un documento de texto que describa la situación, propuesta o información seleccionada.</li>
+                <li>Construir una hoja de cálculo con datos relacionados, al menos una fórmula o función y un gráfico.</li>
+                <li>Diseñar una presentación que comunique la situación o propuesta con textos e imágenes pertinentes.</li>
+                <li>Realizar una búsqueda en Internet y conservar la evidencia de la fuente consultada.</li>
+                <li>Enviar o simular el envío de un correo con asunto, mensaje y archivo adjunto.</li>
+                <li>Socializar el producto ante el grupo y explicar las herramientas utilizadas.</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCIÓN 4: MATRIZ DE EVALUACIÓN OFICIAL -->
+      <section class="activity-card animate-on-scroll" id="evaluacion">
+        <div style="border-bottom: 2px solid var(--green-soft); padding-bottom: 14px; margin-bottom: 24px;">
+          <h2 style="font-size: 1.4rem; font-weight: 800; color: var(--text-primary);">
+            4. Planteamiento de Evidencias de Aprendizaje para la Evaluación
+          </h2>
+          <p style="font-size: 0.92rem; color: var(--text-secondary); margin-top: 4px;">
+            Relación directa oficial entre actividades, evidencias entregables, criterios evaluativos y técnicas e instrumentos.
+          </p>
+        </div>
+
+        <div class="table-wrapper">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th style="width: 20%;">Actividad de Aprendizaje</th>
+                <th style="width: 25%;">Evidencias de Aprendizaje</th>
+                <th style="width: 32%;">Criterios de Evaluación</th>
+                <th style="width: 23%;">Técnicas e Instrumentos</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>3.1 Reflexión inicial</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted);">2 Horas</span></td>
+                <td>Participación y meta personal de aprendizaje.</td>
+                <td>Relaciona el uso de la tecnología con necesidades concretas y reconoce expectativas de aprendizaje.</td>
+                <td>Observación directa y preguntas orientadoras.</td>
+              </tr>
+              <tr>
+                <td><strong>3.2 Contextualización</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted);">4 Horas</span></td>
+                <td>Lista de chequeo diagnóstica y ejercicios de reconocimiento.</td>
+                <td>Identifica conocimientos previos y reconoce funcionalidades básicas de herramientas informáticas.</td>
+                <td>Lista de chequeo diagnóstica y observación.</td>
+              </tr>
+              <tr>
+                <td><strong>3.3 Sesión 1 – Sistema operativo</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted);">10 Horas</span></td>
+                <td>Estructura organizada de archivos y ejecución de tareas prácticas.</td>
+                <td>Aplica las funcionalidades del sistema operativo de acuerdo con los requerimientos y necesidades presentadas.</td>
+                <td>Lista de chequeo y observación directa.</td>
+              </tr>
+              <tr>
+                <td><strong>3.3 Sesión 2 – Procesador de texto</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted);">11 Horas</span></td>
+                <td>Documento digital terminado.</td>
+                <td>Elabora un documento utilizando el procesador de texto, de acuerdo con los requerimientos de la información a publicar.</td>
+                <td>Rúbrica de producto y lista de chequeo.</td>
+              </tr>
+              <tr>
+                <td><strong>3.3 Sesión 3 – Hoja de cálculo</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted);">14 Horas</span></td>
+                <td>Archivo con datos, fórmulas, filtros y gráficos.</td>
+                <td>Realiza un informe utilizando las funciones de la hoja de cálculo, de acuerdo con las necesidades del mismo.</td>
+                <td>Lista de chequeo, revisión de producto y ejercicios prácticos.</td>
+              </tr>
+              <tr>
+                <td><strong>3.3 Sesión 4 – Presentaciones</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted);">10 Horas</span></td>
+                <td>Presentación digital y exposición oral.</td>
+                <td>Realiza una exposición utilizando el programa de presentación de diapositivas de acuerdo con el tema asignado.</td>
+                <td>Rúbrica de presentación y observación del desempeño.</td>
+              </tr>
+              <tr>
+                <td><strong>3.3 Sesión 5 – Internet</strong><br /><span style="font-size: 0.78rem; color: var(--text-muted);">11 Horas</span></td>
+                <td>Evidencias de búsqueda, correo, foro y blog.</td>
+                <td>Realiza búsquedas en Internet; establece comunicación por correo; implementa un blog y participa en foros o grupos según el tema.</td>
+                <td>Lista de chequeo, revisión de evidencias y observación.</td>
+              </tr>
+              <tr style="background: var(--green-soft);">
+                <td><strong>3.4 Transferencia</strong><br /><span style="font-size: 0.78rem; color: var(--sena-green-dark); font-weight: 700;">8 Horas</span></td>
+                <td><strong>Producto integrador y socialización.</strong></td>
+                <td>Integra las funcionalidades trabajadas en una solución digital pertinente y explica el procedimiento realizado.</td>
+                <td>Rúbrica final, lista de chequeo, revisión de producto y autoevaluación.</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- BOTONES DE NAVEGACIÓN -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 36px; flex-wrap: wrap; gap: 16px;">
+        <a href="programa.html" class="btn btn-secondary">
+          ← Volver a Espacios de Sesión
+        </a>
+        <a href="glosario.html" class="btn btn-primary">
+          Ver Glosario de Términos Oficiales →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="img/logo-sena.svg" alt="SENA" style="width: 36px; height: 36px;" />
+            <h3 style="margin: 0;">Servicio Nacional de Aprendizaje</h3>
+          </div>
+          <p>
+            Guía de Aprendizaje Oficial GFPI-F-135 (Versión 04). Programa de Alfabetización Informática (Código 22810239).
+          </p>
+        </div>
+        <div>
+          <div class="footer-heading">Vistas de Formación</div>
+          <ul class="footer-links">
+            <li><a href="index.html">→ Inicio</a></li>
+            <li><a href="programa.html">→ Espacios de Sesión</a></li>
+            <li><a href="guia.html">→ Guía GFPI-F-135</a></li>
+            <li><a href="glosario.html">→ Glosario & Recursos</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Plataformas SENA</div>
+          <ul class="footer-links">
+            <li><a href="https://oferta.senasofiaplus.edu.co/" target="_blank" rel="noopener noreferrer">→ SOFIA Plus</a></li>
+            <li><a href="https://zajuna.sena.edu.co/" target="_blank" rel="noopener noreferrer">→ Zajuna LMS</a></li>
+            <li><a href="https://correo.misena.edu.co/" target="_blank" rel="noopener noreferrer">→ Correo MiSena</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 SENA — Proceso de Gestión de Formación Profesional Integral.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

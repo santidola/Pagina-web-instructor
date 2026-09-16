@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glosario de Términos & Recursos · Alfabetización Informática | SENA</title>
+  <meta name="description" content="Glosario oficial interactivo de términos informáticos del curso Alfabetización Informática del SENA. Buscador en tiempo real y referentes bibliográficos oficiales." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR CON LOGO OFICIAL -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/logo-sena.svg" alt="SENA" class="navbar-logo-img" />
+        <div class="navbar-brand-text">
+          SENA · Alfabetización Informática
+          <div class="subtitle">Glosario & Recursos TIC · 70 Horas</div>
+        </div>
+      </a>
+
+      <div class="navbar-nav">
+        <a href="index.html">Inicio</a>
+        <a href="programa.html">Espacios de Sesión (1 a 5)</a>
+        <a href="guia.html">Guía GFPI-F-135</a>
+        <a href="glosario.html" class="active">Glosario & Recursos</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button onclick="window.print()" class="btn btn-secondary" type="button" style="padding: 8px 16px; font-size: 0.82rem;">
+          <span>🖨️ Imprimir Glosario</span>
+        </button>
+
+        <button class="navbar-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+        <div class="hero-logo-badge" style="margin-bottom: 0;">
+          <img src="img/logo-sena.svg" alt="SENA" />
+          <span>Secciones 5 y 6 de la Guía Oficial GFPI-F-135</span>
+        </div>
+      </div>
+      <h1>Glosario de Términos & <span class="gradient-text">Recursos Digitales</span></h1>
+      <p>
+        Conceptos técnicos oficiales estipulados en la guía de aprendizaje para fortalecer las competencias de los aprendices y apoyar las explicaciones del instructor en clase.
+      </p>
+
+      <!-- BUSCADOR INTERACTIVO EN TIEMPO REAL -->
+      <div class="search-box" style="margin-top: 32px;">
+        <svg class="search-icon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/></svg>
+        <input type="text" id="glossary-search" class="search-input" placeholder="Buscar término (ej. hoja de cálculo, archivo, red...)" autocomplete="off" />
+      </div>
+      <div id="glossary-count" style="font-size: 0.85rem; color: var(--text-muted); font-weight: 500;">
+        Mostrando 15 de 15 términos oficiales
+      </div>
+    </div>
+  </header>
+
+  <!-- CONTENIDO GLOSARIO -->
+  <main class="section">
+    <div class="container">
+
+      <!-- GRID DE TÉRMINOS OFICIALES -->
+      <div class="glossary-grid" id="glossary-container">
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>📄</span> Archivo</h4>
+          <p>Elemento digital que contiene información, como un documento, imagen, audio, video o PDF.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>📁</span> Carpeta</h4>
+          <p>Espacio utilizado para organizar y almacenar archivos de manera estructurada.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>🖥️</span> Sistema Operativo</h4>
+          <p>Software que administra los recursos del computador y permite utilizar programas, archivos y dispositivos.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>📝</span> Procesador de Texto</h4>
+          <p>Aplicación que permite crear, editar, dar formato, guardar y compartir documentos.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>📊</span> Hoja de Cálculo</h4>
+          <p>Aplicación que permite organizar datos en filas y columnas, realizar operaciones y representar información mediante gráficos.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>🧮</span> Fórmula</h4>
+          <p>Expresión utilizada en una hoja de cálculo para realizar un cálculo a partir de valores o referencias de celdas.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>📈</span> Gráfico</h4>
+          <p>Representación visual de datos que facilita su interpretación.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>📽️</span> Presentación</h4>
+          <p>Conjunto organizado de diapositivas utilizado para comunicar información ante un público.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>🌐</span> Internet</h4>
+          <p>Red que permite acceder a información y utilizar servicios de comunicación y colaboración.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>🧭</span> Navegador</h4>
+          <p>Programa utilizado para acceder y visualizar contenidos disponibles en Internet.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>🔍</span> Buscador</h4>
+          <p>Servicio que permite localizar información en Internet mediante palabras o frases de búsqueda.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>✉️</span> Correo Electrónico</h4>
+          <p>Servicio que permite enviar y recibir mensajes y archivos por medios digitales.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>📰</span> Blog</h4>
+          <p>Espacio digital utilizado para publicar contenidos organizados sobre uno o varios temas.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>🔒</span> Seguridad en Internet</h4>
+          <p>Conjunto de prácticas orientadas a proteger dispositivos, cuentas, información y datos personales.</p>
+        </article>
+
+        <article class="glossary-card animate-on-scroll">
+          <h4><span>🎯</span> Evidencia de Aprendizaje</h4>
+          <p>Producto o actuación que permite demostrar el aprendizaje alcanzado por el aprendiz.</p>
+        </article>
+      </div>
+
+      <!-- SECCIÓN 6 DE LA GUÍA: REFERENTES BIBLIOGRÁFICOS -->
+      <section style="margin-top: 56px;" class="animate-on-scroll">
+        <div class="activity-card">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 16px;">
+            <span style="font-size: 1.8rem;">📚</span>
+            <div>
+              <h3 style="margin-bottom: 2px;">6. Referentes Bibliográficos Oficiales</h3>
+              <span style="font-size: 0.8rem; color: var(--text-muted);">Fuentes institucionales que fundamentan la formación</span>
+            </div>
+          </div>
+
+          <ul style="display: flex; flex-direction: column; gap: 14px; padding-left: 10px; margin-top: 14px;">
+            <li style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; border-left: 3px solid var(--sena-green); padding-left: 14px;">
+              <strong>Servicio Nacional de Aprendizaje – SENA.</strong> Diseño curricular del programa de formación complementaria <em>"Alfabetización Informática"</em>, código 22810239, versión 1. Documento base para la planeación pedagógica y esta guía de aprendizaje.
+            </li>
+            <li style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; border-left: 3px solid var(--sena-green); padding-left: 14px;">
+              <strong>Servicio Nacional de Aprendizaje – SENA.</strong> Planeación pedagógica del programa <em>"Alfabetización Informática"</em>, formato GFPI-F-134, versión 05. Documento utilizado para definir resultados de aprendizaje, actividades, horas, evidencias y estrategias didácticas.
+            </li>
+            <li style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6; border-left: 3px solid var(--sena-green); padding-left: 14px;">
+              <strong>Servicio Nacional de Aprendizaje – SENA.</strong> Formato Guía de Aprendizaje GFPI-F-135, versión 04. Estructura y orientaciones para el desarrollo de la presente guía.
+            </li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- ENLACES INSTITUCIONALES -->
+      <section style="margin-top: 32px;" class="animate-on-scroll">
+        <div style="background: var(--surface); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 32px; box-shadow: var(--shadow-sm);">
+          <h3 style="font-size: 1.15rem; margin-bottom: 8px;">🔗 Plataformas y Servicios Institucionales del SENA</h3>
+          <p style="font-size: 0.9rem; color: var(--text-secondary); margin-bottom: 20px;">
+            Accesos directos recomendados para instructores y aprendices durante el curso:
+          </p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;">
+            <a href="https://oferta.senasofiaplus.edu.co/" target="_blank" rel="noopener noreferrer" style="padding: 16px; background: var(--green-bg); border-radius: var(--radius-sm); display: block; border: 1px solid var(--border-light); transition: var(--transition);">
+              <strong style="color: var(--sena-green); display: block; margin-bottom: 4px;">SOFIA Plus</strong>
+              <span style="font-size: 0.82rem; color: var(--text-secondary);">Portal de gestión académica, fichas y certificados.</span>
+            </a>
+
+            <a href="https://zajuna.sena.edu.co/" target="_blank" rel="noopener noreferrer" style="padding: 16px; background: var(--green-bg); border-radius: var(--radius-sm); display: block; border: 1px solid var(--border-light); transition: var(--transition);">
+              <strong style="color: var(--sena-green); display: block; margin-bottom: 4px;">Zajuna LMS</strong>
+              <span style="font-size: 0.82rem; color: var(--text-secondary);">Ambiente Virtual de Aprendizaje (AVA) del SENA.</span>
+            </a>
+
+            <a href="https://correo.misena.edu.co/" target="_blank" rel="noopener noreferrer" style="padding: 16px; background: var(--green-bg); border-radius: var(--radius-sm); display: block; border: 1px solid var(--border-light); transition: var(--transition);">
+              <strong style="color: var(--sena-green); display: block; margin-bottom: 4px;">Correo MiSena</strong>
+              <span style="font-size: 0.82rem; color: var(--text-secondary);">Cuentas institucionales oficiales de correo para aprendices.</span>
+            </a>
+
+            <a href="https://biblioteca.sena.edu.co/" target="_blank" rel="noopener noreferrer" style="padding: 16px; background: var(--green-bg); border-radius: var(--radius-sm); display: block; border: 1px solid var(--border-light); transition: var(--transition);">
+              <strong style="color: var(--sena-green); display: block; margin-bottom: 4px;">Sistema de Bibliotecas</strong>
+              <span style="font-size: 0.82rem; color: var(--text-secondary);">Bases de datos digitales, libros y recursos de consulta.</span>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- BOTONES DE NAVEGACIÓN -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 36px; flex-wrap: wrap; gap: 16px;">
+        <a href="guia.html" class="btn btn-secondary">
+          ← Volver a la Guía GFPI-F-135
+        </a>
+        <a href="index.html" class="btn btn-primary">
+          Ir al Inicio del Sitio →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="img/logo-sena.svg" alt="SENA" style="width: 36px; height: 36px;" />
+            <h3 style="margin: 0;">Servicio Nacional de Aprendizaje</h3>
+          </div>
+          <p>
+            Programa de Alfabetización Informática · Términos y conceptos oficiales del proceso formativo SENA.
+          </p>
+        </div>
+        <div>
+          <div class="footer-heading">Vistas de Formación</div>
+          <ul class="footer-links">
+            <li><a href="index.html">→ Inicio</a></li>
+            <li><a href="programa.html">→ Espacios de Sesión</a></li>
+            <li><a href="guia.html">→ Guía GFPI-F-135</a></li>
+            <li><a href="glosario.html">→ Glosario & Recursos</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Contacto Institucional</div>
+          <div class="footer-contact-item">
+            <span class="icon">📍</span>
+            <span>Calle 57 No. 8-69, Bogotá D.C., Colombia</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">📞</span>
+            <span>Línea Gratuita Nacional: 018000 910270</span>
+          </div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 SENA — Servicio Nacional de Aprendizaje. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
