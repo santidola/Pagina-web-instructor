@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Alfabetización Informática — SENA | Portal del Instructor y Aprendiz</title>
+  <meta name="description" content="Ambiente digital y pedagógico interactivo de apoyo para el instructor y aprendices del programa Alfabetización Informática del SENA (Código 22810239)." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- ========================================
+       NAVBAR INSTITUCIONAL CON LOGO OFICIAL
+  ======================================== -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/logo-sena.svg" alt="Logo Oficial SENA" class="navbar-logo-img" />
+        <div class="navbar-brand-text">
+          SENA · Alfabetización Informática
+          <div class="subtitle">Ambiente Digital del Instructor · 70 Horas</div>
+        </div>
+      </a>
+
+      <div class="navbar-nav">
+        <a href="index.html" class="active">Inicio</a>
+        <a href="programa.html">Espacios de Sesión (1 a 5)</a>
+        <a href="guia.html">Guía GFPI-F-135</a>
+        <a href="glosario.html">Glosario & Recursos</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="btn btn-secondary" id="btn-projector" type="button" style="padding: 8px 16px; font-size: 0.82rem;">
+          <span>📺 Modo Proyector</span>
+        </button>
+
+        <button class="navbar-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ========================================
+       HERO DIDÁCTICO DEL CURSO
+  ======================================== -->
+  <section class="hero" id="inicio">
+    <div class="container">
+      
+      <div class="hero-logo-badge animate-on-scroll">
+        <img src="img/logo-sena.svg" alt="SENA" />
+        <span>Servicio Nacional de Aprendizaje · Formación Profesional Integral</span>
+      </div>
+
+      <h1>
+        Portal Didáctico e Interactivo<br />
+        <span class="gradient-text">Alfabetización Informática</span>
+      </h1>
+
+      <p class="hero-subtitle">
+        Plataforma interactiva de apoyo al instructor para dictar las 70 horas del programa de formación complementaria. Estructurada bajo el formato oficial de <strong>Guía de Aprendizaje GFPI-F-135</strong>.
+      </p>
+
+      <!-- BARRA DE HERRAMIENTAS DEL INSTRUCTOR EN VIVO -->
+      <div class="instructor-toolbar animate-on-scroll">
+        <div class="instructor-title">
+          <span style="font-size: 1.6rem;">⏱️</span>
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px;">
+              Herramienta de Clase para el Instructor
+            </div>
+            <strong style="font-size: 1rem; color: var(--text-primary);">Temporizador de Práctica & Taller en Vivo</strong>
+          </div>
+        </div>
+
+        <!-- WIDGET DE CRONÓMETRO -->
+        <div class="timer-widget">
+          <div class="timer-display">30:00</div>
+          <div class="timer-btn-group">
+            <button class="timer-btn" id="timer-start" title="Iniciar tiempo" type="button">▶</button>
+            <button class="timer-btn" id="timer-pause" title="Pausar" type="button">⏸</button>
+            <button class="timer-btn" id="timer-reset" title="Reiniciar" type="button">↺</button>
+          </div>
+          <div class="timer-presets">
+            <button class="preset-chip" data-mins="15" type="button">15m</button>
+            <button class="preset-chip active" data-mins="30" type="button">30m</button>
+            <button class="preset-chip" data-mins="45" type="button">45m</button>
+          </div>
+        </div>
+
+        <a href="programa.html" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.88rem;">
+          Ir a Espacios de Sesión →
+        </a>
+      </div>
+
+      <!-- INSIGNIAS TÉCNICAS -->
+      <div class="hero-badges">
+        <span class="badge badge-green">Código Programa: 22810239 – Versión 1</span>
+        <span class="badge badge-outline">Competencia: 220501046</span>
+        <span class="badge badge-outline">Duración: 70 Horas Totales</span>
+        <span class="badge badge-outline">5 RAPs Oficiales</span>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- ========================================
+       ESPACIOS DE CLASE POR SESIÓN (EL ESPACIO DEL INSTRUCTOR)
+  ======================================== -->
+  <section class="section alt-bg" id="espacios-sesion">
+    <div class="container">
+      <div class="section-header center animate-on-scroll">
+        <span class="section-label">Ruta Pedagógica Modular</span>
+        <h2 class="section-title">Espacios de Clase de las <span class="gradient-text">5 Sesiones</span></h2>
+        <p class="section-subtitle">
+          Cada sesión cuenta con su propio módulo interactivo que el instructor puede proyectar y usar durante el desarrollo de la clase en la sala de sistemas.
+        </p>
+      </div>
+
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px;">
+
+        <!-- ESPACIO 1 -->
+        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="badge badge-green">Módulo 01</span>
+              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 10 Horas</span>
+            </div>
+            <div style="font-size: 1.8rem; margin-bottom: 10px;">🖥️</div>
+            <h3 style="margin-bottom: 8px;">Sistema Operativo & Archivos</h3>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
+              RAP: 2205010460201
+            </div>
+            <p style="margin-bottom: 16px;">
+              Reconocimiento del escritorio, explorador de Windows, gestión y estructuración de carpetas, papelera, configuración de pantalla y periféricos.
+            </p>
+            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
+              <strong>🎯 Evidencia requerida:</strong> Estructura organizada de archivos y carpetas entregada.
+            </div>
+          </div>
+          <a href="programa.html#sesion-1" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+            Abrir Espacio Sesión 1 →
+          </a>
+        </div>
+
+        <!-- ESPACIO 2 -->
+        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="badge badge-green">Módulo 02</span>
+              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 11 Horas</span>
+            </div>
+            <div style="font-size: 1.8rem; margin-bottom: 10px;">📝</div>
+            <h3 style="margin-bottom: 8px;">Procesador de Texto (Word)</h3>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
+              RAP: 2205010460202
+            </div>
+            <p style="margin-bottom: 16px;">
+              Redacción formal, formato de fuente y párrafo, ortografía, diseño de página, inserción de tablas, imágenes, encabezados y correspondencia.
+            </p>
+            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
+              <strong>🎯 Evidencia requerida:</strong> Documento digital terminado con formato estandarizado.
+            </div>
+          </div>
+          <a href="programa.html#sesion-2" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+            Abrir Espacio Sesión 2 →
+          </a>
+        </div>
+
+        <!-- ESPACIO 3 -->
+        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="badge badge-green">Módulo 03</span>
+              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 14 Horas</span>
+            </div>
+            <div style="font-size: 1.8rem; margin-bottom: 10px;">📊</div>
+            <h3 style="margin-bottom: 8px;">Hoja de Cálculo (Excel)</h3>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
+              RAP: 2205010460203
+            </div>
+            <p style="margin-bottom: 16px;">
+              Manipulación de celdas, fórmulas y funciones (SUMA, PROMEDIO, CONTAR, SI), ordenamiento, filtros automáticos y representación en gráficos.
+            </p>
+            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
+              <strong>🎯 Evidencia requerida:</strong> Archivo Excel con datos, fórmulas, filtros y gráficos.
+            </div>
+          </div>
+          <a href="programa.html#sesion-3" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+            Abrir Espacio Sesión 3 →
+          </a>
+        </div>
+
+        <!-- ESPACIO 4 -->
+        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="badge badge-green">Módulo 04</span>
+              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 10 Horas</span>
+            </div>
+            <div style="font-size: 1.8rem; margin-bottom: 10px;">📽️</div>
+            <h3 style="margin-bottom: 8px;">Presentaciones (PowerPoint)</h3>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
+              RAP: 2205010460204
+            </div>
+            <p style="margin-bottom: 16px;">
+              Diseño de diapositivas, objetos gráficos, jerarquía visual, reglas de legibilidad, transiciones sobrias y preparación de exposición oral.
+            </p>
+            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
+              <strong>🎯 Evidencia requerida:</strong> Diapositivas terminadas y sustentación oral en clase.
+            </div>
+          </div>
+          <a href="programa.html#sesion-4" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+            Abrir Espacio Sesión 4 →
+          </a>
+        </div>
+
+        <!-- ESPACIO 5 -->
+        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="badge badge-green">Módulo 05</span>
+              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 11 Horas</span>
+            </div>
+            <div style="font-size: 1.8rem; margin-bottom: 10px;">🌐</div>
+            <h3 style="margin-bottom: 8px;">Internet & Seguridad Digital</h3>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
+              RAP: 2205010460101
+            </div>
+            <p style="margin-bottom: 16px;">
+              Navegadores, búsquedas avanzadas, correo formal con adjuntos, foros, blogs temáticos y buenas prácticas de protección de datos y ciberseguridad.
+            </p>
+            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
+              <strong>🎯 Evidencia requerida:</strong> Búsqueda validada, correo formal, foro y blog.
+            </div>
+          </div>
+          <a href="programa.html#sesion-5" class="btn btn-secondary" style="width: 100%; justify-content: center;">
+            Abrir Espacio Sesión 5 →
+          </a>
+        </div>
+
+        <!-- ESPACIO DE TRANSFERENCIA -->
+        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--green-soft); border-color: var(--green-muted);">
+          <div>
+            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
+              <span class="badge" style="background: var(--sena-green); color: #fff;">Transferencia</span>
+              <span style="font-weight: 700; color: var(--sena-green-dark);">⏱️ 8 Horas</span>
+            </div>
+            <div style="font-size: 1.8rem; margin-bottom: 10px;">🏆</div>
+            <h3 style="margin-bottom: 8px;">"Mi Solución Digital"</h3>
+            <div style="font-size: 0.78rem; font-weight: 600; color: var(--sena-green-dark); margin-bottom: 12px;">
+              Producto Integrador Final
+            </div>
+            <p style="margin-bottom: 16px;">
+              Espacio donde el aprendiz integra en un solo proyecto real: carpeta organizada, documento descriptivo, hoja de cálculo con fórmulas y diapositivas.
+            </p>
+            <div style="background: #fff; padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px; border: 1px solid var(--green-muted);">
+              <strong>🎯 Evaluación:</strong> Rúbrica final y sustentación comunitaria / laboral.
+            </div>
+          </div>
+          <a href="guia.html#transferencia" class="btn btn-primary" style="width: 100%; justify-content: center;">
+            Ver Rúbrica del Proyecto →
+          </a>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       SEGUIMIENTO INTERACTIVO DE CLASE
+  ======================================== -->
+  <section class="section" id="progreso-clase">
+    <div class="container">
+      <div class="progress-card animate-on-scroll">
+        <div class="progress-header">
+          <div>
+            <span class="section-label">Control Pedagógico en el Aula</span>
+            <h3 style="font-size: 1.3rem;">Checklist de Actividades del Curso</h3>
+          </div>
+          <span id="task-count-text" style="font-weight: 700; color: var(--sena-green);">0 de 6 completadas (0%)</span>
+        </div>
+
+        <div class="hours-bar" style="height: 10px; margin-bottom: 20px;">
+          <div class="hours-bar-fill" id="task-progress-bar" style="width: 0%;"></div>
+        </div>
+
+        <div class="task-checklist">
+          <div class="task-item">
+            <div class="task-checkbox">✓</div>
+            <span class="task-label"><strong>Actividad 3.1:</strong> Reflexión inicial "¿Cómo utilizo actualmente la tecnología?" (2 Horas)</span>
+          </div>
+          <div class="task-item">
+            <div class="task-checkbox">✓</div>
+            <span class="task-label"><strong>Actividad 3.2:</strong> Diagnóstico práctico "Reconozco mis saberes digitales" (4 Horas)</span>
+          </div>
+          <div class="task-item">
+            <div class="task-checkbox">✓</div>
+            <span class="task-label"><strong>Sesión 1:</strong> Estructuración de archivos y configuración de sistema operativo (10 Horas)</span>
+          </div>
+          <div class="task-item">
+            <div class="task-checkbox">✓</div>
+            <span class="task-label"><strong>Sesión 2:</strong> Redacción y formato de documento comercial en Word (11 Horas)</span>
+          </div>
+          <div class="task-item">
+            <div class="task-checkbox">✓</div>
+            <span class="task-label"><strong>Sesión 3:</strong> Construcción de tabla con fórmulas y gráficos en Excel (14 Horas)</span>
+          </div>
+          <div class="task-item">
+            <div class="task-checkbox">✓</div>
+            <span class="task-label"><strong>Sesión 4 & 5:</strong> Presentación oral y taller de seguridad en Internet (21 Horas)</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ========================================
+       FOOTER INSTITUCIONAL SENA
+  ======================================== -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="img/logo-sena.svg" alt="SENA" style="width: 36px; height: 36px;" />
+            <h3 style="margin: 0;">Servicio Nacional de Aprendizaje</h3>
+          </div>
+          <p>
+            Programa de Alfabetización Informática · Proceso de Gestión de Formación Profesional Integral (GFPI). Formación pública, gratuita e inclusiva en toda Colombia.
+          </p>
+        </div>
+
+        <div>
+          <div class="footer-heading">Vistas de Formación</div>
+          <ul class="footer-links">
+            <li><a href="index.html">→ Inicio / Aula Principal</a></li>
+            <li><a href="programa.html">→ Espacios de Sesión (1 a 5)</a></li>
+            <li><a href="guia.html">→ Guía de Aprendizaje Oficial</a></li>
+            <li><a href="glosario.html">→ Glosario & Recursos TIC</a></li>
+          </ul>
+        </div>
+
+        <div>
+          <div class="footer-heading">Contacto y Soporte</div>
+          <div class="footer-contact-item">
+            <span class="icon">📍</span>
+            <span>Calle 57 No. 8-69, Bogotá D.C., Colombia</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">📞</span>
+            <span>Línea Gratuita Nacional: 018000 910270</span>
+          </div>
+          <div class="footer-contact-item">
+            <span class="icon">🌐</span>
+            <span>Portal Oficial: www.sena.edu.co</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <p>© 2026 SENA — Alfabetización Informática (Código 22810239 – Versión 1). Espacio didáctico para el instructor.</p>
+        <div class="footer-bottom-links">
+          <a href="https://oferta.senasofiaplus.edu.co/" target="_blank" rel="noopener noreferrer">SOFIA Plus</a>
+          <a href="https://zajuna.sena.edu.co/" target="_blank" rel="noopener noreferrer">Zajuna LMS</a>
+          <a href="https://www.sena.edu.co/es-co/transparencia/Paginas/default.aspx" target="_blank" rel="noopener noreferrer">Transparencia</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

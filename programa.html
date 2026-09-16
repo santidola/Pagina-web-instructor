@@ -1,0 +1,718 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Espacios de Sesión Didáctica · Alfabetización Informática | SENA</title>
+  <meta name="description" content="Espacios interactivos de clase por sesión para el instructor del curso Alfabetización Informática del SENA. Simuladores, guías de taller y temporizador en vivo." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body>
+
+  <!-- NAVBAR CON LOGO OFICIAL -->
+  <nav class="navbar" id="navbar">
+    <div class="container">
+      <a href="index.html" class="navbar-brand">
+        <img src="img/logo-sena.svg" alt="SENA" class="navbar-logo-img" />
+        <div class="navbar-brand-text">
+          SENA · Alfabetización Informática
+          <div class="subtitle">Espacios Didácticos de Clase · 70 Horas</div>
+        </div>
+      </a>
+
+      <div class="navbar-nav">
+        <a href="index.html">Inicio</a>
+        <a href="programa.html" class="active">Espacios de Sesión (1 a 5)</a>
+        <a href="guia.html">Guía GFPI-F-135</a>
+        <a href="glosario.html">Glosario & Recursos</a>
+      </div>
+
+      <div style="display: flex; align-items: center; gap: 12px;">
+        <button class="btn btn-secondary" id="btn-projector" type="button" style="padding: 8px 16px; font-size: 0.82rem;">
+          <span>📺 Modo Proyector</span>
+        </button>
+
+        <button class="navbar-toggle" type="button" aria-label="Abrir menú" aria-expanded="false">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- PAGE HEADER -->
+  <header class="page-header">
+    <div class="container">
+      <div style="display: flex; justify-content: center; margin-bottom: 16px;">
+        <div class="hero-logo-badge" style="margin-bottom: 0;">
+          <img src="img/logo-sena.svg" alt="SENA" />
+          <span>Dirección de Formación Profesional · Ambientes de Informática</span>
+        </div>
+      </div>
+      <h1>Espacios de Clase y <span class="gradient-text">Apoyo al Instructor</span></h1>
+      <p>
+        Módulos interactivos diseñados para proyectar en el aula y guiar a los aprendices en el paso a paso práctico, talleres con temporizador y entrega de evidencias.
+      </p>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT -->
+  <main class="section">
+    <div class="container">
+
+      <!-- BARRA DE HERRAMIENTAS Y TEMPORIZADOR DEL INSTRUCTOR -->
+      <div class="instructor-toolbar animate-on-scroll">
+        <div class="instructor-title">
+          <span style="font-size: 1.6rem;">⏱️</span>
+          <div>
+            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px;">
+              Herramienta de Control en Sala
+            </div>
+            <strong style="font-size: 1rem; color: var(--text-primary);">Temporizador de Taller en Vivo</strong>
+          </div>
+        </div>
+
+        <div class="timer-widget">
+          <div class="timer-display">30:00</div>
+          <div class="timer-btn-group">
+            <button class="timer-btn" id="timer-start" title="Iniciar taller" type="button">▶</button>
+            <button class="timer-btn" id="timer-pause" title="Pausar taller" type="button">⏸</button>
+            <button class="timer-btn" id="timer-reset" title="Reiniciar tiempo" type="button">↺</button>
+          </div>
+          <div class="timer-presets">
+            <button class="preset-chip" data-mins="15" type="button">15m</button>
+            <button class="preset-chip active" data-mins="30" type="button">30m</button>
+            <button class="preset-chip" data-mins="45" type="button">45m</button>
+          </div>
+        </div>
+
+        <button onclick="window.print()" class="btn btn-secondary" style="padding: 10px 18px; font-size: 0.85rem;" type="button">
+          🖨️ Imprimir Ficha de Clase
+        </button>
+      </div>
+
+      <!-- SELECTOR HORIZONTAL DE SESIONES (TABS) -->
+      <div class="session-nav-tabs animate-on-scroll" role="tablist">
+        <button class="session-tab-btn active" data-target="sesion-1" type="button" role="tab">
+          <span>🖥️ Sesión 1</span>
+          <span class="tab-badge">10 Horas</span>
+        </button>
+        <button class="session-tab-btn" data-target="sesion-2" type="button" role="tab">
+          <span>📝 Sesión 2: Word</span>
+          <span class="tab-badge">11 Horas</span>
+        </button>
+        <button class="session-tab-btn" data-target="sesion-3" type="button" role="tab">
+          <span>📊 Sesión 3: Excel</span>
+          <span class="tab-badge">14 Horas</span>
+        </button>
+        <button class="session-tab-btn" data-target="sesion-4" type="button" role="tab">
+          <span>📽️ Sesión 4: PowerPoint</span>
+          <span class="tab-badge">10 Horas</span>
+        </button>
+        <button class="session-tab-btn" data-target="sesion-5" type="button" role="tab">
+          <span>🌐 Sesión 5: Internet</span>
+          <span class="tab-badge">11 Horas</span>
+        </button>
+        <button class="session-tab-btn" data-target="sesion-integrador" type="button" role="tab">
+          <span>🏆 Transferencia</span>
+          <span class="tab-badge" style="background: #E65100; color: #fff;">8 Horas</span>
+        </button>
+      </div>
+
+      <!-- ========================================================
+           PANEL SESIÓN 1: SISTEMA OPERATIVO & HARDWARE
+      ======================================================== -->
+      <div class="session-view-panel active" id="sesion-1">
+        <div class="session-card" style="margin-bottom: 0;">
+          <div class="session-header">
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <div class="session-number">01</div>
+              <div>
+                <h2>Funcionalidades Básicas del Sistema Operativo</h2>
+                <div class="session-ra">
+                  <strong>RAP Oficial:</strong> 2205010460201 — Manejar las funcionalidades básicas de un sistema operativo de acuerdo con las necesidades del cliente.
+                </div>
+              </div>
+            </div>
+            <span class="badge badge-green" style="font-size: 0.9rem; padding: 8px 16px;">⏱️ Duración: 10 Horas</span>
+          </div>
+
+          <div class="didactic-grid">
+            <div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 14px; color: var(--sena-green-dark);">
+                📖 Guía de Taller para el Aula (Paso a Paso):
+              </h3>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">1</div>
+                  <strong style="color: var(--text-primary);">Exploración del Entorno y Periféricos</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Reconocer el escritorio, la barra de tareas, menú de inicio, ventanas y notificaciones. Identificar hardware conectado (ratón, teclado, monitor, memorias USB, impresora).
+                </p>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">2</div>
+                  <strong style="color: var(--text-primary);">Taller de Estructura de Carpetas</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Crear en el disco de trabajo una carpeta principal con el nombre del aprendiz y subcarpetas temáticas:
+                  <code style="background: var(--green-bg); padding: 2px 6px; border-radius: 4px; color: var(--sena-green-dark);">Mi_Curso_SENA / 01_Documentos / 02_Tablas / 03_Presentaciones / 04_Consultas</code>.
+                </p>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">3</div>
+                  <strong style="color: var(--text-primary);">Manipulación y Seguridad de Archivos</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Copiar, mover, renombrar, respaldar y recuperar archivos de la papelera de reciclaje. Realizar búsquedas con filtros de fecha y extensión (.pdf, .docx, .xlsx).
+                </p>
+              </div>
+
+              <!-- INTERACTIVO DE ATAJOS DE TECLADO -->
+              <div style="background: var(--green-bg); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 20px; margin-top: 20px;">
+                <h4 style="font-size: 0.95rem; color: var(--sena-green-dark); margin-bottom: 12px; display: flex; align-items: center; gap: 8px;">
+                  ⌨️ Atajos de Teclado Imprescindibles para la Práctica:
+                </h4>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 10px;">
+                  <div style="background: #fff; padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem;">
+                    <kbd style="background: #eee; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Win + E</kbd> Abre el Explorador
+                  </div>
+                  <div style="background: #fff; padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem;">
+                    <kbd style="background: #eee; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Win + D</kbd> Muestra el Escritorio
+                  </div>
+                  <div style="background: #fff; padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem;">
+                    <kbd style="background: #eee; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Ctrl + C / V</kbd> Copiar y Pegar
+                  </div>
+                  <div style="background: #fff; padding: 10px; border-radius: 6px; border: 1px solid var(--border); font-size: 0.85rem;">
+                    <kbd style="background: #eee; padding: 2px 6px; border-radius: 4px; font-weight: 700;">Ctrl + Shift + Esc</kbd> Admin. Tareas
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!-- PANEL LATERAL DE LA EVIDENCIA -->
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); position: sticky; top: 90px;">
+                <span class="badge badge-green" style="margin-bottom: 10px;">Evidencia Oficial</span>
+                <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Estructura Organizada de Archivos</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  El aprendiz debe entregar al instructor la estructura de carpetas creada con archivos de prueba clasificados y demostrar en vivo el uso de la búsqueda y papelera.
+                </p>
+
+                <div style="border-top: 1px solid var(--border-light); padding-top: 14px;">
+                  <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px; display: block; margin-bottom: 8px;">
+                    Criterio de Evaluación:
+                  </strong>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">
+                    "Aplica las funcionalidades del sistema operativo de acuerdo con los requerimientos y necesidades presentadas."
+                  </p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                  <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="alert('Descargando guía de práctica para la Sesión 1 en PDF...')">
+                    📥 Descargar Guía de Taller (PDF)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           PANEL SESIÓN 2: PROCESADOR DE TEXTO (WORD)
+      ======================================================== -->
+      <div class="session-view-panel" id="sesion-2">
+        <div class="session-card" style="margin-bottom: 0;">
+          <div class="session-header">
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <div class="session-number">02</div>
+              <div>
+                <h2>Procesador de Texto (Microsoft Word / Docs)</h2>
+                <div class="session-ra">
+                  <strong>RAP Oficial:</strong> 2205010460202 — Aplicar las funciones de un procesador de texto según las características del documento a elaborar.
+                </div>
+              </div>
+            </div>
+            <span class="badge badge-green" style="font-size: 0.9rem; padding: 8px 16px;">⏱️ Duración: 11 Horas</span>
+          </div>
+
+          <div class="didactic-grid">
+            <div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 14px; color: var(--sena-green-dark);">
+                📖 Taller Guiado: Elaboración de Documento Formal
+              </h3>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">1</div>
+                  <strong style="color: var(--text-primary);">Configuración y Diseño de Página</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Establecer tamaño de papel Carta o A4, márgenes normales (2.5 cm superior/inferior, 3 cm izquierdo/derecho), encabezado y pie de página con numeración.
+                </p>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">2</div>
+                  <strong style="color: var(--text-primary);">Formato Profesional de Párrafos y Tipografía</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Aplicar fuentes estándar (Arial, Calibri o Times New Roman), tamaño 11 o 12 pt, interlineado de 1.15 a 1.5, alineación justificada y revisión ortográfica (tecla F7).
+                </p>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">3</div>
+                  <strong style="color: var(--text-primary);">Tablas, Ilustraciones y Combinación</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Insertar tabla con formato de estilo claro, imagen ilustrativa con ajuste de texto adecuado y demostración de combinación de correspondencia para cartas modelo.
+                </p>
+              </div>
+            </div>
+
+            <!-- PANEL LATERAL DE LA EVIDENCIA -->
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); position: sticky; top: 90px;">
+                <span class="badge badge-green" style="margin-bottom: 10px;">Evidencia Oficial</span>
+                <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Documento Digital Terminado</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  Elaboración de una carta formal, cotización comercial o informe breve que cumpla con todos los criterios de diseño, tabla, imagen y exportación a PDF.
+                </p>
+
+                <div style="border-top: 1px solid var(--border-light); padding-top: 14px;">
+                  <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px; display: block; margin-bottom: 8px;">
+                    Criterio de Evaluación:
+                  </strong>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">
+                    "Elabora un documento utilizando el procesador de texto, de acuerdo con los requerimientos de la información a publicar."
+                  </p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                  <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="alert('Descargando plantilla de práctica en formato Word...')">
+                    📥 Descargar Plantilla Word (.docx)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           PANEL SESIÓN 3: HOJA DE CÁLCULO (EXCEL INTERACTIVO)
+      ======================================================== -->
+      <div class="session-view-panel" id="sesion-3">
+        <div class="session-card" style="margin-bottom: 0;">
+          <div class="session-header">
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <div class="session-number">03</div>
+              <div>
+                <h2>Hoja de Cálculo (Microsoft Excel / Sheets)</h2>
+                <div class="session-ra">
+                  <strong>RAP Oficial:</strong> 2205010460203 — Aplicar las funciones de una hoja de cálculo según las características de las operaciones a desarrollar.
+                </div>
+              </div>
+            </div>
+            <span class="badge badge-green" style="font-size: 0.9rem; padding: 8px 16px;">⏱️ Duración: 14 Horas</span>
+          </div>
+
+          <div class="didactic-grid">
+            <div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 10px; color: var(--sena-green-dark);">
+                🧮 Simulador Interactivo de Fórmulas en Vivo (Uso en Clase):
+              </h3>
+              <p style="font-size: 0.88rem; color: var(--text-secondary); margin-bottom: 16px;">
+                Escribe o cambia los valores en las celdas B2 a B5. Las fórmulas de <strong>SUMA</strong>, <strong>PROMEDIO</strong> y <strong>VALOR MÁXIMO</strong> se calcularán automáticamente en tiempo real para proyectar en el salón:
+              </p>
+
+              <!-- SIMULADOR EXCEL -->
+              <div class="excel-sim">
+                <div class="excel-header-bar">
+                  <span>📗 Excel SENA — Taller de Fórmulas</span>
+                  <span>Vista en Vivo</span>
+                </div>
+                <div class="excel-formula-bar">
+                  <span class="excel-fx-icon">fx</span>
+                  <span id="excel-formula-preview">=SUMA(B2:B5)</span>
+                </div>
+                <table class="excel-grid">
+                  <thead>
+                    <tr>
+                      <th class="row-num">#</th>
+                      <th style="width: 55%; text-align: left; padding-left: 10px;">A (Concepto / Artículo)</th>
+                      <th style="width: 45%; text-align: right; padding-right: 10px;">B (Valor en Pesos $)</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td class="row-num">1</td>
+                      <td style="font-weight: 700; background: #fafafa; padding-left: 10px;">Presupuesto de Taller</td>
+                      <td style="font-weight: 700; background: #fafafa; text-align: right; padding-right: 10px;">Monto</td>
+                    </tr>
+                    <tr>
+                      <td class="row-num">2</td>
+                      <td style="padding-left: 10px;">Equipos de cómputo</td>
+                      <td><input type="number" class="excel-input excel-num-val" data-cell="B2" value="1800000" /></td>
+                    </tr>
+                    <tr>
+                      <td class="row-num">3</td>
+                      <td style="padding-left: 10px;">Conexión a Internet TIC</td>
+                      <td><input type="number" class="excel-input excel-num-val" data-cell="B3" value="120000" /></td>
+                    </tr>
+                    <tr>
+                      <td class="row-num">4</td>
+                      <td style="padding-left: 10px;">Papelería y consumibles</td>
+                      <td><input type="number" class="excel-input excel-num-val" data-cell="B4" value="85000" /></td>
+                    </tr>
+                    <tr>
+                      <td class="row-num">5</td>
+                      <td style="padding-left: 10px;">Licencias y utilidades</td>
+                      <td><input type="number" class="excel-input excel-num-val" data-cell="B5" value="250000" /></td>
+                    </tr>
+                    <tr>
+                      <td class="row-num">6</td>
+                      <td style="font-weight: 700; background: #E8F5E2; padding-left: 10px;">TOTAL (=SUMA(B2:B5))</td>
+                      <td class="excel-result-cell" id="excel-sum-res">$2.255.000</td>
+                    </tr>
+                    <tr>
+                      <td class="row-num">7</td>
+                      <td style="font-weight: 600; background: #fdfdfd; padding-left: 10px;">PROMEDIO (=PROMEDIO(B2:B5))</td>
+                      <td class="excel-result-cell" id="excel-avg-res">$563.750</td>
+                    </tr>
+                    <tr>
+                      <td class="row-num">8</td>
+                      <td style="font-weight: 600; background: #fdfdfd; padding-left: 10px;">VALOR MÁXIMO (=MAX(B2:B5))</td>
+                      <td class="excel-result-cell" id="excel-max-res">$1.800.000</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+
+            <!-- PANEL LATERAL DE LA EVIDENCIA -->
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); position: sticky; top: 90px;">
+                <span class="badge badge-green" style="margin-bottom: 10px;">Evidencia Oficial</span>
+                <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Libro de Cálculo con Gráficos</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  Construcción de una tabla con operaciones matemáticas, aplicación de filtros para segmentar registros y creación de un gráfico de barras o columnas.
+                </p>
+
+                <div style="border-top: 1px solid var(--border-light); padding-top: 14px;">
+                  <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px; display: block; margin-bottom: 8px;">
+                    Criterio de Evaluación:
+                  </strong>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">
+                    "Realiza un informe utilizando las funciones de la hoja de cálculo, de acuerdo con las necesidades del mismo."
+                  </p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                  <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="alert('Descargando plantilla de ejercicios de Excel...')">
+                    📥 Descargar Plantilla Excel (.xlsx)
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           PANEL SESIÓN 4: PRESENTACIONES DIGITALES (POWERPOINT)
+      ======================================================== -->
+      <div class="session-view-panel" id="sesion-4">
+        <div class="session-card" style="margin-bottom: 0;">
+          <div class="session-header">
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <div class="session-number">04</div>
+              <div>
+                <h2>Presentaciones Digitales (PowerPoint)</h2>
+                <div class="session-ra">
+                  <strong>RAP Oficial:</strong> 2205010460204 — Aplicar las funciones de un programa de realización de diapositivas según las características de la presentación a desarrollar.
+                </div>
+              </div>
+            </div>
+            <span class="badge badge-green" style="font-size: 0.9rem; padding: 8px 16px;">⏱️ Duración: 10 Horas</span>
+          </div>
+
+          <div class="didactic-grid">
+            <div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 14px; color: var(--sena-green-dark);">
+                📽️ Guía de Diseño y Exposición Oral:
+              </h3>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">1</div>
+                  <strong style="color: var(--text-primary);">Estructura de la Presentación (Regla 7x7)</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Máximo 7 líneas de texto por diapositiva y no más de 7 palabras por línea. Evitar párrafos extensos para no fatigar visualmente al auditorio.
+                </p>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">2</div>
+                  <strong style="color: var(--text-primary);">Contraste Visual y Objetos Multimedia</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Fondos claros con textos oscuros o viceversa. Inserción de imágenes nítidas, SmartArt y transiciones sutiles (ej. desvanecer) para mantener la atención.
+                </p>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">3</div>
+                  <strong style="color: var(--text-primary);">Preparación de la Sustentación Oral</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Ensayar la exposición (3 a 5 minutos por aprendiz), modulando el tono de voz, contacto visual con el grupo y manejo del tiempo asignado.
+                </p>
+              </div>
+            </div>
+
+            <!-- PANEL LATERAL DE LA EVIDENCIA -->
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); position: sticky; top: 90px;">
+                <span class="badge badge-green" style="margin-bottom: 10px;">Evidencia Oficial</span>
+                <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Presentación Digital & Exposición</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  Archivo .pptx sobre una temática laboral o comunitaria asignada y sustentación oral demostrando dominio del tema ante los compañeros.
+                </p>
+
+                <div style="border-top: 1px solid var(--border-light); padding-top: 14px;">
+                  <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px; display: block; margin-bottom: 8px;">
+                    Criterio de Evaluación:
+                  </strong>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">
+                    "Realiza una exposición utilizando el programa de presentación de diapositivas de acuerdo con el tema asignado."
+                  </p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                  <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="alert('Descargando plantilla PowerPoint (.pptx)...')">
+                    📥 Descargar Plantilla PowerPoint
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           PANEL SESIÓN 5: INTERNET & CIBERSEGURIDAD
+      ======================================================== -->
+      <div class="session-view-panel" id="sesion-5">
+        <div class="session-card" style="margin-bottom: 0;">
+          <div class="session-header">
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <div class="session-number">05</div>
+              <div>
+                <h2>Servicios de Internet & Seguridad Digital</h2>
+                <div class="session-ra">
+                  <strong>RAP Oficial:</strong> 2205010460101 — Utilizar los servicios de Internet de acuerdo con las necesidades.
+                </div>
+              </div>
+            </div>
+            <span class="badge badge-green" style="font-size: 0.9rem; padding: 8px 16px;">⏱️ Duración: 11 Horas</span>
+          </div>
+
+          <div class="didactic-grid">
+            <div>
+              <h3 style="font-size: 1.15rem; margin-bottom: 14px; color: var(--sena-green-dark);">
+                🛡️ Práctica de Seguridad Digital y Herramientas Web:
+              </h3>
+
+              <!-- HERRAMIENTA INTERACTIVA DE CONTRASEÑAS -->
+              <div style="background: var(--green-bg); border: 1px solid var(--border-light); border-radius: var(--radius); padding: 22px; margin-bottom: 22px;">
+                <h4 style="font-size: 0.95rem; color: var(--sena-green-dark); margin-bottom: 8px;">
+                  🔒 Simulador en Vivo: Probador de Fortaleza de Contraseñas
+                </h4>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 12px;">
+                  Pide a un aprendiz que ingrese una contraseña de prueba (ficticia) para evaluar en pantalla si cumple con mayúsculas, números, símbolos y longitud:
+                </p>
+                <input type="text" id="pwd-test-input" placeholder="Escribe una contraseña de prueba aquí..." style="width: 100%; padding: 10px 14px; border: 1px solid var(--border); border-radius: 6px; font-size: 0.95rem; margin-bottom: 10px;" />
+                <div style="height: 8px; background: #eee; border-radius: 4px; overflow: hidden; margin-bottom: 8px;">
+                  <div id="pwd-test-bar" style="width: 0%; height: 100%; transition: width 0.3s, background-color 0.3s;"></div>
+                </div>
+                <div id="pwd-test-score" style="font-size: 0.85rem; font-weight: 700; color: var(--text-secondary);">
+                  Escribe una contraseña para probarla
+                </div>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">1</div>
+                  <strong style="color: var(--text-primary);">Búsquedas Avanzadas con Filtros y Comillas</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Uso de comillas <code style="background: #eee; padding: 2px 4px;">"frase exacta"</code> y operadores como <code style="background: #eee; padding: 2px 4px;">filetype:pdf</code> para localizar información fidedigna del SENA o entidades públicas.
+                </p>
+              </div>
+
+              <div class="activity-step-box">
+                <div class="activity-step-header">
+                  <div class="activity-step-num">2</div>
+                  <strong style="color: var(--text-primary);">Correo Electrónico Formal y Netiqueta</strong>
+                </div>
+                <p style="font-size: 0.9rem; color: var(--text-secondary); line-height: 1.6;">
+                  Redactar correo institucional con asunto claro, saludo formal, cuerpo conciso, despedida, firma de contacto y adjunto con nomenclatura adecuada.
+                </p>
+              </div>
+            </div>
+
+            <!-- PANEL LATERAL DE LA EVIDENCIA -->
+            <div>
+              <div style="background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius); padding: 24px; box-shadow: var(--shadow-sm); position: sticky; top: 90px;">
+                <span class="badge badge-green" style="margin-bottom: 10px;">Evidencia Oficial</span>
+                <h4 style="font-size: 1.1rem; margin-bottom: 10px;">Evidencias de Búsqueda, Correo y Foro</h4>
+                <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 16px;">
+                  Capturas de pantalla o registro del correo enviado con adjunto, participación en el foro temático respetando las normas de cortesía digital y entrada de blog.
+                </p>
+
+                <div style="border-top: 1px solid var(--border-light); padding-top: 14px;">
+                  <strong style="font-size: 0.8rem; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px; display: block; margin-bottom: 8px;">
+                    Criterio de Evaluación:
+                  </strong>
+                  <p style="font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">
+                    "Realiza búsquedas en Internet; establece comunicación por correo; implementa un blog y participa en foros o grupos según el tema."
+                  </p>
+                </div>
+
+                <div style="margin-top: 20px;">
+                  <button class="btn btn-primary" style="width: 100%; justify-content: center;" onclick="alert('Descargando guía de seguridad digital...')">
+                    📥 Descargar Guía de Seguridad TIC
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ========================================================
+           PANEL TRANSFERENCIA: PRODUCTO INTEGRADOR
+      ======================================================== -->
+      <div class="session-view-panel" id="sesion-integrador">
+        <div class="session-card" style="margin-bottom: 0; background: var(--green-soft); border-color: var(--green-muted);">
+          <div class="session-header">
+            <div style="display: flex; gap: 16px; align-items: center;">
+              <div class="session-number" style="background: #E65100; color: #fff;">🏆</div>
+              <div>
+                <h2>Transferencia: Producto Integrador "Mi Solución Digital"</h2>
+                <div class="session-ra">
+                  <strong>Momento Pedagógico 3.4:</strong> Aplicación práctica integradora de todas las competencias desarrolladas.
+                </div>
+              </div>
+            </div>
+            <span class="badge" style="background: #E65100; color: #fff; font-size: 0.9rem; padding: 8px 16px;">⏱️ Duración: 8 Horas</span>
+          </div>
+
+          <div style="background: #fff; border-radius: var(--radius); padding: 28px; border: 1px solid var(--border); margin-top: 20px;">
+            <h3 style="font-size: 1.2rem; color: #E65100; margin-bottom: 14px;">
+              📋 Requisitos para la Entrega y Sustentación Final del Aprendiz:
+            </h3>
+
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; margin-top: 18px;">
+              <div style="padding: 16px; background: var(--green-bg); border-radius: 8px; border-left: 4px solid var(--sena-green);">
+                <strong style="color: var(--sena-green-dark); display: block; margin-bottom: 4px;">1. Carpeta Digital</strong>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Estructura de archivos limpia y ordenada con nombres descriptivos.</p>
+              </div>
+
+              <div style="padding: 16px; background: var(--green-bg); border-radius: 8px; border-left: 4px solid var(--sena-green);">
+                <strong style="color: var(--sena-green-dark); display: block; margin-bottom: 4px;">2. Documento en Word</strong>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Descripción de la propuesta con formato, imágenes y tabla de datos.</p>
+              </div>
+
+              <div style="padding: 16px; background: var(--green-bg); border-radius: 8px; border-left: 4px solid var(--sena-green);">
+                <strong style="color: var(--sena-green-dark); display: block; margin-bottom: 4px;">3. Libro en Excel</strong>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Cálculos automáticos con fórmulas, filtros y gráfico representativo.</p>
+              </div>
+
+              <div style="padding: 16px; background: var(--green-bg); border-radius: 8px; border-left: 4px solid var(--sena-green);">
+                <strong style="color: var(--sena-green-dark); display: block; margin-bottom: 4px;">4. Diapositivas & Correo</strong>
+                <p style="font-size: 0.85rem; color: var(--text-secondary); margin: 0;">Presentación para sustentar y simulación de envío por correo formal.</p>
+              </div>
+            </div>
+
+            <div style="margin-top: 24px; text-align: center;">
+              <a href="guia.html#evaluacion" class="btn btn-primary">
+                Ver Tabla de Criterios e Instrumentos en la Guía GFPI-F-135 →
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BOTONES DE NAVEGACIÓN -->
+      <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 36px; flex-wrap: wrap; gap: 16px;">
+        <a href="index.html" class="btn btn-secondary">
+          ← Volver al Inicio
+        </a>
+        <a href="guia.html" class="btn btn-primary">
+          Ir a Guía Oficial GFPI-F-135 →
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <div style="display: flex; align-items: center; gap: 12px; margin-bottom: 12px;">
+            <img src="img/logo-sena.svg" alt="SENA" style="width: 36px; height: 36px;" />
+            <h3 style="margin: 0;">Servicio Nacional de Aprendizaje</h3>
+          </div>
+          <p>
+            Programa de Alfabetización Informática (Código 22810239). Espacios modulares de apoyo docente para la formación profesional integral.
+          </p>
+        </div>
+        <div>
+          <div class="footer-heading">Navegación Rápida</div>
+          <ul class="footer-links">
+            <li><a href="index.html">→ Inicio</a></li>
+            <li><a href="programa.html">→ Espacios de Sesión</a></li>
+            <li><a href="guia.html">→ Guía GFPI-F-135</a></li>
+            <li><a href="glosario.html">→ Glosario & Recursos</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer-heading">Recursos del Instructor</div>
+          <p style="font-size: 0.88rem; color: var(--text-secondary); line-height: 1.6; margin-bottom: 12px;">
+            Material pedagógico de acuerdo con la planeación curricular oficial.
+          </p>
+          <a href="guia.html" class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.85rem;">
+            Consultar Guía Completa
+          </a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p>© 2026 SENA — Servicio Nacional de Aprendizaje. Todos los derechos reservados.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
