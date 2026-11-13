@@ -180,46 +180,264 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   // ========================================
-  // 6. SIMULADOR EN VIVO DE EXCEL (SESIÓN 3)
+  // 6. SIMULADOR MÓVIL Y ALARMA (SESIÓN 1)
   // ========================================
-  const excelInputs = document.querySelectorAll('.excel-num-val');
-  const excelSumResult = document.getElementById('excel-sum-res');
-  const excelAvgResult = document.getElementById('excel-avg-res');
-  const excelMaxResult = document.getElementById('excel-max-res');
-  const excelFormulaPreview = document.getElementById('excel-formula-preview');
+  const alarmTimeInput = document.getElementById('alarm-time-input');
+  const setAlarmBtn = document.getElementById('btn-set-alarm');
+  const alarmStatusDisplay = document.getElementById('alarm-status-display');
+  const mobileClockDisplay = document.getElementById('mobile-clock');
+  const mobileSwitches = document.querySelectorAll('.mobile-switch-input');
 
-  const recalculateExcel = () => {
-    if (excelInputs.length === 0) return;
-    let sum = 0;
-    let count = 0;
-    let max = -Infinity;
+  if (mobileClockDisplay) {
+    const updateClock = () => {
+      const now = new Date();
+      mobileClockDisplay.textContent = now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+    };
+    updateClock();
+    setInterval(updateClock, 10000);
+  }
 
-    excelInputs.forEach((input) => {
-      const val = parseFloat(input.value) || 0;
-      sum += val;
-      count++;
-      if (val > max) max = val;
+  if (setAlarmBtn && alarmTimeInput && alarmStatusDisplay) {
+    setAlarmBtn.addEventListener('click', () => {
+      const timeVal = alarmTimeInput.value;
+      if (!timeVal) {
+        alarmStatusDisplay.innerHTML = '<span style="color: #dc2626;">⚠️ Por favor selecciona una hora.</span>';
+        return;
+      }
+      alarmStatusDisplay.innerHTML = `<span style="color: var(--sena-green-dark); font-weight: 700;">✅ ¡Alarma activada para las ${timeVal}! Sonará con el tono predeterminado.</span>`;
     });
+  }
 
-    const avg = count > 0 ? (sum / count) : 0;
+  if (mobileSwitches.length > 0) {
+    mobileSwitches.forEach((sw) => {
+      sw.addEventListener('change', (e) => {
+        const feature = e.target.getAttribute('data-feature') || 'Ajuste';
+        const isChecked = e.target.checked;
+        const feedback = document.getElementById('mobile-quick-feedback');
+        if (feedback) {
+          feedback.textContent = `${feature} ${isChecked ? 'ACTIVADO(A) 🟢' : 'DESACTIVADO(A) ⚪'}`;
+          feedback.style.display = 'block';
+          setTimeout(() => { feedback.style.display = 'none'; }, 2500);
+        }
+      });
+    });
+  }
 
-    if (excelSumResult) excelSumResult.textContent = `$${sum.toLocaleString('es-CO')}`;
-    if (excelAvgResult) excelAvgResult.textContent = `$${Math.round(avg).toLocaleString('es-CO')}`;
-    if (excelMaxResult) excelMaxResult.textContent = `$${(max === -Infinity ? 0 : max).toLocaleString('es-CO')}`;
+  // ========================================
+  // 7. CONSTRUCTOR DE CORREO ELECTRÓNICO (SESIÓN 2)
+  // ========================================
+  const emailTo = document.getElementById('email-to');
+  const emailSubject = document.getElementById('email-subject');
+  const emailGreeting = document.getElementById('email-greeting');
+  const emailBody = document.getElementById('email-body');
+  const emailFarewell = document.getElementById('email-farewell');
+  const emailSignature = document.getElementById('email-signature');
+
+  const previewTo = document.getElementById('preview-email-to');
+  const previewSubject = document.getElementById('preview-email-subject');
+  const previewGreeting = document.getElementById('preview-email-greeting');
+  const previewBody = document.getElementById('preview-email-body');
+  const previewFarewell = document.getElementById('preview-email-farewell');
+  const previewSignature = document.getElementById('preview-email-signature');
+
+  const updateEmailPreview = () => {
+    if (previewTo && emailTo) previewTo.textContent = emailTo.value.trim() || 'destinatario@correo.com';
+    if (previewSubject && emailSubject) previewSubject.textContent = emailSubject.value.trim() || '(Sin asunto aún)';
+    if (previewGreeting && emailGreeting) previewGreeting.textContent = emailGreeting.value.trim() || 'Estimado/a...';
+    if (previewBody && emailBody) previewBody.textContent = emailBody.value.trim() || 'Escribe aquí el objetivo y desarrollo claro de tu mensaje...';
+    if (previewFarewell && emailFarewell) previewFarewell.textContent = emailFarewell.value.trim() || 'Atentamente,';
+    if (previewSignature && emailSignature) previewSignature.textContent = emailSignature.value.trim() || 'Nombre del Aprendiz · Ficha SENA';
   };
 
-  excelInputs.forEach((input) => {
-    input.addEventListener('input', recalculateExcel);
-    input.addEventListener('focus', () => {
+  [emailTo, emailSubject, emailGreeting, emailBody, emailFarewell, emailSignature].forEach((el) => {
+    if (el) el.addEventListener('input', updateEmailPreview);
+  });
+  updateEmailPreview();
+
+  // ========================================
+  // 8. SIMULADOR EN VIVO DE EXCEL: INGRESOS Y GASTOS (SESIÓN 3)
+  // ========================================
+  const incomeInputs = document.querySelectorAll('.excel-income-val');
+  const expenseInputs = document.querySelectorAll('.excel-expense-val');
+  const totalIncomeRes = document.getElementById('excel-total-income');
+  const totalExpenseRes = document.getElementById('excel-total-expense');
+  const netBalanceRes = document.getElementById('excel-net-balance');
+  const balanceBadge = document.getElementById('excel-balance-badge');
+  const excelFormulaPreview = document.getElementById('excel-formula-preview');
+
+  const recalculateBudget = () => {
+    let sumIncome = 0;
+    let sumExpense = 0;
+
+    incomeInputs.forEach((inp) => {
+      sumIncome += parseFloat(inp.value) || 0;
+    });
+
+    expenseInputs.forEach((inp) => {
+      sumExpense += parseFloat(inp.value) || 0;
+    });
+
+    const net = sumIncome - sumExpense;
+
+    if (totalIncomeRes) totalIncomeRes.textContent = `$${sumIncome.toLocaleString('es-CO')}`;
+    if (totalExpenseRes) totalExpenseRes.textContent = `$${sumExpense.toLocaleString('es-CO')}`;
+    if (netBalanceRes) netBalanceRes.textContent = `$${net.toLocaleString('es-CO')}`;
+
+    if (balanceBadge) {
+      if (net > 0) {
+        balanceBadge.className = 'badge badge-green';
+        balanceBadge.textContent = '🟢 Superávit (Saldo disponible para ahorro)';
+      } else if (net === 0) {
+        balanceBadge.className = 'badge badge-outline';
+        balanceBadge.textContent = '⚪ Equilibrio exacto (Ingresos = Gastos)';
+      } else {
+        balanceBadge.className = 'badge';
+        balanceBadge.style.background = '#dc2626';
+        balanceBadge.style.color = '#fff';
+        balanceBadge.textContent = '🔴 Déficit (Gastas más de lo que ganas)';
+      }
+    }
+  };
+
+  [...incomeInputs, ...expenseInputs].forEach((inp) => {
+    inp.addEventListener('input', recalculateBudget);
+    inp.addEventListener('focus', () => {
       if (excelFormulaPreview) {
-        excelFormulaPreview.textContent = `=VALOR(${input.getAttribute('data-cell') || 'B2'})`;
+        const cell = inp.getAttribute('data-cell') || 'B2';
+        const isInc = inp.classList.contains('excel-income-val');
+        excelFormulaPreview.textContent = `=VALOR_CELDA(${cell}) [${isInc ? 'Columna Ingreso' : 'Columna Gasto'}]`;
       }
     });
   });
-  recalculateExcel();
+  recalculateBudget();
 
   // ========================================
-  // 7. CHECKLIST INTERACTIVO DE CLASE
+  // 9. DETECTOR DE MENSAJES FRAUDULENTOS & ENLACES (SESIÓN 4)
+  // ========================================
+  const phishingButtons = document.querySelectorAll('.btn-phishing-check');
+  phishingButtons.forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const card = btn.closest('.phishing-card');
+      if (!card) return;
+      const isActuallyFraud = card.getAttribute('data-fraud') === 'true';
+      const userChoice = btn.getAttribute('data-choice') === 'fraud';
+      const feedback = card.querySelector('.phishing-feedback');
+      const explainText = card.getAttribute('data-explain') || '';
+
+      if (feedback) {
+        feedback.classList.add('show');
+        if (userChoice === isActuallyFraud) {
+          feedback.style.background = '#dcfce7';
+          feedback.style.border = '1px solid #86efac';
+          feedback.style.color = '#14532d';
+          feedback.innerHTML = `<strong>¡Correcto! 🎯</strong> ${explainText}`;
+        } else {
+          feedback.style.background = '#fee2e2';
+          feedback.style.border = '1px solid #fca5a5';
+          feedback.style.color = '#7f1d1d';
+          feedback.innerHTML = `<strong>Cuidado: ⚠️</strong> ${explainText}`;
+        }
+      }
+    });
+  });
+
+  // ========================================
+  // 10. LABORATORIO INTERACTIVO DE IA Y PROMPTS (SESIÓN 5)
+  // ========================================
+  const aiChatThread = document.getElementById('ai-chat-thread');
+  const aiPromptInput = document.getElementById('ai-prompt-input');
+  const btnSendAi = document.getElementById('btn-send-ai');
+  const presetChips = document.querySelectorAll('.ai-preset-chip');
+
+  const presetResponses = {
+    pieza: {
+      prompt: 'Tengo una habitación de 3x3 metros desordenada con ropa en la cama y papeles en la mesa. ¿Puedes darme un plan en 4 pasos para organizarla en 30 minutos?',
+      response: `<strong>Plan Rápido de Organización (30 Minutos):</strong><br/>
+1. <strong>Fase Despeje de Cama (7 min):</strong> Dobla o cuelga la ropa limpia en el armario y coloca la ropa sucia en el canasto.<br/>
+2. <strong>Fase Superficies (8 min):</strong> Clasifica los papeles de la mesa: archiva los importantes en una carpeta y recicla los que ya no sirvan.<br/>
+3. <strong>Fase Piso Despejado (7 min):</strong> Levanta zapatos y objetos del suelo, ubicándolos en su lugar o debajo de la cama en cajas.<br/>
+4. <strong>Fase Ventilación y Aroma (8 min):</strong> Abre la ventana 10 minutos, tiende la cama con firmeza y rocía un toque de ambientador. ¡Tu mente descansará el doble!`
+    },
+    mendigo: {
+      prompt: 'En la calle hay un cartel que dice: "Soy ciego, por favor ayúdenme". Reescribe este mensaje con empatía humana para tocar el corazón de las personas y generar mayor solidaridad.',
+      response: `<strong>Propuesta Creativa y Empática (La fuerza del lenguaje positivo):</strong><br/>
+<em>"Hoy es un día hermoso y soleado... pero yo no puedo verlo. Tu generosidad ilumina mi camino."</em><br/><br/>
+💡 <strong>Explicación pedagógica:</strong> En lugar de enfocarse solo en la carencia o la lástima, el nuevo mensaje conecta al lector con la gratitud de su propio sentido de la vista, despertando empatía genuina y deseo espontáneo de colaborar.`
+    },
+    correo_ai: {
+      prompt: 'Ayúdame a redactar un correo formal al instructor pidiéndole permiso para entregar una evidencia un día después por motivos médicos.',
+      response: `<strong>Borrador de Correo Formal Generado:</strong><br/>
+<strong>Asunto:</strong> Solicitud de plazo para evidencia de clase - Aprendiz [Tu Nombre]<br/>
+<strong>Estimado/a Instructor/a:</strong><br/>
+Espero se encuentre muy bien. Me comunico respetuosamente para solicitarle de manera atenta un plazo adicional de un día para la entrega de la evidencia práctica de la Sesión, debido a una situación médica sobreviniente (adjunto constancia médica).<br/>
+Agradezco de antemano su valiosa comprensión y quedo atento a sus indicaciones.<br/>
+<strong>Cordialmente,</strong><br/>
+[Tu Nombre y Apellidos]<br/>
+Documento: [Número] · Ficha: [Número]`
+    }
+  };
+
+  const addAiMessage = (sender, content, badge = '') => {
+    if (!aiChatThread) return;
+    const bubble = document.createElement('div');
+    bubble.className = `ai-bubble ${sender}`;
+    if (badge) {
+      bubble.innerHTML = `<span class="ai-bubble-badge">${badge}</span><div>${content}</div>`;
+    } else {
+      bubble.innerHTML = `<div>${content}</div>`;
+    }
+    aiChatThread.appendChild(bubble);
+    aiChatThread.scrollTop = aiChatThread.scrollHeight;
+  };
+
+  presetChips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      presetChips.forEach((c) => c.classList.remove('active'));
+      chip.classList.add('active');
+      const key = chip.getAttribute('data-preset');
+      const data = presetResponses[key];
+      if (data) {
+        if (aiPromptInput) aiPromptInput.value = data.prompt;
+      }
+    });
+  });
+
+  if (btnSendAi && aiPromptInput) {
+    btnSendAi.addEventListener('click', () => {
+      const text = aiPromptInput.value.trim();
+      if (!text) return;
+      addAiMessage('user', text, 'Tú (Aprendiz / Instructor)');
+      aiPromptInput.value = '';
+
+      // Check if matches known preset or generate dynamic helpful answer
+      setTimeout(() => {
+        let reply = '';
+        if (text.toLowerCase().includes('habitacion') || text.toLowerCase().includes('pieza') || text.toLowerCase().includes('desorden')) {
+          reply = presetResponses.pieza.response;
+        } else if (text.toLowerCase().includes('ciego') || text.toLowerCase().includes('mendigo') || text.toLowerCase().includes('cartel')) {
+          reply = presetResponses.mendigo.response;
+        } else if (text.toLowerCase().includes('permiso') || text.toLowerCase().includes('correo')) {
+          reply = presetResponses.correo_ai.response;
+        } else {
+          reply = `<strong>Respuesta Inteligente:</strong><br/>
+¡Excelente instrucción! La Inteligencia Artificial analiza tu solicitud <em>"${text.replace(/</g, '&lt;')}"</em> y te sugiere:<br/>
+1. <strong>Estructurar el objetivo:</strong> Definir claramente qué necesitas lograr.<br/>
+2. <strong>Aplicar contexto:</strong> Decirle a la herramienta quién eres y para qué lo requieres.<br/>
+3. <strong>Revisar y personalizar:</strong> Nunca copiar y pegar a ciegas; siempre aportar tu criterio humano y ético.`;
+        }
+        addAiMessage('assistant', reply, '🤖 Asistente de IA Educativa');
+      }, 500);
+    });
+
+    aiPromptInput.addEventListener('keydown', (e) => {
+      if (e.key === 'Enter') {
+        btnSendAi.click();
+      }
+    });
+  }
+
+  // ========================================
+  // 11. CHECKLIST INTERACTIVO DE CLASE
   // ========================================
   const taskItems = document.querySelectorAll('.task-item');
   const taskProgress = document.getElementById('task-progress-bar');
@@ -237,13 +455,12 @@ document.addEventListener('DOMContentLoaded', () => {
     // Save state in localStorage
     const states = Array.from(taskItems).map((item) => item.classList.contains('completed'));
     try {
-      localStorage.setItem('sena_task_states', JSON.stringify(states));
+      localStorage.setItem('sena_task_states_v2', JSON.stringify(states));
     } catch (e) {}
   };
 
-  // Restore state
   try {
-    const saved = JSON.parse(localStorage.getItem('sena_task_states'));
+    const saved = JSON.parse(localStorage.getItem('sena_task_states_v2'));
     if (saved && Array.isArray(saved)) {
       taskItems.forEach((item, index) => {
         if (saved[index]) item.classList.add('completed');
@@ -260,7 +477,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateProgress();
 
   // ========================================
-  // 8. BUSCADOR EN VIVO DE GLOSARIO
+  // 12. BUSCADOR EN VIVO DE GLOSARIO
   // ========================================
   const glossarySearch = document.getElementById('glossary-search');
   const glossaryCards = document.querySelectorAll('.glossary-card');
@@ -287,40 +504,5 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
-
-  // ========================================
-  // 9. EVALUADOR INTERACTIVO DE CONTRASEÑAS (SESIÓN 5)
-  // ========================================
-  const pwdInput = document.getElementById('pwd-test-input');
-  const pwdScore = document.getElementById('pwd-test-score');
-  const pwdBar = document.getElementById('pwd-test-bar');
-
-  if (pwdInput && pwdScore && pwdBar) {
-    pwdInput.addEventListener('input', () => {
-      const val = pwdInput.value;
-      let score = 0;
-      if (val.length >= 8) score += 25;
-      if (/[A-Z]/.test(val)) score += 25;
-      if (/[0-9]/.test(val)) score += 25;
-      if (/[^A-Za-z0-9]/.test(val)) score += 25;
-
-      pwdBar.style.width = `${score}%`;
-      if (score === 0) {
-        pwdBar.style.backgroundColor = '#ccc';
-        pwdScore.textContent = 'Escribe una contraseña para probarla';
-      } else if (score <= 25) {
-        pwdBar.style.backgroundColor = '#c53030';
-        pwdScore.textContent = '❌ Muy Débil (Fácil de vulnerar)';
-      } else if (score <= 50) {
-        pwdBar.style.backgroundColor = '#dd6b20';
-        pwdScore.textContent = '⚠️ Débil (Agrega números o mayúsculas)';
-      } else if (score <= 75) {
-        pwdBar.style.backgroundColor = '#3182ce';
-        pwdScore.textContent = '👍 Buena (Agrega símbolos especiales)';
-      } else {
-        pwdBar.style.backgroundColor = '#38a169';
-        pwdScore.textContent = '🛡️ ¡Excelente y Segura!';
-      }
-    });
-  }
 });
+

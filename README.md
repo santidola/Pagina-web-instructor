@@ -64,16 +64,17 @@ npx serve .
 
 ---
 
-## 📋 Ficha Técnica del Curso (Basada en la Guía SENA)
+## 📋 Ficha Técnica y Enfoque Práctico de las 5 Sesiones
 
 - **Denominación del Programa:** Alfabetización Informática
 - **Código del Programa:** 22810239 – Versión 1
 - **Competencia:** 220501046 – Aplicar herramientas ofimáticas, redes sociales y colaborativas de acuerdo con el proyecto a desarrollar.
-- **Duración de la Guía:** 70 Horas
-- **Resultados de Aprendizaje (RAP):**
-  - `2205010460201` – Manejar las funcionalidades básicas de un sistema operativo.
-  - `2205010460202` – Aplicar las funciones de un procesador de texto.
-  - `2205010460203` – Aplicar las funciones de una hoja de cálculo.
-  - `2205010460204` – Aplicar las funciones de un programa de presentaciones.
-  - `2205010460101` – Utilizar los servicios de Internet de acuerdo con las necesidades.
-- **Producto Integrador (Transferencia):** *"Mi Solución Digital"* (8 horas).
+- **Duración de la Formación:** 70 Horas Totales
+- **Estructura Práctica de las 5 Sesiones de Apropiación (56 Horas):**
+  1. **Sesión 1 (10h):** *Sistemas Operativos & Dispositivos Móviles* — Familiarización con smartphone/tablet y PC, qué es una app, ajustes esenciales (brillo, Wi-Fi, sonido), tareas cotidianas (poner alarma, contactos) y seguridad básica (bloqueo PIN/patrón).
+  2. **Sesión 2 (11h):** *Documento de Texto & Envío de Correo Electrónico* — Creación de documento base y dominio de los 5 bloques del correo formal: Para, Asunto específico, Saludo cordial, Objetivo/Cuerpo claro, Despedida/Firma y archivos adjuntos.
+  3. **Sesión 3 (14h):** *Hojas de Cálculo: Ingresos y Gastos* — Reconocimiento de Fila (números), Columna (letras) y Celda en Excel. Tabla práctica de presupuesto personal/hogar con fórmulas automáticas de SUMA y cálculo de Saldo Neto.
+  4. **Sesión 4 (10h):** *Internet, Servicios & Prevención de Fraudes* — Navegador vs Buscador, barra de direcciones, identificación de páginas oficiales (.gov.co, .edu.co) y detección interactiva de mensajes fraudulentos (SMS/WhatsApp) y enlaces sospechosos (Phishing).
+  5. **Sesión 5 (11h):** *Inteligencia Artificial (IA) en la Vida Cotidiana* — Desmitificación de la IA, el arte de estructurar un buen Prompt, Actividad "Foto de la pieza" (plan de organización de espacios) y Actividad "Ejercicio del mendigo" (comunicación empática y reflexiva).
+- **Producto Integrador (Transferencia):** *"Mi Solución Digital Práctica"* (8 horas).
+
