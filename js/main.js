@@ -567,7 +567,7 @@ Documento: [Número] · Ficha: [Número]`
         const moreSessions = (course.sessions || []).length > 3 ? `<li>+${course.sessions.length - 3} sesiones más...</li>` : '';
 
         // Destination link
-        const targetLink = isAlfabetizacion ? 'programa.html' : `curso.html?id=${course.id}`;
+        const targetLink = `curso.html?id=${course.id}`;
         const guideLink = isAlfabetizacion ? 'guia.html' : `guia.html?id=${course.id}`;
         const isReady = course.status === 'Activo';
 
