@@ -6,7 +6,7 @@ import React from 'react';
 import { SessionMaterialsCard } from './SessionMaterialsCard';
 import { SessionSimulator } from '../simulators/SimulatorRegistry';
 
-export function SessionPanel({ session, course }) {
+export function SessionPanel({ session, course, onOpenUploadModal, onDeleteMaterial }) {
   const formattedNumber = session.number < 10 ? `0${session.number}` : session.number;
 
   return (
@@ -47,7 +47,11 @@ export function SessionPanel({ session, course }) {
           </div>
 
           <div>
-            <SessionMaterialsCard materials={session.materials || []} />
+            <SessionMaterialsCard
+              materials={session.materials || []}
+              onOpenUploadModal={onOpenUploadModal}
+              onDeleteMaterial={onDeleteMaterial}
+            />
 
             <div className="activity-card" style={{ marginTop: '20px' }}>
               <div className="activity-badge">🎯 Evidencia y Taller a Entregar</div>
