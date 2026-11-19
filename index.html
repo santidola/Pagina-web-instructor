@@ -3,8 +3,8 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Alfabetización Informática — SENA | Portal del Instructor y Aprendiz</title>
-  <meta name="description" content="Ambiente digital y pedagógico interactivo de apoyo para el instructor y aprendices del programa Alfabetización Informática del SENA (Código 22810239)." />
+  <title>Portal de Cursos y Aulas del Instructor — SENA</title>
+  <meta name="description" content="Portal didáctico multi-curso de apoyo para el instructor y aprendices del SENA. Gestión de sesiones, materiales pedagógicos descargables, guías GFPI y simuladores en vivo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -20,14 +20,14 @@
       <a href="index.html" class="navbar-brand">
         <img src="img/logo-sena.svg" alt="Logo Oficial SENA" class="navbar-logo-img" />
         <div class="navbar-brand-text">
-          SENA · Alfabetización Informática
-          <div class="subtitle">Ambiente Digital del Instructor · 70 Horas</div>
+          SENA · Portal del Instructor
+          <div class="subtitle">Ambientes Digitales & Gestión Multi-Curso</div>
         </div>
       </a>
 
       <div class="navbar-nav">
-        <a href="index.html" class="active">Inicio</a>
-        <a href="programa.html">Espacios de Sesión (1 a 5)</a>
+        <a href="index.html" class="active">Catálogo de Cursos</a>
+        <a href="programa.html">Sesiones en Vivo</a>
         <a href="guia.html">Guía GFPI-F-135</a>
         <a href="glosario.html">Glosario & Recursos</a>
       </div>
@@ -47,7 +47,7 @@
   </nav>
 
   <!-- ========================================
-       HERO DIDÁCTICO DEL CURSO
+       HERO DIDÁCTICO DEL PORTAL
   ======================================== -->
   <section class="hero" id="inicio">
     <div class="container">
@@ -58,12 +58,12 @@
       </div>
 
       <h1>
-        Portal Didáctico e Interactivo<br />
-        <span class="gradient-text">Alfabetización Informática</span>
+        Portal de Aulas y Ambientes Digitales<br />
+        <span class="gradient-text">Cursos del Instructor</span>
       </h1>
 
       <p class="hero-subtitle">
-        Plataforma interactiva de apoyo al instructor para dictar las 70 horas del programa de formación complementaria. Estructurada bajo el formato oficial de <strong>Guía de Aprendizaje GFPI-F-135</strong>.
+        Espacio pedagógico centralizado para dictar y proyectar sesiones de clase, compartir materiales de estudio, guiar talleres prácticos y gestionar la formación integral de los aprendices.
       </p>
 
       <!-- BARRA DE HERRAMIENTAS DEL INSTRUCTOR EN VIVO -->
@@ -72,7 +72,7 @@
           <span style="font-size: 1.6rem;">⏱️</span>
           <div>
             <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px;">
-              Herramienta de Clase para el Instructor
+              Herramienta de Control en Sala
             </div>
             <strong style="font-size: 1rem; color: var(--text-primary);">Temporizador de Práctica & Taller en Vivo</strong>
           </div>
@@ -93,182 +93,81 @@
           </div>
         </div>
 
-        <a href="programa.html" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.88rem;">
-          Ir a Espacios de Sesión →
+        <a href="#catalogo-cursos" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.88rem;">
+          Explorar Cursos ↓
         </a>
       </div>
 
-      <!-- INSIGNIAS TÉCNICAS -->
+      <!-- INSIGNIAS TÉCNICAS DEL PORTAL -->
       <div class="hero-badges">
-        <span class="badge badge-green">Código Programa: 22810239 – Versión 1</span>
-        <span class="badge badge-outline">Competencia: 220501046</span>
-        <span class="badge badge-outline">Duración: 70 Horas Totales</span>
-        <span class="badge badge-outline">5 RAPs Oficiales</span>
+        <span class="badge badge-green">Plataforma Multi-Programa</span>
+        <span class="badge badge-outline">Guías GFPI-F-135</span>
+        <span class="badge badge-outline">Simuladores Interactivos</span>
+        <span class="badge badge-outline">Material Descargable por Sesión</span>
       </div>
 
     </div>
   </section>
 
   <!-- ========================================
-       ESPACIOS DE CLASE POR SESIÓN (EL ESPACIO DEL INSTRUCTOR)
+       CATÁLOGO PRINCIPAL DE CURSOS (PASO 2)
   ======================================== -->
-  <section class="section alt-bg" id="espacios-sesion">
+  <section class="section alt-bg" id="catalogo-cursos">
     <div class="container">
+      
       <div class="section-header center animate-on-scroll">
-        <span class="section-label">Ruta Pedagógica Modular</span>
-        <h2 class="section-title">Espacios de Clase de las <span class="gradient-text">5 Sesiones</span></h2>
+        <span class="section-label">Oferta Pedagógica Modular</span>
+        <h2 class="section-title">Catálogo de <span class="gradient-text">Cursos y Programas</span></h2>
         <p class="section-subtitle">
-          Cada sesión cuenta con su propio módulo interactivo que el instructor puede proyectar y usar durante el desarrollo de la clase en la sala de sistemas.
+          Selecciona cualquiera de los cursos disponibles para ingresar a sus sesiones de clase, proyectar dinámicas interactivas y consultar los materiales de apoyo.
         </p>
       </div>
 
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(330px, 1fr)); gap: 24px;">
-
-        <!-- ESPACIO 1 -->
-        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span class="badge badge-green">Módulo 01</span>
-              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 10 Horas</span>
-            </div>
-            <div style="font-size: 1.8rem; margin-bottom: 10px;">📱</div>
-            <h3 style="margin-bottom: 8px;">Sistemas Operativos & Móviles</h3>
-            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
-              RAP: 2205010460201
-            </div>
-            <p style="margin-bottom: 16px;">
-              Familiarización con smartphone/tablet y PC, qué es una aplicación (App), ajustes esenciales (brillo, Wi-Fi, volumen), programar alarmas y seguridad (bloqueo PIN/patrón).
-            </p>
-            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
-              <strong>🎯 Evidencia requerida:</strong> Ajustes configurados, alarma programada y bloqueo seguro.
-            </div>
-          </div>
-          <a href="programa.html#sesion-1" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-            Abrir Espacio Sesión 1 →
-          </a>
+      <!-- CONTROLES DE BÚSQUEDA Y FILTRADO -->
+      <div class="catalog-controls animate-on-scroll">
+        <div class="catalog-search-wrapper">
+          <span class="catalog-search-icon">🔍</span>
+          <input 
+            type="text" 
+            id="courses-search-input" 
+            class="catalog-search-input" 
+            placeholder="Buscar por nombre, código o tema de clase..." 
+            aria-label="Buscar curso"
+          />
         </div>
 
-        <!-- ESPACIO 2 -->
-        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span class="badge badge-green">Módulo 02</span>
-              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 11 Horas</span>
-            </div>
-            <div style="font-size: 1.8rem; margin-bottom: 10px;">✉️</div>
-            <h3 style="margin-bottom: 8px;">Documentos & Correo Formal</h3>
-            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
-              RAP: 2205010460202
-            </div>
-            <p style="margin-bottom: 16px;">
-              Crear documento de texto sencillo y dominar la estructura completa del correo: destinatario, asunto específico, saludo formal, objetivo claro, despedida, firma y adjuntos.
-            </p>
-            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
-              <strong>🎯 Evidencia requerida:</strong> Documento creado y correo formal enviado con adjunto.
-            </div>
+        <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
+          <div class="catalog-filter-group">
+            <button class="catalog-filter-btn active" data-filter="all" type="button">Todos</button>
+            <button class="catalog-filter-btn" data-filter="activo" type="button">En Formación</button>
+            <button class="catalog-filter-btn" data-filter="Ofimática" type="button">Ofimática</button>
+            <button class="catalog-filter-btn" data-filter="preparacion" type="button">Por Subir Material</button>
           </div>
-          <a href="programa.html#sesion-2" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-            Abrir Espacio Sesión 2 →
-          </a>
+          <span id="catalog-courses-count" style="font-size: 0.82rem; font-weight: 700; color: var(--sena-green);"></span>
         </div>
-
-        <!-- ESPACIO 3 -->
-        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span class="badge badge-green">Módulo 03</span>
-              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 14 Horas</span>
-            </div>
-            <div style="font-size: 1.8rem; margin-bottom: 10px;">📊</div>
-            <h3 style="margin-bottom: 8px;">Hojas de Cálculo: Ingresos y Gastos</h3>
-            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
-              RAP: 2205010460203
-            </div>
-            <p style="margin-bottom: 16px;">
-              Reconocer qué es una fila, columna y celda en Excel. Elaboración de tabla práctica de presupuesto personal/familiar con fórmulas automáticas de SUMA y saldo neto.
-            </p>
-            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
-              <strong>🎯 Evidencia requerida:</strong> Presupuesto en Excel con fórmulas y saldo disponible.
-            </div>
-          </div>
-          <a href="programa.html#sesion-3" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-            Abrir Espacio Sesión 3 →
-          </a>
-        </div>
-
-        <!-- ESPACIO 4 -->
-        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span class="badge badge-green">Módulo 04</span>
-              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 10 Horas</span>
-            </div>
-            <div style="font-size: 1.8rem; margin-bottom: 10px;">🌐</div>
-            <h3 style="margin-bottom: 8px;">Internet & Prevención de Fraudes</h3>
-            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
-              RAP: 2205010460101
-            </div>
-            <p style="margin-bottom: 16px;">
-              Aprender a navegar, diferencia entre navegador y buscador, búsqueda de páginas oficiales (.gov.co, .edu.co) y detección de mensajes fraudulentos y links sospechosos.
-            </p>
-            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
-              <strong>🎯 Evidencia requerida:</strong> Búsqueda oficial validada y taller de detección de fraudes.
-            </div>
-          </div>
-          <a href="programa.html#sesion-4" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-            Abrir Espacio Sesión 4 →
-          </a>
-        </div>
-
-        <!-- ESPACIO 5 -->
-        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between;">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span class="badge badge-green">Módulo 05</span>
-              <span style="font-weight: 700; color: var(--sena-green);">⏱️ 11 Horas</span>
-            </div>
-            <div style="font-size: 1.8rem; margin-bottom: 10px;">🤖</div>
-            <h3 style="margin-bottom: 8px;">Inteligencia Artificial Práctica</h3>
-            <div style="font-size: 0.78rem; font-weight: 600; color: var(--text-muted); margin-bottom: 12px;">
-              Apropiación Digital Transversal
-            </div>
-            <p style="margin-bottom: 16px;">
-              Familiarizarse e interactuar con la IA, creación de prompts claros y actividades prácticas: "Foto de la pieza" (organizar espacios) y "Dinámica del mendigo" (comunicación empática).
-            </p>
-            <div style="background: var(--green-bg); padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px;">
-              <strong>🎯 Evidencia requerida:</strong> Registro de interacción con IA y prompts aplicados.
-            </div>
-          </div>
-          <a href="programa.html#sesion-5" class="btn btn-secondary" style="width: 100%; justify-content: center;">
-            Abrir Espacio Sesión 5 →
-          </a>
-        </div>
-
-        <!-- ESPACIO DE TRANSFERENCIA -->
-        <div class="card card-accent-top animate-on-scroll" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--green-soft); border-color: var(--green-muted);">
-          <div>
-            <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px;">
-              <span class="badge" style="background: var(--sena-green); color: #fff;">Transferencia</span>
-              <span style="font-weight: 700; color: var(--sena-green-dark);">⏱️ 8 Horas</span>
-            </div>
-            <div style="font-size: 1.8rem; margin-bottom: 10px;">🏆</div>
-            <h3 style="margin-bottom: 8px;">"Mi Solución Digital Práctica"</h3>
-            <div style="font-size: 0.78rem; font-weight: 600; color: var(--sena-green-dark); margin-bottom: 12px;">
-              Producto Integrador Final
-            </div>
-            <p style="margin-bottom: 16px;">
-              Integración de las habilidades en una necesidad cotidiana: dispositivo seguro, documento de texto, correo formal con adjunto, tabla de presupuesto en Excel y apoyo con IA.
-            </p>
-            <div style="background: #fff; padding: 12px 14px; border-radius: var(--radius-sm); font-size: 0.82rem; margin-bottom: 20px; border: 1px solid var(--green-muted);">
-              <strong>🎯 Evaluación:</strong> Rúbrica final y socialización comunitaria o laboral.
-            </div>
-          </div>
-          <a href="guia.html#transferencia" class="btn btn-primary" style="width: 100%; justify-content: center;">
-            Ver Rúbrica del Proyecto →
-          </a>
-        </div>
-
       </div>
+
+      <!-- GRID DINÁMICO DE CURSOS (Alimentado por js/data/courses.js) -->
+      <div class="courses-catalog-grid" id="courses-catalog-grid">
+        <!-- Renderizado dinámicamente con JavaScript -->
+      </div>
+
+      <!-- GUÍA PARA EL INSTRUCTOR: CÓMO SUBIR MÁS CURSOS Y MATERIALES -->
+      <div class="instructor-upload-guide-card animate-on-scroll">
+        <div class="upload-guide-icon">📂</div>
+        <div class="upload-guide-content">
+          <h3>¿Cómo agregar un nuevo curso o subir materiales de sesión?</h3>
+          <p>
+            El sistema ya está desacoplado y listo para recibir más cursos. Cuando tengas el material de una nueva formación o sesión, sólo debes seguir estos pasos:
+          </p>
+          <div class="upload-guide-steps">
+            <span class="upload-step-pill">1. Pásame el nombre y las sesiones del curso</span>
+            <span class="upload-step-pill">2. Sube tus archivos a la carpeta <code>materiales/[curso]/sesion-X/</code></span>
+            <span class="upload-step-pill">3. Quedará publicado y enlazado automáticamente</span>
+          </div>
+        </div>
+      </div>
+
     </div>
   </section>
 
@@ -281,7 +180,7 @@
         <div class="progress-header">
           <div>
             <span class="section-label">Control Pedagógico en el Aula</span>
-            <h3 style="font-size: 1.3rem;">Checklist de Actividades del Curso</h3>
+            <h3 style="font-size: 1.3rem;">Checklist Rápido de Clase Activa (Alfabetización)</h3>
           </div>
           <span id="task-count-text" style="font-weight: 700; color: var(--sena-green);">0 de 8 completadas (0%)</span>
         </div>
@@ -340,14 +239,14 @@
             <h3 style="margin: 0;">Servicio Nacional de Aprendizaje</h3>
           </div>
           <p>
-            Programa de Alfabetización Informática · Proceso de Gestión de Formación Profesional Integral (GFPI). Formación pública, gratuita e inclusiva en toda Colombia.
+            Portal Didáctico del Instructor · Proceso de Gestión de Formación Profesional Integral (GFPI). Formación pública, gratuita e inclusiva en toda Colombia.
           </p>
         </div>
 
         <div>
           <div class="footer-heading">Vistas de Formación</div>
           <ul class="footer-links">
-            <li><a href="index.html">→ Inicio / Aula Principal</a></li>
+            <li><a href="index.html">→ Catálogo de Cursos</a></li>
             <li><a href="programa.html">→ Espacios de Sesión (1 a 5)</a></li>
             <li><a href="guia.html">→ Guía de Aprendizaje Oficial</a></li>
             <li><a href="glosario.html">→ Glosario & Recursos TIC</a></li>
@@ -372,7 +271,7 @@
       </div>
 
       <div class="footer-bottom">
-        <p>© 2026 SENA — Alfabetización Informática (Código 22810239 – Versión 1). Espacio didáctico para el instructor.</p>
+        <p>© 2026 SENA — Portal Multi-Curso del Instructor. Ambientes de Formación Profesional Integral.</p>
         <div class="footer-bottom-links">
           <a href="https://oferta.senasofiaplus.edu.co/" target="_blank" rel="noopener noreferrer">SOFIA Plus</a>
           <a href="https://zajuna.sena.edu.co/" target="_blank" rel="noopener noreferrer">Zajuna LMS</a>
@@ -382,6 +281,8 @@
     </div>
   </footer>
 
+  <!-- CARGA DE DATOS MODULARES Y SCRIPT PRINCIPAL -->
+  <script src="js/data/courses.js"></script>
   <script src="js/main.js"></script>
 </body>
 </html>

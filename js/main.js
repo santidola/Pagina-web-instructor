@@ -347,7 +347,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const aiChatThread = document.getElementById('ai-chat-thread');
   const aiPromptInput = document.getElementById('ai-prompt-input');
   const btnSendAi = document.getElementById('btn-send-ai');
-  const presetChips = document.querySelectorAll('.ai-preset-chip');
+  const aiPresetChips = document.querySelectorAll('.ai-preset-chip');
 
   const presetResponses = {
     pieza: {
@@ -390,9 +390,9 @@ Documento: [Número] · Ficha: [Número]`
     aiChatThread.scrollTop = aiChatThread.scrollHeight;
   };
 
-  presetChips.forEach((chip) => {
+  aiPresetChips.forEach((chip) => {
     chip.addEventListener('click', () => {
-      presetChips.forEach((c) => c.classList.remove('active'));
+      aiPresetChips.forEach((c) => c.classList.remove('active'));
       chip.classList.add('active');
       const key = chip.getAttribute('data-preset');
       const data = presetResponses[key];
@@ -502,6 +502,142 @@ Documento: [Número] · Ficha: [Número]`
       if (glossaryCount) {
         glossaryCount.textContent = `Mostrando ${matchCount} de ${glossaryCards.length} términos`;
       }
+    });
+  }
+
+  // ========================================
+  // 13. RENDERIZADOR DEL CATÁLOGO MULTI-CURSO (INDEX.HTML)
+  // ========================================
+  const catalogGrid = document.getElementById('courses-catalog-grid');
+  const catalogSearchInput = document.getElementById('courses-search-input');
+  const catalogFilterBtns = document.querySelectorAll('.catalog-filter-btn');
+  const catalogCoursesCount = document.getElementById('catalog-courses-count');
+
+  if (catalogGrid && typeof COURSES_DATA !== 'undefined') {
+    let currentCategoryFilter = 'all';
+    let currentSearchTerm = '';
+
+    const renderCourses = () => {
+      const filtered = COURSES_DATA.filter((course) => {
+        const matchesCategory = currentCategoryFilter === 'all' || 
+          (currentCategoryFilter === 'activo' && course.status === 'Activo') ||
+          (currentCategoryFilter === 'preparacion' && course.status === 'Preparación') ||
+          (course.category && course.category.toLowerCase().includes(currentCategoryFilter.toLowerCase()));
+
+        const matchesSearch = 
+          course.title.toLowerCase().includes(currentSearchTerm) ||
+          course.description.toLowerCase().includes(currentSearchTerm) ||
+          course.code.toLowerCase().includes(currentSearchTerm) ||
+          (course.category && course.category.toLowerCase().includes(currentSearchTerm));
+
+        return matchesCategory && matchesSearch;
+      });
+
+      if (catalogCoursesCount) {
+        catalogCoursesCount.textContent = `${filtered.length} ${filtered.length === 1 ? 'curso disponible' : 'cursos disponibles'}`;
+      }
+
+      if (filtered.length === 0) {
+        catalogGrid.innerHTML = `
+          <div style="grid-column: 1 / -1; text-align: center; padding: 48px 20px; background: var(--bg-secondary); border-radius: var(--radius); border: 1px dashed var(--border);">
+            <div style="font-size: 2.5rem; margin-bottom: 12px;">🔍</div>
+            <h3 style="margin-bottom: 8px;">No se encontraron cursos</h3>
+            <p style="color: var(--text-secondary); max-width: 400px; margin: 0 auto 16px;">
+              No hay programas que coincidan con "${currentSearchTerm}". Prueba con otro término o limpia los filtros.
+            </p>
+            <button class="btn btn-secondary" id="btn-clear-search">Limpiar Búsqueda</button>
+          </div>
+        `;
+        const clearBtn = document.getElementById('btn-clear-search');
+        if (clearBtn) {
+          clearBtn.addEventListener('click', () => {
+            if (catalogSearchInput) catalogSearchInput.value = '';
+            currentSearchTerm = '';
+            currentCategoryFilter = 'all';
+            catalogFilterBtns.forEach(b => b.classList.toggle('active', b.dataset.filter === 'all'));
+            renderCourses();
+          });
+        }
+        return;
+      }
+
+      catalogGrid.innerHTML = filtered.map((course) => {
+        const isAlfabetizacion = course.id === 'alfabetizacion-digital';
+        const sessionsList = (course.sessions || []).slice(0, 3).map(s => `<li>${s.title} (${s.hours})</li>`).join('');
+        const moreSessions = (course.sessions || []).length > 3 ? `<li>+${course.sessions.length - 3} sesiones más...</li>` : '';
+
+        // Destination link
+        const targetLink = isAlfabetizacion ? 'programa.html' : `curso.html?id=${course.id}`;
+        const guideLink = isAlfabetizacion ? 'guia.html' : `guia.html?id=${course.id}`;
+        const isReady = course.status === 'Activo';
+
+        return `
+          <div class="course-portal-card animate-on-scroll is-visible">
+            <div class="course-card-header" style="background: ${course.coverGradient || 'linear-gradient(135deg, #2e7d32 0%, #388e3c 100%)'};">
+              <div class="course-card-top-row">
+                <div class="course-card-icon">${course.icon || '📚'}</div>
+                <span class="course-badge-status">${course.badgeText || course.status}</span>
+              </div>
+              <div>
+                <span class="course-card-category">${course.category}</span>
+              </div>
+            </div>
+
+            <div class="course-card-body">
+              <h3 class="course-card-title">${course.title}</h3>
+              <div class="course-card-code">Código: ${course.code}</div>
+              <p class="course-card-desc">${course.description}</p>
+
+              <div class="course-meta-pills">
+                <span class="course-meta-pill">⏱️ ${course.duration}</span>
+                <span class="course-meta-pill">📅 ${course.sessionsCount} Sesiones</span>
+                <span class="course-meta-pill">📁 Materiales</span>
+              </div>
+
+              <div class="course-sessions-preview">
+                <div class="course-sessions-preview-title">Contenido del Curso:</div>
+                <ul class="course-sessions-list">
+                  ${sessionsList}
+                  ${moreSessions}
+                </ul>
+              </div>
+
+              <div class="course-card-footer">
+                ${isReady ? `
+                  <a href="${targetLink}" class="btn btn-primary" style="flex: 1;">
+                    Ingresar al Curso →
+                  </a>
+                  <a href="${guideLink}" class="btn btn-secondary" title="Ver Guía de Aprendizaje">
+                    Guía
+                  </a>
+                ` : `
+                  <a href="${targetLink}" class="btn btn-secondary" style="flex: 1;" onclick="event.preventDefault(); alert('¡Este curso está preparado! Puedes pasarme los archivos y temas de sus sesiones para activarlo.');">
+                    📂 Subir Materiales
+                  </a>
+                `}
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    };
+
+    renderCourses();
+
+    if (catalogSearchInput) {
+      catalogSearchInput.addEventListener('input', (e) => {
+        currentSearchTerm = e.target.value.toLowerCase().trim();
+        renderCourses();
+      });
+    }
+
+    catalogFilterBtns.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        catalogFilterBtns.forEach((b) => b.classList.remove('active'));
+        btn.classList.add('active');
+        currentCategoryFilter = btn.getAttribute('data-filter') || 'all';
+        renderCourses();
+      });
     });
   }
 });
