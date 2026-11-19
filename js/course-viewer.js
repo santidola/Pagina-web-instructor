@@ -71,10 +71,6 @@ document.addEventListener('DOMContentLoaded', () => {
           <span>🎯</span>
           <strong>${(course.raps || []).length} RAPs Asociados</strong>
         </div>
-        <div class="course-hero-stat-item">
-          <span>📁</span>
-          <span>Carpeta: <code>${course.materialsFolder || 'materiales/'}</code></span>
-        </div>
       </div>
     `;
   }
@@ -122,9 +118,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (materials.length === 0) {
         materialsHtml = `
-          <div style="padding: 16px; background: var(--bg-secondary); border-radius: var(--radius-sm); border: 1px dashed var(--border); text-align: center; color: var(--text-muted); font-size: 0.88rem;">
-            📂 No hay materiales subidos para esta sesión aún.<br/>
-            <small style="color: var(--text-secondary);">Coloca tus archivos en <code>${course.materialsFolder}${s.id}/</code></small>
+          <div style="padding: 20px; background: var(--bg-secondary); border-radius: var(--radius-sm); border: 1px dashed var(--border); text-align: center; color: var(--text-muted); font-size: 0.88rem;">
+            📂 No hay materiales disponibles para esta sesión aún.
           </div>
         `;
       } else {
@@ -132,28 +127,36 @@ document.addEventListener('DOMContentLoaded', () => {
           <div class="materials-list-grid">
             ${materials.map(m => {
               let iconEmoji = '📄';
-              if (m.type === 'pdf') iconEmoji = '📕';
-              else if (m.type === 'sheet') iconEmoji = '📗';
-              else if (m.type === 'document') iconEmoji = '📘';
-              else if (m.type === 'image') iconEmoji = '🖼️';
-              else if (m.type === 'slides') iconEmoji = '📙';
-              else if (m.type === 'link') iconEmoji = '🔗';
+              let typeLabel = 'Recurso de clase';
+              if (m.type === 'pdf') { iconEmoji = '📕'; typeLabel = 'Guía didáctica'; }
+              else if (m.type === 'sheet') { iconEmoji = '📗'; typeLabel = 'Hoja de cálculo'; }
+              else if (m.type === 'document') { iconEmoji = '📘'; typeLabel = 'Hoja de trabajo'; }
+              else if (m.type === 'image') { iconEmoji = '🖼️'; typeLabel = 'Infografía'; }
+              else if (m.type === 'slides') { iconEmoji = '📙'; typeLabel = 'Presentación'; }
+              else if (m.type === 'link') { iconEmoji = '🔗'; typeLabel = 'Enlace de apoyo'; }
 
               return `
                 <div class="material-card-item">
-                  <div class="material-icon-box">${iconEmoji}</div>
-                  <div class="material-info">
-                    <div class="material-name" title="${m.name}">${m.name}</div>
-                    <div class="material-subtext">${m.path}</div>
+                  <div class="material-card-top">
+                    <div class="material-icon-box">${iconEmoji}</div>
+                    <div class="material-info">
+                      <div class="material-name" title="${m.name}">${m.name}</div>
+                      <div class="material-subtext">
+                        <span>${typeLabel}</span>
+                        <span class="material-status-dot ${m.available ? 'is-ready' : 'is-pending'}">
+                          ${m.available ? 'Disponible' : 'Por subir'}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                  <div>
+                  <div class="material-card-actions">
                     ${m.available ? `
-                      <a href="${m.path}" class="material-action-btn material-btn-available" target="_blank">
+                      <a href="${m.path}" class="material-action-btn material-btn-available" target="_blank" rel="noopener noreferrer">
                         Ver / Imprimir ➔
                       </a>
                     ` : `
-                      <span class="material-action-btn material-btn-pending" title="Pásame este archivo para activarlo">
-                        Por subir
+                      <span class="material-action-btn material-btn-pending">
+                        Próximamente
                       </span>
                     `}
                   </div>
@@ -493,17 +496,10 @@ document.addEventListener('DOMContentLoaded', () => {
                     <h4>📁 Materiales Oficiales de Sesión</h4>
                     <span class="badge badge-green">${materials.length} Disponibles</span>
                   </div>
-                  <p style="font-size: 0.82rem; color: var(--text-muted); margin-bottom: 14px;">
-                    Guías, talleres y diapositivas oficiales listas para ver en pantalla o imprimir:
+                  <p style="font-size: 0.84rem; color: var(--text-muted); margin-bottom: 16px; line-height: 1.5;">
+                    Guías, talleres y diapositivas oficiales listas para proyectar o imprimir:
                   </p>
                   ${materialsHtml}
-
-                  <div class="material-upload-hint">
-                    <span>💡</span>
-                    <div>
-                      <strong>Carpeta local:</strong> <code>${course.materialsFolder}${s.id}/</code>
-                    </div>
-                  </div>
                 </div>
 
                 <div class="activity-card" style="margin-top: 20px;">
