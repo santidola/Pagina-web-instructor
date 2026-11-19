@@ -182,7 +182,7 @@ document.addEventListener('DOMContentLoaded', () => {
   updateEmailPreview();
 
   // ========================================
-  // 8. SIMULADOR EN VIVO DE EXCEL: INGRESOS Y GASTOS (SESIÓN 3)
+  // 8. SIMULADOR EN VIVO DE EXCEL: MODELO OFICIAL SENA (SESIÓN 3)
   // ========================================
   const incomeInputs = document.querySelectorAll('.excel-income-val');
   const expenseInputs = document.querySelectorAll('.excel-expense-val');
@@ -192,7 +192,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const balanceBadge = document.getElementById('excel-balance-badge');
   const excelFormulaPreview = document.getElementById('excel-formula-preview');
 
+  // Elementos de la tabla guiada oficial SENA (Gastos Adicionales vs Pago 31 Diciembre)
+  const officialExpenseInputs = document.querySelectorAll('.sena-expense-input');
+  const officialSalaryInput = document.getElementById('sena-salary-input');
+  const officialTotalExpenseB7 = document.getElementById('sena-total-gastos-b7');
+  const officialTotalExpenseF3 = document.getElementById('sena-total-gastos-f3');
+  const officialSaldoF4 = document.getElementById('sena-saldo-f4');
+
   const recalculateBudget = () => {
+    // 1. Cálculo formato estándar
     let sumIncome = 0;
     let sumExpense = 0;
 
@@ -224,9 +232,23 @@ document.addEventListener('DOMContentLoaded', () => {
         balanceBadge.textContent = '🔴 Déficit (Gastas más de lo que ganas)';
       }
     }
+
+    // 2. Cálculo formato oficial del Taller SENA (Hoja1 - Presupuesto Gastos Adicionales)
+    if (officialExpenseInputs.length > 0) {
+      let officialSum = 0;
+      officialExpenseInputs.forEach((inp) => {
+        officialSum += parseFloat(inp.value) || 0;
+      });
+      const salary = parseFloat(officialSalaryInput?.value) || 500000;
+      const available = salary - officialSum;
+
+      if (officialTotalExpenseB7) officialTotalExpenseB7.textContent = `$ ${officialSum.toLocaleString('es-CO')}`;
+      if (officialTotalExpenseF3) officialTotalExpenseF3.textContent = `$ ${officialSum.toLocaleString('es-CO')}`;
+      if (officialSaldoF4) officialSaldoF4.textContent = `$ ${available.toLocaleString('es-CO')}`;
+    }
   };
 
-  [...incomeInputs, ...expenseInputs].forEach((inp) => {
+  [...incomeInputs, ...expenseInputs, ...officialExpenseInputs].forEach((inp) => {
     inp.addEventListener('input', recalculateBudget);
     inp.addEventListener('focus', () => {
       if (excelFormulaPreview) {
@@ -236,6 +258,9 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+  if (officialSalaryInput) {
+    officialSalaryInput.addEventListener('input', recalculateBudget);
+  }
   recalculateBudget();
 
   // ========================================
@@ -277,6 +302,48 @@ document.addEventListener('DOMContentLoaded', () => {
   const aiPresetChips = document.querySelectorAll('.ai-preset-chip');
 
   const presetResponses = {
+    silla: {
+      prompt: 'Transforma esta foto de la silla vacía. Mantén el fondo y la silla tal como están, pero añade a Cristiano Ronaldo sentado en ella.',
+      response: `<strong>Resultado del Reto 1 y 2 (Transformación con IA):</strong><br/>
+1. <strong>Análisis de la imagen:</strong> La IA reconoce la silla plástica blanca y el fondo de la habitación.<br/>
+2. <strong>Generación contextual:</strong> Mantiene la perspectiva, la iluminación y proyecta la figura de Cristiano Ronaldo sentado de forma anatómicamente proporcional.<br/>
+💡 <em>Aprendizaje de clase:</em> La IA generativa de imágenes respeta los elementos fijos cuando se le especifica claramente en el Prompt.`
+    },
+    convulsion: {
+      prompt: 'Actúa como un asistente de primeros auxilios que orienta a una persona sin conocimientos médicos. Voy caminando por la calle y, de repente, alguien cae al suelo y comienza a convulsionar. Estoy muy nervioso y no sé qué hacer. Oriéntame de manera natural, directa y urgente, indicándome paso a paso qué debo hacer, qué errores debo evitar y cuándo solicitar ayuda médica.',
+      response: `<strong>Protocolo de Emergencia Paso a Paso:</strong><br/>
+1. <strong>Protege a la persona:</strong> Retira objetos duros, piedras o bordes filosos cercanos para evitar golpes en la cabeza.<br/>
+2. <strong>NO la sujetes ni inmovilices:</strong> Deja que la convulsión siga su curso natural sin forzar sus extremidades.<br/>
+3. <strong>NO introduzcas nada en la boca:</strong> No metas dedos, cucharas ni trapos. No des agua ni medicamentos.<br/>
+4. <strong>Cronometra el tiempo:</strong> Si la convulsión dura más de 5 minutos, se repite o la persona tiene dificultad para respirar, <strong>llama de inmediato al 123 (Línea de Emergencias)</strong>.<br/>
+5. <strong>Al terminar:</strong> Colócala de lado (posición lateral de seguridad) y acompáñala con calma.`
+    },
+    safari: {
+      prompt: 'Actúa como un asesor profesional de viajes especializado en turismo internacional. Quiero organizar un viaje para realizar un safari en África. Diseña un itinerario de viaje que incluya destinos recomendados, duración del recorrido, actividades y experiencias. Calcula un presupuesto estimado que contemple tiquetes aéreos saliendo desde Medellín, alojamiento, alimentación, transporte y actividades de safari. Presenta los costos en pesos colombianos y dólares, especificando que son valores aproximados. Organiza la información por días, incluye recomendaciones para viajar y acompaña la propuesta con imágenes descriptivas de paisajes y animales característicos de un safari africano.',
+      response: `<strong>Itinerario Sugerido: Safari Clásico en Kenia & Tanzania (8 Días / 7 Noches)</strong><br/>
+• <strong>Día 1-2:</strong> Vuelo Medellín ➔ Bogotá ➔ Madrid / Doha ➔ Nairobi. Aclimatación y descanso.<br/>
+• <strong>Día 3-4:</strong> Traslado a la Reserva Nacional Masái Mara. Safaris al amanecer y atardecer para avistar 'Los 5 Grandes' (león, leopardo, elefante, búfalo y rinoceronte).<br/>
+• <strong>Día 5-6:</strong> Parque Nacional Serengueti. Visita guiada a una aldea cultural Masái.<br/>
+• <strong>Día 7-8:</strong> Cráter de Ngorongoro y regreso a Nairobi para vuelo de retorno a Colombia.<br/><br/>
+💰 <strong>Presupuesto Estimado por Persona:</strong><br/>
+- Tiquetes aéreos desde Medellín: ~$1,800 USD ($7.200.000 COP aprox.).<br/>
+- Paquete Safari todo incluido (alojamiento, 4x4 con guía, entradas a parques): ~$2,500 USD ($10.000.000 COP).<br/>
+- Total aproximado: ~$4,300 USD ($17.200.000 COP).<br/>
+⚠️ <em>Importante:</em> Recuerda verificar vacuna de fiebre amarilla y visado con 30 días de anticipación.`
+    },
+    ecuaciones: {
+      prompt: 'Actúa como un profesor de matemáticas (ROL). Soy un estudiante que está aprendiendo desde cero y tengo dificultades con las operaciones básicas (CONTEXTO). Explícame cómo resolver ecuaciones de primer grado, paso a paso, utilizando un ejemplo práctico (TAREA). Organiza la explicación en pasos numerados y termina con tres ejercicios para practicar (FORMATO).',
+      response: `<strong>¡Hola! Vamos a aprender ecuaciones paso a paso:</strong><br/>
+Imagina una balanza en equilibrio. Lo que esté en el lado izquierdo debe pesar exactamente lo mismo que el lado derecho.<br/><br/>
+<strong>Ejemplo Práctico:</strong> <code>x + 5 = 12</code><br/>
+1. <strong>Identifica la incógnita:</strong> 'x' es una caja misteriosa cuyo contenido queremos descubrir.<br/>
+2. <strong>Despeja la incógnita:</strong> Para dejar a 'x' sola, debemos quitar el +5. Si le restamos 5 a la izquierda, también debemos restarle 5 a la derecha: <code>x = 12 - 5</code>.<br/>
+3. <strong>Calcula el resultado:</strong> <code>x = 7</code>. Si verificamos: 7 + 5 = 12. ¡La balanza está perfecta!<br/><br/>
+<strong>Ejercicios para practicar:</strong><br/>
+a) x + 8 = 15<br/>
+b) x - 4 = 10<br/>
+c) 2x = 14`
+    },
     pieza: {
       prompt: 'Tengo una habitación de 3x3 metros desordenada con ropa en la cama y papeles en la mesa. ¿Puedes darme un plan en 4 pasos para organizarla en 30 minutos?',
       response: `<strong>Plan Rápido de Organización (30 Minutos):</strong><br/>
@@ -339,18 +406,29 @@ Documento: [Número] · Ficha: [Número]`
       // Check if matches known preset or generate dynamic helpful answer
       setTimeout(() => {
         let reply = '';
-        if (text.toLowerCase().includes('habitacion') || text.toLowerCase().includes('pieza') || text.toLowerCase().includes('desorden')) {
+        const lower = text.toLowerCase();
+        if (lower.includes('silla') || lower.includes('ronaldo')) {
+          reply = presetResponses.silla.response;
+        } else if (lower.includes('convulsion') || lower.includes('auxilio') || lower.includes('primeros auxilios')) {
+          reply = presetResponses.convulsion.response;
+        } else if (lower.includes('safari') || lower.includes('africa') || lower.includes('viaje')) {
+          reply = presetResponses.safari.response;
+        } else if (lower.includes('ecuacion') || lower.includes('matematica')) {
+          reply = presetResponses.ecuaciones.response;
+        } else if (lower.includes('habitacion') || lower.includes('pieza') || lower.includes('desorden')) {
           reply = presetResponses.pieza.response;
-        } else if (text.toLowerCase().includes('ciego') || text.toLowerCase().includes('mendigo') || text.toLowerCase().includes('cartel')) {
+        } else if (lower.includes('ciego') || lower.includes('mendigo') || lower.includes('cartel')) {
           reply = presetResponses.mendigo.response;
-        } else if (text.toLowerCase().includes('permiso') || text.toLowerCase().includes('correo')) {
+        } else if (lower.includes('permiso') || lower.includes('correo')) {
           reply = presetResponses.correo_ai.response;
         } else {
-          reply = `<strong>Respuesta Inteligente:</strong><br/>
+          reply = `<strong>Respuesta Inteligente con los 4 Pilares del Prompt:</strong><br/>
 ¡Excelente instrucción! La Inteligencia Artificial analiza tu solicitud <em>"${text.replace(/</g, '&lt;')}"</em> y te sugiere:<br/>
-1. <strong>Estructurar el objetivo:</strong> Definir claramente qué necesitas lograr.<br/>
-2. <strong>Aplicar contexto:</strong> Decirle a la herramienta quién eres y para qué lo requieres.<br/>
-3. <strong>Revisar y personalizar:</strong> Nunca copiar y pegar a ciegas; siempre aportar tu criterio humano y ético.`;
+1. <strong>ROL:</strong> Identifica con qué personalidad o especialidad debe responder la IA.<br/>
+2. <strong>CONTEXTO:</strong> Brinda antecedentes de tu necesidad para que no asuma datos erróneos.<br/>
+3. <strong>TAREA:</strong> Pide una acción concreta (redactar, resumir, calcular, organizar).<br/>
+4. <strong>FORMATO:</strong> Especifica si lo deseas en lista numerada, tabla, paso a paso o código.<br/>
+<em>Recuerda: La IA es una herramienta, el criterio es tuyo. Siempre verifica la información.</em>`;
         }
         addAiMessage('assistant', reply, '🤖 Asistente de IA Educativa');
       }, 500);
