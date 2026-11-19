@@ -1,6 +1,7 @@
 /**
  * Single Responsibility Principle (SRP) & Dependency Inversion Principle (DIP):
- * Dynamic Course & Live Sessions Viewer consuming CourseRepository via ServiceContext.
+ * Dynamic Course & Live Sessions Viewer consuming course documents directly from Cloud Firestore,
+ * with built-in MaterialUploadModal for adding PDFs and guides to any session.
  */
 import React, { useState, useEffect } from 'react';
 import { Link, useParams, useSearchParams, useLocation } from 'react-router-dom';
@@ -8,45 +9,125 @@ import { MainLayout } from '../components/layout/MainLayout';
 import { CourseHeroBanner } from '../components/course/CourseHeroBanner';
 import { SessionPanel } from '../components/course/SessionPanel';
 import { TransferProjectPanel } from '../components/course/TransferProjectPanel';
+import { MaterialUploadModal } from '../components/course/MaterialUploadModal';
 import { useServices } from '../context/ServiceContext';
 
 const TRANSFER_TAB_ID = 'sesion-transferencia';
 
 export function CoursePage({ defaultCourseId = 'alfabetizacion-digital' }) {
   const { courseId: paramCourseId } = useParams();
-  const [searchParams] = useSearchParams();
+  const [searchParams, setSearchParams] = useSearchParams();
   const location = useLocation();
-  const { courseRepository } = useServices();
+  const { firestoreRepository } = useServices();
 
   const resolvedCourseId = paramCourseId || searchParams.get('id') || defaultCourseId;
-  const course = courseRepository.getCourseById(resolvedCourseId);
-
-  const sessions = course?.sessions || [];
-  const [activeTabId, setActiveTabId] = useState(() => {
-    const hash = location.hash ? location.hash.replace('#', '') : '';
-    if (hash && (sessions.some((s) => s.id === hash) || hash === TRANSFER_TAB_ID)) {
-      return hash;
-    }
-    return sessions[0]?.id || TRANSFER_TAB_ID;
-  });
+  const [course, setCourse] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
+  const [activeTabId, setActiveTabId] = useState('');
+  const [isUploadModalOpen, setIsUploadModalOpen] = useState(
+    searchParams.get('upload') === 'true'
+  );
 
   useEffect(() => {
-    if (course) {
-      document.title = `${course.title} — SENA | Portal del Instructor`;
-    } else {
-      document.title = 'Curso no encontrado — SENA';
+    if (searchParams.get('upload') === 'true') {
+      setIsUploadModalOpen(true);
     }
-  }, [course]);
+  }, [searchParams]);
+
+  useEffect(() => {
+    let isMounted = true;
+    async function loadCourseFromFirestore() {
+      setIsLoading(true);
+      try {
+        const fetched = await firestoreRepository.getCourseById(resolvedCourseId);
+        if (!isMounted) return;
+        setCourse(fetched);
+
+        if (fetched) {
+          const sessions = fetched.sessions || [];
+          const hash = location.hash ? location.hash.replace('#', '') : '';
+          if (hash && (sessions.some((s) => s.id === hash) || hash === TRANSFER_TAB_ID)) {
+            setActiveTabId(hash);
+          } else {
+            setActiveTabId(sessions[0]?.id || TRANSFER_TAB_ID);
+          }
+        }
+      } catch (err) {
+        console.error(`Error fetching course '${resolvedCourseId}' from Firestore:`, err);
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
+    }
+    loadCourseFromFirestore();
+    return () => {
+      isMounted = false;
+    };
+  }, [firestoreRepository, resolvedCourseId]);
 
   useEffect(() => {
     if (!course) return;
     const hash = location.hash ? location.hash.replace('#', '') : '';
     if (hash && (course.sessions?.some((s) => s.id === hash) || hash === TRANSFER_TAB_ID)) {
       setActiveTabId(hash);
-    } else if (course.sessions?.length > 0 && !course.sessions.some((s) => s.id === activeTabId) && activeTabId !== TRANSFER_TAB_ID) {
-      setActiveTabId(course.sessions[0].id);
     }
-  }, [course, location.hash, activeTabId]);
+  }, [course, location.hash]);
+
+  useEffect(() => {
+    if (course) {
+      document.title = `${course.title} — SENA | Portal del Instructor`;
+    } else if (!isLoading) {
+      document.title = 'Curso no encontrado — SENA';
+    }
+  }, [course, isLoading]);
+
+  const handleCloseUploadModal = () => {
+    setIsUploadModalOpen(false);
+    if (searchParams.get('upload')) {
+      const nextParams = new URLSearchParams(searchParams);
+      nextParams.delete('upload');
+      setSearchParams(nextParams, { replace: true });
+    }
+  };
+
+  const handleDeleteMaterial = async ({ materialId, materialIndex, name }) => {
+    if (!course || !activeSession) return;
+    const confirmed = window.confirm(
+      `¿Deseas eliminar el material "${name}" de la ${activeSession.title}?`
+    );
+    if (!confirmed) return;
+
+    try {
+      const updated = await firestoreRepository.deleteMaterialFromSession({
+        courseId: course.id,
+        sessionId: activeSession.id,
+        materialId,
+        materialIndex
+      });
+      if (updated) {
+        setCourse(updated);
+      }
+    } catch (err) {
+      window.alert(
+        `No se pudo eliminar el material en Firestore: ${err?.message || 'Verifica permisos de escritura'}`
+      );
+    }
+  };
+
+  if (isLoading) {
+    return (
+      <MainLayout subtitle="Ambientes Digitales & Sesiones de Clase">
+        <main className="section">
+          <div className="container" style={{ padding: '60px 20px', textAlign: 'center' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '16px' }}>☁️</div>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '8px' }}>Cargando curso desde Cloud Firestore...</h2>
+            <p style={{ color: 'var(--text-secondary)' }}>
+              Consultando documento <code>courses/{resolvedCourseId}</code> en Firebase.
+            </p>
+          </div>
+        </main>
+      </MainLayout>
+    );
+  }
 
   if (!course) {
     return (
@@ -56,7 +137,8 @@ export function CoursePage({ defaultCourseId = 'alfabetizacion-digital' }) {
             <div style={{ fontSize: '3rem', marginBottom: '16px' }}>🔍</div>
             <h2 style={{ fontSize: '1.8rem', marginBottom: '12px' }}>Curso no encontrado</h2>
             <p style={{ color: 'var(--text-secondary)', maxWidth: '500px', margin: '0 auto 24px' }}>
-              No pudimos encontrar ningún curso con el identificador &quot;<strong>{resolvedCourseId}</strong>&quot;.
+              No pudimos encontrar ningún curso con el identificador &quot;<strong>{resolvedCourseId}</strong>&quot; en
+              Firestore.
             </p>
             <Link to="/" className="btn btn-primary">
               ← Volver al Catálogo de Cursos
@@ -67,7 +149,8 @@ export function CoursePage({ defaultCourseId = 'alfabetizacion-digital' }) {
     );
   }
 
-  const activeSession = sessions.find((s) => s.id === activeTabId);
+  const sessions = course.sessions || [];
+  const activeSession = sessions.find((s) => s.id === activeTabId) || sessions[0];
 
   return (
     <MainLayout subtitle="Ambientes Digitales & Sesiones de Clase">
@@ -126,7 +209,14 @@ export function CoursePage({ defaultCourseId = 'alfabetizacion-digital' }) {
           </div>
 
           <div id="course-session-panels">
-            {activeSession && <SessionPanel session={activeSession} course={course} />}
+            {activeTabId !== TRANSFER_TAB_ID && activeSession && (
+              <SessionPanel
+                session={activeSession}
+                course={course}
+                onOpenUploadModal={() => setIsUploadModalOpen(true)}
+                onDeleteMaterial={handleDeleteMaterial}
+              />
+            )}
             {activeTabId === TRANSFER_TAB_ID && course.transferProject && (
               <TransferProjectPanel
                 title={course.transferProject.title}
@@ -138,6 +228,19 @@ export function CoursePage({ defaultCourseId = 'alfabetizacion-digital' }) {
           </div>
         </div>
       </main>
+
+      <MaterialUploadModal
+        isOpen={isUploadModalOpen}
+        onClose={handleCloseUploadModal}
+        courses={[course]}
+        defaultCourseId={course.id}
+        defaultSessionId={activeSession?.id || 'sesion-1'}
+        onUploadSuccess={({ updatedCourse }) => {
+          if (updatedCourse) {
+            setCourse(updatedCourse);
+          }
+        }}
+      />
     </MainLayout>
   );
 }

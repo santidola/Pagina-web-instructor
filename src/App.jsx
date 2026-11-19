@@ -9,6 +9,7 @@ import { HomePage } from './pages/HomePage';
 import { CoursePage } from './pages/CoursePage';
 import { GuidePage } from './pages/GuidePage';
 import { GlossaryPage } from './pages/GlossaryPage';
+import { MaterialViewerPage } from './pages/MaterialViewerPage';
 
 function ScrollToTop() {
   const { pathname, hash } = useLocation();
@@ -44,6 +45,7 @@ export function App() {
           <Route path="/guia.html" element={<GuidePage />} />
           <Route path="/glosario" element={<GlossaryPage />} />
           <Route path="/glosario.html" element={<GlossaryPage />} />
+          <Route path="/material/:materialId" element={<MaterialViewerPage />} />
           <Route path="*" element={<HomePage />} />
         </Routes>
       </BrowserRouter>

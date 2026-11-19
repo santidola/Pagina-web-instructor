@@ -23,12 +23,8 @@ export function CourseCard({
   const previewSessions = sessions.slice(0, 3);
   const extraCount = Math.max(0, sessions.length - 3);
   const courseUrl = `/curso?id=${id}`;
+  const uploadCourseUrl = `/curso?id=${id}&upload=true`;
   const guideUrl = id === 'alfabetizacion-digital' ? '/guia' : `/guia?id=${id}`;
-
-  const handlePendingClick = (e) => {
-    e.preventDefault();
-    window.alert('¡Este curso está preparado! Puedes pasarme los archivos y temas de sus sesiones para activarlo.');
-  };
 
   return (
     <div className="course-portal-card animate-on-scroll is-visible">
@@ -79,9 +75,9 @@ export function CourseCard({
               </Link>
             </>
           ) : (
-            <a href={courseUrl} className="btn btn-secondary" style={{ flex: 1 }} onClick={handlePendingClick}>
+            <Link to={uploadCourseUrl} className="btn btn-secondary" style={{ flex: 1 }}>
               📂 Subir Materiales
-            </a>
+            </Link>
           )}
         </div>
       </div>

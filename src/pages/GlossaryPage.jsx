@@ -1,15 +1,24 @@
 /**
- * Single Responsibility Principle (SRP):
- * Renders the interactive Glossary & Institutional Resources view consuming useGlossarySearch().
+ * Single Responsibility Principle (SRP) & Dependency Inversion Principle (DIP):
+ * Renders the interactive Glossary & Institutional Resources view consuming
+ * 'glossary_terms' and 'portal_resources' directly from Cloud Firestore.
  */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MainLayout } from '../components/layout/MainLayout';
 import { useGlossarySearch } from '../hooks/useGlossarySearch';
-import { BIBLIOGRAPHIC_REFERENCES, SENA_PLATFORMS } from '../data/glossaryData';
 
 export function GlossaryPage() {
-  const { searchTerm, setSearchTerm, filteredTerms, totalCount, matchCount } = useGlossarySearch();
+  const {
+    searchTerm,
+    setSearchTerm,
+    filteredTerms,
+    bibliographicReferences,
+    senaPlatforms,
+    isLoading,
+    totalCount,
+    matchCount
+  } = useGlossarySearch();
 
   useEffect(() => {
     document.title = 'Glosario de Términos & Recursos · Alfabetización Informática | SENA';
@@ -70,111 +79,123 @@ export function GlossaryPage() {
             />
           </div>
           <div id="glossary-count" style={{ fontSize: '0.85rem', color: 'var(--text-muted)', fontWeight: 500 }}>
-            Mostrando {matchCount} de {totalCount} términos oficiales
+            {isLoading
+              ? 'Cargando términos desde Cloud Firestore...'
+              : `Mostrando ${matchCount} de ${totalCount} términos oficiales`}
           </div>
         </div>
       </header>
 
       <main className="section">
         <div className="container">
-          <div className="glossary-grid" id="glossary-container">
-            {filteredTerms.map((item) => (
-              <article key={item.id} className="glossary-card animate-on-scroll">
-                <h4>
-                  <span>{item.icon}</span> {item.term}
-                </h4>
-                <p>{item.definition}</p>
-              </article>
-            ))}
-          </div>
+          {isLoading ? (
+            <div style={{ padding: '40px 20px', textAlign: 'center', color: 'var(--text-secondary)' }}>
+              ☁️ Consultando colecciones <code>glossary_terms</code> y <code>portal_resources</code> en Firebase...
+            </div>
+          ) : (
+            <>
+              <div className="glossary-grid" id="glossary-container">
+                {filteredTerms.map((item) => (
+                  <article key={item.id} className="glossary-card animate-on-scroll">
+                    <h4>
+                      <span>{item.icon}</span> {item.term}
+                    </h4>
+                    <p>{item.definition}</p>
+                  </article>
+                ))}
+              </div>
 
-          <section style={{ marginTop: '56px' }} className="animate-on-scroll">
-            <div className="activity-card">
-              <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
-                <span style={{ fontSize: '1.8rem' }}>📚</span>
-                <div>
-                  <h3 style={{ marginBottom: '2px' }}>6. Referentes Bibliográficos Oficiales</h3>
-                  <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
-                    Fuentes institucionales que fundamentan la formación
-                  </span>
+              <section style={{ marginTop: '56px' }} className="animate-on-scroll">
+                <div className="activity-card">
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '12px', marginBottom: '16px' }}>
+                    <span style={{ fontSize: '1.8rem' }}>📚</span>
+                    <div>
+                      <h3 style={{ marginBottom: '2px' }}>6. Referentes Bibliográficos Oficiales</h3>
+                      <span style={{ fontSize: '0.8rem', color: 'var(--text-muted)' }}>
+                        Fuentes institucionales que fundamentan la formación
+                      </span>
+                    </div>
+                  </div>
+
+                  <ul
+                    style={{
+                      display: 'flex',
+                      flexDirection: 'column',
+                      gap: '14px',
+                      paddingLeft: '10px',
+                      marginTop: '14px'
+                    }}
+                  >
+                    {bibliographicReferences.map((ref) => (
+                      <li
+                        key={ref.id}
+                        style={{
+                          fontSize: '0.9rem',
+                          color: 'var(--text-secondary)',
+                          lineHeight: 1.6,
+                          borderLeft: '3px solid var(--sena-green)',
+                          paddingLeft: '14px'
+                        }}
+                      >
+                        <strong>{ref.author}</strong> {ref.text}
+                      </li>
+                    ))}
+                  </ul>
                 </div>
-              </div>
+              </section>
 
-              <ul
-                style={{
-                  display: 'flex',
-                  flexDirection: 'column',
-                  gap: '14px',
-                  paddingLeft: '10px',
-                  marginTop: '14px'
-                }}
-              >
-                {BIBLIOGRAPHIC_REFERENCES.map((ref) => (
-                  <li
-                    key={ref.id}
+              <section style={{ marginTop: '32px' }} className="animate-on-scroll">
+                <div
+                  style={{
+                    background: 'var(--surface)',
+                    border: '1px solid var(--border-light)',
+                    borderRadius: 'var(--radius)',
+                    padding: '32px',
+                    boxShadow: 'var(--shadow-sm)'
+                  }}
+                >
+                  <h3 style={{ fontSize: '1.15rem', marginBottom: '8px' }}>
+                    🔗 Plataformas y Servicios Institucionales del SENA
+                  </h3>
+                  <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
+                    Accesos directos recomendados para instructores y aprendices durante el curso:
+                  </p>
+
+                  <div
                     style={{
-                      fontSize: '0.9rem',
-                      color: 'var(--text-secondary)',
-                      lineHeight: 1.6,
-                      borderLeft: '3px solid var(--sena-green)',
-                      paddingLeft: '14px'
+                      display: 'grid',
+                      gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
+                      gap: '14px'
                     }}
                   >
-                    <strong>{ref.author}</strong> {ref.text}
-                  </li>
-                ))}
-              </ul>
-            </div>
-          </section>
-
-          <section style={{ marginTop: '32px' }} className="animate-on-scroll">
-            <div
-              style={{
-                background: 'var(--surface)',
-                border: '1px solid var(--border-light)',
-                borderRadius: 'var(--radius)',
-                padding: '32px',
-                boxShadow: 'var(--shadow-sm)'
-              }}
-            >
-              <h3 style={{ fontSize: '1.15rem', marginBottom: '8px' }}>
-                🔗 Plataformas y Servicios Institucionales del SENA
-              </h3>
-              <p style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                Accesos directos recomendados para instructores y aprendices durante el curso:
-              </p>
-
-              <div
-                style={{
-                  display: 'grid',
-                  gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))',
-                  gap: '14px'
-                }}
-              >
-                {SENA_PLATFORMS.map((platform) => (
-                  <a
-                    key={platform.id}
-                    href={platform.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    style={{
-                      padding: '16px',
-                      background: 'var(--green-bg)',
-                      borderRadius: 'var(--radius-sm)',
-                      display: 'block',
-                      border: '1px solid var(--border-light)',
-                      transition: 'var(--transition)'
-                    }}
-                  >
-                    <strong style={{ color: 'var(--sena-green)', display: 'block', marginBottom: '4px' }}>
-                      {platform.name}
-                    </strong>
-                    <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>{platform.description}</span>
-                  </a>
-                ))}
-              </div>
-            </div>
-          </section>
+                    {senaPlatforms.map((platform) => (
+                      <a
+                        key={platform.id}
+                        href={platform.url}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        style={{
+                          padding: '16px',
+                          background: 'var(--green-bg)',
+                          borderRadius: 'var(--radius-sm)',
+                          display: 'block',
+                          border: '1px solid var(--border-light)',
+                          transition: 'var(--transition)'
+                        }}
+                      >
+                        <strong style={{ color: 'var(--sena-green)', display: 'block', marginBottom: '4px' }}>
+                          {platform.name}
+                        </strong>
+                        <span style={{ fontSize: '0.82rem', color: 'var(--text-secondary)' }}>
+                          {platform.description}
+                        </span>
+                      </a>
+                    ))}
+                  </div>
+                </div>
+              </section>
+            </>
+          )}
 
           <div
             style={{

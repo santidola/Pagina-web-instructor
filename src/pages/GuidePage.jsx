@@ -1,13 +1,15 @@
 /**
- * Single Responsibility Principle (SRP):
- * Renders the official GFPI-F-135 Learning Guide view.
+ * Single Responsibility Principle (SRP) & Dependency Inversion Principle (DIP):
+ * Renders the official GFPI-F-135 Learning Guide view consuming 'learning_guides' from Cloud Firestore.
  */
 import React, { useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { MainLayout } from '../components/layout/MainLayout';
-import { GUIDE_DATA } from '../data/guideData';
+import { useLearningGuide } from '../hooks/useLearningGuide';
 
 export function GuidePage() {
+  const { guide, isLoading } = useLearningGuide('gfpi-f-135-alfabetizacion');
+
   useEffect(() => {
     document.title = 'Guía de Aprendizaje Oficial · Formato GFPI-F-135 | SENA';
   }, []);
@@ -23,7 +25,30 @@ export function GuidePage() {
     </button>
   );
 
-  const { identification, presentationParagraphs, evaluationMatrix, formatVersion } = GUIDE_DATA;
+  if (isLoading || !guide) {
+    return (
+      <MainLayout subtitle="Guía de Aprendizaje GFPI-F-135 · 70 Horas" actionButton={printActionButton}>
+        <main className="section">
+          <div className="container" style={{ padding: '60px 20px', textAlign: 'center' }}>
+            <div style={{ fontSize: '2.5rem', marginBottom: '12px' }}>☁️</div>
+            <h2 style={{ fontSize: '1.5rem', marginBottom: '8px' }}>
+              Cargando Guía GFPI-F-135 desde Cloud Firestore...
+            </h2>
+            <p style={{ color: 'var(--text-secondary)' }}>
+              Consultando colección <code>learning_guides</code> en Firebase.
+            </p>
+          </div>
+        </main>
+      </MainLayout>
+    );
+  }
+
+  const {
+    identification = { raps: [] },
+    presentationParagraphs = [],
+    evaluationMatrix = [],
+    formatVersion
+  } = guide;
 
   return (
     <MainLayout subtitle="Guía de Aprendizaje GFPI-F-135 · 70 Horas" actionButton={printActionButton}>
@@ -134,7 +159,7 @@ export function GuidePage() {
                   listStyle: 'disc'
                 }}
               >
-                {identification.raps.map((rap) => (
+                {(identification.raps || []).map((rap) => (
                   <li key={rap.code}>
                     <strong>{rap.code}:</strong> {rap.text}
                   </li>

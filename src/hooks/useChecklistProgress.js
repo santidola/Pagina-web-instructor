@@ -1,23 +1,45 @@
 /**
  * Single Responsibility Principle (SRP) & Dependency Inversion Principle (DIP):
- * Manages classroom checklist state and persists completion via StorageService abstraction.
+ * Fetches classroom checklist items from Cloud Firestore ('checklist_items')
+ * and persists completion state via StorageService abstraction.
  */
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useEffect, useMemo, useCallback } from 'react';
 import { useServices } from '../context/ServiceContext';
-import { CLASS_CHECKLIST_ITEMS } from '../data/checklistData';
 
 const STORAGE_KEY = 'sena_task_states_v2';
 
-export function useChecklistProgress(items = CLASS_CHECKLIST_ITEMS) {
-  const { storageService } = useServices();
+export function useChecklistProgress() {
+  const { firestoreRepository, storageService } = useServices();
+  const [items, setItems] = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [completedFlags, setCompletedFlags] = useState([]);
 
-  const [completedFlags, setCompletedFlags] = useState(() => {
-    const saved = storageService.get(STORAGE_KEY, null);
-    if (Array.isArray(saved) && saved.length === items.length) {
-      return saved.map(Boolean);
+  useEffect(() => {
+    let isMounted = true;
+    async function loadChecklist() {
+      setIsLoading(true);
+      try {
+        const fetchedItems = await firestoreRepository.getChecklistItems();
+        if (!isMounted) return;
+        setItems(fetchedItems);
+
+        const saved = storageService.get(STORAGE_KEY, null);
+        if (Array.isArray(saved) && saved.length === fetchedItems.length) {
+          setCompletedFlags(saved.map(Boolean));
+        } else {
+          setCompletedFlags(fetchedItems.map(() => false));
+        }
+      } catch (err) {
+        console.error('Error loading checklist_items from Firestore:', err);
+      } finally {
+        if (isMounted) setIsLoading(false);
+      }
     }
-    return items.map(() => false);
-  });
+    loadChecklist();
+    return () => {
+      isMounted = false;
+    };
+  }, [firestoreRepository, storageService]);
 
   const toggleItem = useCallback(
     (index) => {
@@ -39,6 +61,7 @@ export function useChecklistProgress(items = CLASS_CHECKLIST_ITEMS) {
 
   return {
     items,
+    isLoading,
     completedFlags,
     toggleItem,
     ...stats
