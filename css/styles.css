@@ -15,44 +15,44 @@
 :root {
   /* Verdes SENA */
   --sena-green: #39A900;
-  --sena-green-dark: #2E8B00;
+  --sena-green-dark: #257300;
   --sena-green-light: #4DB800;
-  --green-soft: #E8F5E2;
-  --green-bg: #F7FAF5;
+  --green-soft: #EAF6E4;
+  --green-bg: #F6FAF4;
   --green-accent: #4CAF50;
   --green-muted: #A5D6A7;
 
   /* Neutros */
   --white: #FFFFFF;
   --bg-primary: #FFFFFF;
-  --bg-secondary: #F7FAF5;
-  --bg-tertiary: #F0F4EE;
+  --bg-secondary: #F8FAF7;
+  --bg-tertiary: #F1F5EF;
   --surface: #FFFFFF;
-  --surface-hover: #FAFFFE;
-  --border: #E0E8DC;
-  --border-light: #EDF2EA;
+  --surface-hover: #FCFEFB;
+  --border: #E2E8E0;
+  --border-light: #EEF2EC;
 
   /* Texto */
-  --text-primary: #1B2A1B;
-  --text-secondary: #4A5D4A;
-  --text-muted: #7A8E7A;
+  --text-primary: #111C12;
+  --text-secondary: #475849;
+  --text-muted: #738475;
   --text-on-green: #FFFFFF;
 
   /* Sombras */
-  --shadow-sm: 0 1px 3px rgba(27, 42, 27, 0.06);
-  --shadow-md: 0 4px 16px rgba(27, 42, 27, 0.08);
-  --shadow-lg: 0 8px 32px rgba(27, 42, 27, 0.1);
-  --shadow-xl: 0 16px 48px rgba(27, 42, 27, 0.12);
-  --shadow-green: 0 8px 24px rgba(57, 169, 0, 0.15);
+  --shadow-sm: 0 1px 2px rgba(17, 28, 18, 0.04), 0 1px 3px rgba(17, 28, 18, 0.03);
+  --shadow-md: 0 4px 12px rgba(17, 28, 18, 0.05), 0 12px 28px rgba(17, 28, 18, 0.04);
+  --shadow-lg: 0 10px 24px rgba(17, 28, 18, 0.07), 0 20px 44px rgba(17, 28, 18, 0.06);
+  --shadow-xl: 0 20px 50px rgba(17, 28, 18, 0.12);
+  --shadow-green: 0 8px 20px rgba(57, 169, 0, 0.22);
 
   /* Espaciado y radios */
-  --radius: 16px;
-  --radius-sm: 10px;
-  --radius-xs: 6px;
+  --radius: 18px;
+  --radius-sm: 12px;
+  --radius-xs: 8px;
   --radius-full: 50px;
 
   /* Transiciones */
-  --transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition: 0.25s cubic-bezier(0.22, 1, 0.36, 1);
   --transition-fast: 0.15s ease;
 }
 
@@ -71,7 +71,8 @@ body {
 
 h1, h2, h3, h4, h5 {
   font-family: 'Outfit', sans-serif;
-  line-height: 1.25;
+  line-height: 1.2;
+  letter-spacing: -0.02em;
   color: var(--text-primary);
 }
 
@@ -164,6 +165,13 @@ ul {
   -webkit-text-fill-color: transparent;
 }
 
+.gradient-text-faded {
+  background: linear-gradient(180deg, #132A15 0%, var(--sena-green-dark) 42%, rgba(57, 169, 0, 0.22) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
 /* ========================================
    ANIMATIONS
 ======================================== */
@@ -213,14 +221,15 @@ ul {
   width: 100%;
   z-index: 1000;
   padding: 0;
-  background: rgba(255, 255, 255, 0.92);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border-bottom: 1px solid var(--border-light);
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border-bottom: 1px solid rgba(226, 232, 224, 0.7);
   transition: var(--transition);
 }
 
 .navbar.scrolled {
+  background: rgba(255, 255, 255, 0.96);
   box-shadow: var(--shadow-sm);
   border-bottom-color: var(--border);
 }
@@ -229,7 +238,7 @@ ul {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 68px;
+  height: 72px;
 }
 
 .navbar-brand {
@@ -511,33 +520,36 @@ ul {
 ======================================== */
 .hero {
   position: relative;
-  min-height: 100vh;
   display: flex;
   align-items: center;
-  padding: 120px 0 80px;
-  background: linear-gradient(160deg, var(--bg-primary) 0%, var(--green-bg) 50%, var(--green-soft) 100%);
+  padding: 144px 0 88px;
+  background:
+    radial-gradient(ellipse 80% 50% at 50% -10%, rgba(57, 169, 0, 0.10), transparent),
+    linear-gradient(180deg, #FFFFFF 0%, #F7FAF5 100%);
+  border-bottom: 1px solid var(--border-light);
   overflow: hidden;
 }
 
 .hero::before {
   content: '';
   position: absolute;
-  top: -20%;
-  right: -10%;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(circle, rgba(57, 169, 0, 0.06) 0%, transparent 70%);
+  inset: 0;
+  background-image: radial-gradient(rgba(57, 169, 0, 0.14) 1px, transparent 1px);
+  background-size: 28px 28px;
+  mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, transparent 85%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0, 0, 0, 0.45) 0%, transparent 85%);
   pointer-events: none;
 }
 
 .hero::after {
   content: '';
   position: absolute;
-  bottom: -20%;
-  left: -10%;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(circle, rgba(76, 175, 80, 0.05) 0%, transparent 70%);
+  bottom: -160px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 720px;
+  height: 320px;
+  background: radial-gradient(circle, rgba(57, 169, 0, 0.08) 0%, transparent 70%);
   pointer-events: none;
 }
 
@@ -557,20 +569,21 @@ ul {
 }
 
 .hero h1 {
-  font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+  font-size: clamp(2.5rem, 6vw, 4.25rem);
   font-weight: 800;
-  margin-bottom: 18px;
+  letter-spacing: -0.03em;
+  margin-bottom: 20px;
   animation: fadeInUp 0.7s ease 0.12s both;
   color: var(--text-primary);
 }
 
 .hero-subtitle {
-  font-size: clamp(1rem, 2.2vw, 1.15rem);
+  font-size: clamp(1.02rem, 2.2vw, 1.18rem);
   color: var(--text-secondary);
-  max-width: 580px;
+  max-width: 620px;
   margin: 0 auto 36px;
   animation: fadeInUp 0.7s ease 0.24s both;
-  line-height: 1.8;
+  line-height: 1.75;
 }
 
 .hero-actions {
@@ -1983,9 +1996,9 @@ ul {
 .progress-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
-  padding: 24px;
-  box-shadow: var(--shadow-sm);
+  border-radius: 20px;
+  padding: 32px;
+  box-shadow: var(--shadow-md);
 }
 
 .progress-header {
@@ -2559,7 +2572,7 @@ input:checked + .slider:before {
 .course-portal-card {
   background: var(--surface);
   border: 1px solid var(--border);
-  border-radius: var(--radius);
+  border-radius: 20px;
   overflow: hidden;
   display: flex;
   flex-direction: column;
@@ -2570,7 +2583,7 @@ input:checked + .slider:before {
 
 .course-portal-card:hover {
   transform: translateY(-6px);
-  border-color: var(--sena-green);
+  border-color: rgba(57, 169, 0, 0.45);
   box-shadow: var(--shadow-lg);
 }
 
@@ -2726,14 +2739,16 @@ input:checked + .slider:before {
 
 /* Caja de Ayuda para Subida de Materiales */
 .instructor-upload-guide-card {
-  background: linear-gradient(135deg, #f0fdf4 0%, #e8f5e9 100%);
-  border: 1px solid var(--green-muted);
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--sena-green);
   border-radius: var(--radius);
-  padding: 28px;
+  padding: 28px 32px;
   margin-top: 40px;
   display: flex;
   flex-direction: column;
-  gap: 18px;
+  gap: 20px;
+  box-shadow: var(--shadow-sm);
 }
 
 @media (min-width: 768px) {
