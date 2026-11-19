@@ -2,8 +2,8 @@
  * ============================================================
  * BASE DE DATOS DE CURSOS Y SESIONES · SENA
  * ============================================================
- * Este archivo centraliza la información de todos los programas de formación.
- * Para agregar un nuevo curso, simplemente añade un nuevo objeto al arreglo COURSES_DATA.
+ * Centraliza la información de todos los programas de formación.
+ * Al agregar o actualizar cursos, se reflejan automáticamente en el catálogo y visor.
  */
 
 const COURSES_DATA = [
@@ -21,8 +21,8 @@ const COURSES_DATA = [
     badgeType: 'badge-green',
     icon: '💻',
     coverGradient: 'linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%)',
-    description: 'Curso fundamental para el desarrollo de competencias digitales cotidianas: uso de smartphones y computadores, redacción y envío de correo formal, hojas de cálculo para presupuestos en Excel, navegación segura contra fraudes e introducción práctica a la Inteligencia Artificial.',
-    targetUrl: 'programa.html', // Enlace directo a las sesiones actuales o plantilla dinámica
+    description: 'Curso fundamental estructurado en 5 sesiones prácticas con materiales oficiales del SENA: reconocimiento del dispositivo y gestión de memoria RAM/almacenamiento, productividad en la nube con Google Docs y correo Gmail, hojas de cálculo para finanzas personales con fórmulas automáticas, navegación segura con prevención de fraudes y dominio de Inteligencia Artificial mediante prompts estructurados (Meta AI, ChatGPT).',
+    targetUrl: 'curso.html?id=alfabetizacion-digital',
     guideUrl: 'guia.html',
     materialsFolder: 'materiales/alfabetizacion/',
     raps: [
@@ -36,118 +36,153 @@ const COURSES_DATA = [
       {
         id: 'sesion-1',
         number: 1,
-        title: 'Sistemas Operativos & Dispositivos Móviles',
+        title: 'Conozco mi Dispositivo y el Sistema Operativo (RAM, Almacenamiento y Nube)',
         hours: '10 Horas',
         icon: '📱',
         rapCode: '2205010460201',
-        summary: 'Familiarización con smartphone/tablet y PC, qué es una app, ajustes esenciales (brillo, Wi-Fi, sonido), tareas cotidianas (poner alarma, contactos) y seguridad básica (bloqueo PIN/patrón).',
+        summary: 'Comprender qué es un dispositivo tecnológico y el Sistema Operativo (iOS y Android, analogía de la casa). Ajustes básicos (Wi-Fi, brillo, sonido, bloqueo y accesibilidad). Diferencia crucial entre Memoria RAM (la mesa de trabajo) y Almacenamiento Interno (el armario/bodega), causas del celular lento y solución práctica liberando espacio con Google Fotos.',
         topics: [
-          'Encendido, reinicio y navegación en smartphone y computador',
-          '¿Qué es una App y cómo instalar/desinstalar responsablemente?',
-          'Configuración de Wi-Fi, volumen, brillo y modo no molestar',
-          'Programación de alarmas y gestión de contactos',
-          'Medidas de seguridad: PIN, patrón y huella'
+          '¿Qué es un dispositivo? (Persona con necesidad ➔ Herramienta ➔ Solución)',
+          'El Sistema Operativo: origen de iOS (2007) y Android (2008) y analogía de la casa',
+          'Configuraciones básicas: Wi-Fi, sonido, brillo, bloqueo PIN/patrón y accesibilidad',
+          'Memoria RAM (mesa de trabajo temporal) vs Almacenamiento Interno (armario permanente)',
+          '¿Por qué se pone lento el teléfono? (Archivos temporales, saturación de RAM y asfixia del SO)',
+          'Solución de almacenamiento: Copia de seguridad automática en Google Fotos y liberación de espacio en memoria'
         ],
         materials: [
-          { name: 'Guía de Ajustes y Alarmas en Móviles', type: 'pdf', path: 'materiales/alfabetizacion/sesion-1/guia-ajustes.pdf', available: false },
-          { name: 'Infografía: Partes y Seguridad del Teléfono', type: 'image', path: 'materiales/alfabetizacion/sesion-1/infografia-movil.pdf', available: false }
+          { 
+            name: 'Guía Completa: Dispositivo, Sistema Operativo y Google Fotos', 
+            type: 'pdf', 
+            path: 'materiales/alfabetizacion/sesion-1/Taller_Dispositivo_y_Sistema_Operativo.html', 
+            available: true 
+          },
+          { 
+            name: 'Hoja de Trabajo: Actividad Práctica Unir con Líneas (8 Iconos)', 
+            type: 'document', 
+            path: 'materiales/alfabetizacion/sesion-1/Actividad_Unir_Con_Lineas.html', 
+            available: true 
+          }
         ],
-        activity: 'Ajustes configurados, alarma programada para la clase y bloqueo seguro activado.',
-        interactiveTool: 'Simulador de Smartphone y Alarma en Vivo'
+        activity: 'Ajustes esenciales configurados, verificación de memoria RAM/Almacenamiento en el dispositivo y resolución del taller de unir conceptos con líneas.',
+        interactiveTool: 'Simulador de Smartphone, Alarma y Gestor de Recursos'
       },
       {
         id: 'sesion-2',
         number: 2,
-        title: 'Documento de Texto & Envío de Correo Formal',
+        title: 'Productividad Digital con Google Docs y Gmail',
         hours: '11 Horas',
         icon: '✉️',
         rapCode: '2205010460202',
-        summary: 'Creación de documento base y dominio de los 5 bloques del correo formal: Para, Asunto específico, Saludo cordial, Objetivo/Cuerpo claro, Despedida/Firma y archivos adjuntos.',
+        summary: 'Creación de documentos en la nube con Google Docs (guardado automático por segundo, acceso en cualquier equipo y trabajo colaborativo simultáneo). Comunicación formal con Gmail: dominar los 4 pasos de redacción, las 3 partes clave (Para, Asunto y Mensaje), cómo adjuntar archivos desde el celular o Drive y la regla de los 3 puntos antes de enviar.',
         topics: [
-          'Estructura de un documento de texto (títulos, párrafos, viñetas)',
-          'Anatomía del correo electrónico: los 5 bloques indispensables',
-          'Redacción formal vs informal',
-          'Cómo adjuntar archivos y enlaces sin errores comunes',
-          'Etiqueta digital (Netiqueta) y privacidad'
+          'Ventajas de Google Docs: Guardado automático en la nube, multidispositivo y trabajo en equipo',
+          'Creación paso a paso de documentos en Drive con formato, alineación y tablas',
+          'Permisos de privacidad: Lector, Comentador y Editor. Exportar en PDF y Word (.docx)',
+          'Gmail: Pasos para redactar correo formal, uso de CC y CCO',
+          'Las 3 partes clave de un correo: Destinatario, Asunto específico y Mensaje estructurado',
+          'Cómo adjuntar archivos correctamente (icono del clip 📎) y los 3 puntos de verificación antes de enviar'
         ],
         materials: [
-          { name: 'Plantilla de Correo Formal y Solicitud', type: 'document', path: 'materiales/alfabetizacion/sesion-2/plantilla-correo.docx', available: false },
-          { name: 'Guía de Netiqueta y Redacción Digital', type: 'pdf', path: 'materiales/alfabetizacion/sesion-2/guia-netiqueta.pdf', available: false }
+          { 
+            name: 'Guía Práctica: Productividad con Google Docs y Gmail', 
+            type: 'pdf', 
+            path: 'materiales/alfabetizacion/sesion-2/Guia_Google_Docs_y_Gmail.html', 
+            available: true 
+          }
         ],
-        activity: 'Documento redactado en procesador y correo formal enviado con archivo adjunto.',
-        interactiveTool: 'Constructor y Previsualizador en Vivo de Correo'
+        activity: 'Documento creado y compartido en Google Docs, más correo formal enviado con las 3 partes completas y archivo adjunto.',
+        interactiveTool: 'Constructor y Previsualizador en Vivo de Correo Formal'
       },
       {
         id: 'sesion-3',
         number: 3,
-        title: 'Hojas de Cálculo: Ingresos y Gastos',
+        title: 'Hoja de Cálculo para Finanzas Personales (Presupuesto y Fórmulas)',
         hours: '14 Horas',
         icon: '📊',
         rapCode: '2205010460203',
-        summary: 'Reconocimiento de Fila (números), Columna (letras) y Celda en Excel. Tabla práctica de presupuesto personal/hogar con fórmulas automáticas de SUMA y cálculo de Saldo Neto.',
+        summary: '¿Qué es una hoja de cálculo? Conceptos clave: Columna (letras), Fila (números) y Celda (ej: B2). Regla de oro de las fórmulas (comenzar con =). Recreación del modelo de presupuesto de gastos adicionales: cálculo automático del total de gastos con =SUMA(B2:B6) y cálculo de saldo disponible con resta =F2-F3.',
         topics: [
-          'Entorno de Excel: Filas, Columnas, Celdas y Rangos',
-          'Ingreso de datos: Textos vs Números vs Fechas',
-          'Construcción de tabla de presupuesto: Entradas y Salidas',
-          'Fórmula =SUMA(...) y operadores aritméticos básicos (+, -)',
-          'Cálculo de Saldo Disponible y formato de moneda'
+          'Definición y ventajas de la hoja de cálculo (automatización y recálculo instantáneo)',
+          'Conceptos indispensables: Columnas (verticales), Filas (horizontales) y Celdas (intersección)',
+          'Regla de Oro: Toda fórmula debe comenzar con el signo igual (=)',
+          'Operaciones básicas: =A1+B1, =A1-B1, =SUMA(B1:B10) y =A1*B1',
+          'Ejercicio guiado: Hoja 1 - Presupuesto de Gastos Adicionales (Efectivo, Servicios, Banco, etc.)',
+          'Fórmula de suma total de gastos en celda B7 y resta de saldo disponible en celda F4',
+          'Reto de fórmulas aplicadas y autoevaluación de la sesión'
         ],
         materials: [
-          { name: 'Plantilla de Presupuesto Personal y Familiar (Excel)', type: 'sheet', path: 'materiales/alfabetizacion/sesion-3/plantilla-presupuesto.xlsx', available: false },
-          { name: 'Guía paso a paso: Fórmulas de Suma y Saldo', type: 'pdf', path: 'materiales/alfabetizacion/sesion-3/guia-excel-basico.pdf', available: false }
+          { 
+            name: 'Taller Práctico Oficial: Hoja de Cálculo para Finanzas Personales', 
+            type: 'sheet', 
+            path: 'materiales/alfabetizacion/sesion-3/Taller_Hoja_Calculo_Finanzas_Personales.html', 
+            available: true 
+          }
         ],
-        activity: 'Tabla de presupuesto en Excel diligenciada con fórmulas activas y saldo neto calculado.',
-        interactiveTool: 'Simulador Dinámico de Presupuesto en Excel'
+        activity: 'Tabla de presupuesto personal recreada con fórmulas automáticas de SUMA (=SUMA(B2:B6)) y Saldo Disponible (=F2-F3) funcionando al 100%.',
+        interactiveTool: 'Simulador Dinámico de Presupuesto en Excel (Modelo Oficial SENA)'
       },
       {
         id: 'sesion-4',
         number: 4,
-        title: 'Internet, Servicios & Prevención de Fraudes',
+        title: 'Navegación Segura en Internet y Prevención de Fraudes',
         hours: '10 Horas',
         icon: '🌐',
         rapCode: '2205010460101',
-        summary: 'Navegador vs Buscador, barra de direcciones, identificación de páginas oficiales (.gov.co, .edu.co) y detección interactiva de mensajes fraudulentos (SMS/WhatsApp) y enlaces sospechosos (Phishing).',
+        summary: 'Diferencia entre Navegador (el vehículo) y Buscador (el índice). La barra de direcciones y la identificación de páginas oficiales (.gov.co, .edu.co). El Protocolo del Semáforo de Pausa (Verde: avanzar, Amarillo: revisar, Rojo: detenerse). Alertas ante estafas de urgencia, archivos adjuntos maliciosos, instaladores APK por WhatsApp y suplantación de voz con IA.',
         topics: [
-          'Diferencia clave: Navegador (Chrome, Edge) vs Buscador (Google)',
-          'La barra de direcciones (URL): ¿a dónde me lleva realmente?',
-          'Identificación de sitios seguros y dominios oficiales (.gov.co, .edu.co)',
-          'Reconocimiento de Phishing en WhatsApp, SMS y correo',
-          'Buenas prácticas para no caer en estafas digitales'
+          'Navegador (Chrome, Edge, Firefox, Safari) vs Buscador (Google, Bing)',
+          'La barra de direcciones (URL): verificación de dominios oficiales y candado HTTPS',
+          'Búsqueda recomendada: Entidad + Ciudad + Trámite + "sitio oficial"',
+          'Protocolo de Pausa (El Semáforo de Seguridad: Verde, Amarillo y Rojo)',
+          'Señales de fraude: Precio bajo + Urgencia, Malware en citaciones judiciales falsas y APKs sospechosos',
+          'Suplantación de voz con IA y llamadas falsas: protocolo de 4 pasos para reaccionar',
+          'Regla de oro: "Si me apuran o me piden datos, paro y verifico"'
         ],
         materials: [
-          { name: 'Decálogo de Ciberseguridad y Prevención de Phishing', type: 'pdf', path: 'materiales/alfabetizacion/sesion-4/decalogo-ciberseguridad.pdf', available: false },
-          { name: 'Taller Práctico: Casos Reales de Enlaces Falsos', type: 'pdf', path: 'materiales/alfabetizacion/sesion-4/taller-enlaces-falsos.pdf', available: false }
+          { 
+            name: 'Guía y Protocolo de Ciberseguridad: Navegación Segura y Prevención de Fraudes', 
+            type: 'pdf', 
+            path: 'materiales/alfabetizacion/sesion-4/Guia_Navegacion_Segura_y_Protocolo_Pausa.html', 
+            available: true 
+          }
         ],
-        activity: 'Búsqueda validada en portal estatal oficial y resolución del cuestionario anti-fraude.',
-        interactiveTool: 'Evaluador Interactivo Anti-Fraude y Phishing'
+        activity: 'Búsqueda validada con fórmula de sitio oficial y resolución del taller interactivo de detección de fraudes y llamadas sospechosas.',
+        interactiveTool: 'Detector Interactivo de Phishing, Semáforo y Enlaces Falsos'
       },
       {
         id: 'sesion-5',
         number: 5,
-        title: 'Inteligencia Artificial (IA) en la Vida Cotidiana',
+        title: 'Aprendiendo a Utilizar la Inteligencia Artificial (Meta AI y Prompts)',
         hours: '11 Horas',
         icon: '🤖',
         rapCode: 'Transversal',
-        summary: 'Desmitificación de la IA, el arte de estructurar un buen Prompt, Actividad "Foto de la pieza" (plan de organización de espacios) y Actividad "Ejercicio del mendigo" (comunicación empática y reflexiva).',
+        summary: '¿Qué es la IA? Uso de Meta AI en WhatsApp, ChatGPT y Gemini. Cinco límites clave: sesgos, alucinaciones, información desactualizada, protección de datos sensibles y verificación. Estructura de un buen Prompt con 4 pilares: ROL + CONTEXTO + TAREA + FORMATO. Desarrollo de los 3 retos prácticos: transformación de imágenes (silla/Cristiano Ronaldo), primeros auxilios (convulsión) y planificación de un safari en África.',
         topics: [
-          '¿Qué es y qué NO es la Inteligencia Artificial?',
-          'Estructura de un Prompt efectivo: Rol + Contexto + Tarea + Formato',
-          'Actividad 1: "Foto de la pieza" (Organización metódica de espacios)',
-          'Actividad 2: "Ejercicio del mendigo" (El poder de las palabras y la empatía)',
-          'Uso ético y reflexivo: la IA como asistente, no como sustituto del pensamiento'
+          '¿Qué es la Inteligencia Artificial? Herramientas conocidas: Meta AI en WhatsApp y asistentes conversacionales',
+          '5 aspectos indispensables: Sesgos, Alucinaciones, Información vieja, Datos sensibles y Verificación',
+          'Cómo pedir bien: Los 4 pilares de un Prompt efectivo (ROL, CONTEXTO, TAREA, FORMATO)',
+          'De prompt básico ("Explícame las ecuaciones") a prompt mejorado estructurado',
+          'Actividad Práctica 1: Transformación de fotos con instrucciones (la silla vacía, persona sentada y Cristiano Ronaldo)',
+          'Actividad Práctica 2: Asistente de primeros auxilios ante caso de emergencia por convulsión',
+          'Actividad Práctica 3: Asesor de viajes para diseño de itinerario y presupuesto de safari en África saliendo de Medellín',
+          'Cierre reflexivo: "La IA es una herramienta, el criterio es tuyo"'
         ],
         materials: [
-          { name: 'Guía de Prompts Básicos para la Vida Cotidiana', type: 'pdf', path: 'materiales/alfabetizacion/sesion-5/guia-prompts-ia.pdf', available: false },
-          { name: 'Ficha de Actividades "Foto de la pieza" y "El Mendigo"', type: 'pdf', path: 'materiales/alfabetizacion/sesion-5/ficha-actividades-ia.pdf', available: false }
+          { 
+            name: 'Guía y Taller de Inteligencia Artificial: Meta AI y Estructura de Prompts', 
+            type: 'pdf', 
+            path: 'materiales/alfabetizacion/sesion-5/Guia_Taller_Inteligencia_Artificial_Prompts.html', 
+            available: true 
+          }
         ],
-        activity: 'Interacciones documentadas con IA resolviendo el caso de la habitación y la reformulación empática.',
-        interactiveTool: 'Asistente de IA Educativa con Casos Prácticos'
+        activity: 'Registro de interacciones con Meta AI aplicando los 4 pilares del prompt en el reto de imágenes, primeros auxilios o itinerario de viaje.',
+        interactiveTool: 'Laboratorio de IA Educativa con los 4 Pilares y Casos Reales SENA'
       }
     ],
     transferProject: {
       title: 'Mi Solución Digital Práctica',
       hours: '8 Horas',
-      description: 'Integración aplicada de todas las herramientas: el aprendiz resuelve un problema real de su entorno usando dispositivo seguro, documento formal, correo con evidencia, presupuesto en Excel y apoyo de IA.',
+      description: 'Integración aplicada de todas las herramientas: el aprendiz resuelve un problema real de su entorno usando dispositivo seguro, documento formal en Google Docs, correo con evidencia en Gmail, presupuesto en hoja de cálculo y asistencia con Inteligencia Artificial.',
       evidence: 'Presentación final y rúbrica de evaluación integradora.'
     }
   },
@@ -170,7 +205,7 @@ const COURSES_DATA = [
     icon: '📊',
     coverGradient: 'linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%)',
     description: 'Curso complementario orientado al manejo intermedio de procesadores de texto, hojas de cálculo con gráficos dinámicos y presentaciones corporativas de alto impacto.',
-    targetUrl: '#',
+    targetUrl: 'curso.html?id=herramientas-ofimaticas',
     guideUrl: '#',
     materialsFolder: 'materiales/ofimaticas/',
     raps: [
@@ -214,7 +249,7 @@ const COURSES_DATA = [
   },
 
   /* ============================================================
-     CURSO EJEMPLO 3: CIUDADANÍA DIGITAL & INTELIGENCIA ARTIFICIAL
+     CURSO EJEMPLO 3: INTELIGENCIA ARTIFICIAL PRODUCTIVA
      ============================================================ */
   {
     id: 'ia-productividad',
@@ -230,8 +265,8 @@ const COURSES_DATA = [
     badgeType: 'badge-outline',
     icon: '⚡',
     coverGradient: 'linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #7b1fa2 100%)',
-    description: 'Aprende a integrar ChatGPT, Claude, Copilot y herramientas de análisis visual para optimizar tiempos, redacción de informes y resolución de problemas cotidianos.',
-    targetUrl: '#',
+    description: 'Aprende a integrar ChatGPT, Claude, Copilot y Meta AI para optimizar tiempos, redacción de informes y resolución de problemas cotidianos.',
+    targetUrl: 'curso.html?id=ia-productividad',
     guideUrl: '#',
     materialsFolder: 'materiales/ia-productividad/',
     raps: [
@@ -277,4 +312,3 @@ if (typeof window !== 'undefined') {
   window.getAllCourses = getAllCourses;
   window.getCourseById = getCourseById;
 }
-

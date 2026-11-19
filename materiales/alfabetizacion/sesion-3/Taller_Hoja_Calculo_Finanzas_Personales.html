@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sesión 3: Hoja de Cálculo para Finanzas Personales — SENA</title>
+  <link rel="stylesheet" href="../../css/styles.css" />
+  <style>
+    body { padding: 40px 20px; background: #f8fafc; font-family: 'Inter', sans-serif; }
+    .doc-container { max-width: 850px; margin: 0 auto; background: #fff; padding: 48px; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.06); }
+    .header-box { background: #065f46; color: #fff; padding: 24px 28px; border-radius: 8px; margin-bottom: 28px; display: flex; justify-content: space-between; align-items: center; }
+    .table-model { width: 100%; border-collapse: collapse; margin: 20px 0; font-size: 0.9rem; }
+    .table-model th, .table-model td { border: 1px solid #cbd5e1; padding: 8px 12px; }
+    .table-model th { background: #e2e8f0; text-align: center; font-weight: 700; }
+    .yellow-cell { background: #fef08a; font-weight: 700; }
+    .formula-tag { background: #ecfdf5; border: 1px solid #10b981; color: #047857; font-family: monospace; padding: 2px 6px; border-radius: 4px; font-weight: 700; }
+    @media print { body { padding: 0; background: #fff; } .doc-container { box-shadow: none; padding: 0; } .btn-print { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="doc-container">
+    <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+      <a href="../../curso.html?id=alfabetizacion-digital" style="color: #065f46; text-decoration: none; font-weight: 600;">← Volver al Curso</a>
+      <button onclick="window.print()" class="btn btn-secondary btn-print">🖨️ Imprimir Taller Práctico</button>
+    </div>
+
+    <div class="header-box">
+      <div>
+        <div style="font-size: 0.85rem; text-transform: uppercase; letter-spacing: 1px; opacity: 0.9;">SENA · Alfabetización Informática</div>
+        <h1 style="font-size: 1.5rem; margin: 4px 0 0;">Taller Práctico: Hoja de Cálculo para Finanzas Personales</h1>
+      </div>
+      <span style="background: rgba(255,255,255,0.2); padding: 6px 14px; border-radius: 20px; font-weight: 700; font-size: 0.85rem;">Sesión 3 - Práctica</span>
+    </div>
+
+    <section>
+      <h2>1. ¿Qué es una Hoja de Cálculo?</h2>
+      <p>Una hoja de cálculo es un programa o aplicación interactiva organizada en una cuadrícula (filas y columnas) que permite manipular datos numéricos y alfanuméricos. Es la herramienta principal en el mundo laboral y personal para realizar operaciones matemáticas, análisis financieros, presupuestos y tablas de información de forma rápida y automatizada.</p>
+      <div style="background: #ecfdf5; border-left: 4px solid #10b981; padding: 12px 16px; margin: 14px 0; font-size: 0.9rem;">
+        <strong>Principales ventajas:</strong> Automatiza cálculos complejos, actualiza resultados inmediatamente si cambias un dato, organiza información claramente y permite crear gráficos ilustrativos.
+      </div>
+    </section>
+
+    <section style="margin-top: 28px;">
+      <h2>2. Conceptos Clave de la Hoja de Cálculo</h2>
+      <div style="display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin: 16px 0;">
+        <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 16px; text-align: center; background: #f8fafc;">
+          <h4 style="color: #047857; margin-bottom: 4px;">COLUMNA</h4>
+          <p style="font-size: 0.85rem; color: #475569;">Línea vertical identificada con <strong>Letras (A, B, C...)</strong>.</p>
+        </div>
+        <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 16px; text-align: center; background: #f8fafc;">
+          <h4 style="color: #047857; margin-bottom: 4px;">FILA</h4>
+          <p style="font-size: 0.85rem; color: #475569;">Línea horizontal identificada con <strong>Números (1, 2, 3...)</strong>.</p>
+        </div>
+        <div style="border: 1px solid #cbd5e1; border-radius: 8px; padding: 16px; text-align: center; background: #f8fafc;">
+          <h4 style="color: #047857; margin-bottom: 4px;">CELDA</h4>
+          <p style="font-size: 0.85rem; color: #475569;">Intersección entre una columna y fila (Ejemplo: <strong>B2</strong>).</p>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 28px;">
+      <h2>3. ¿Cómo funcionan las Fórmulas?</h2>
+      <div style="background: #fef3c7; border: 1px solid #f59e0b; padding: 14px 18px; border-radius: 8px; margin: 14px 0;">
+        <strong style="color: #92400e; font-size: 1rem;">Regla de Oro: Toda fórmula DEBE comenzar con el signo igual (=)</strong>
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 10px; font-size: 0.9rem;">
+          <div><span class="formula-tag">=A1+B1</span> (Suma dos celdas)</div>
+          <div><span class="formula-tag">=A1-B1</span> (Resta ingresos y egresos)</div>
+          <div><span class="formula-tag">=SUMA(B1:B10)</span> (Suma un rango continuo)</div>
+          <div><span class="formula-tag">=A1*B1</span> (Multiplica valores)</div>
+        </div>
+      </div>
+    </section>
+
+    <section style="margin-top: 28px;">
+      <h2>4. Ejercicio Guiado: Recrea la Tabla de Gastos</h2>
+      <p>Observa el modelo de presupuesto personal de ingresos y egresos que recrearemos en clase:</p>
+      
+      <table class="table-model">
+        <thead>
+          <tr>
+            <th style="width: 5%;">#</th>
+            <th style="width: 25%;">A</th>
+            <th style="width: 20%;">B</th>
+            <th style="width: 5%;">C</th>
+            <th style="width: 5%;">D</th>
+            <th style="width: 25%;">E</th>
+            <th style="width: 15%;">F</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr style="background: #f1f5f9; font-weight: 700;">
+            <td style="text-align: center;">1</td>
+            <td colspan="2" class="yellow-cell">Gastos Adicionales</td>
+            <td></td>
+            <td></td>
+            <td>Pago 31 de diciembre</td>
+            <td>Total</td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">2</td>
+            <td>Efectivo</td>
+            <td>$ 120.000</td>
+            <td></td>
+            <td></td>
+            <td>Sueldo Recibido</td>
+            <td><strong>$ 500.000</strong></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">3</td>
+            <td>Servicios casa</td>
+            <td>$ 85.000</td>
+            <td></td>
+            <td></td>
+            <td>(-) Total Gastos</td>
+            <td><strong>$ 325.000</strong></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">4</td>
+            <td>Cuota banco agosto</td>
+            <td>$ 90.000</td>
+            <td></td>
+            <td></td>
+            <td class="yellow-cell">Saldo Disponible</td>
+            <td class="yellow-cell"><strong>$ 175.000</strong></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">5</td>
+            <td>Seguridad social</td>
+            <td>$ 30.000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td style="text-align: center;">6</td>
+            <td>Gym</td>
+            <td>$ 0.00</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+          <tr style="background: #ecfdf5; font-weight: 700;">
+            <td style="text-align: center;">7</td>
+            <td>Total Gastos</td>
+            <td class="yellow-cell">$ 325.000</td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>5. Paso a Paso del Taller:</h3>
+      <ol style="margin-left: 20px; line-height: 1.8; font-size: 0.92rem;">
+        <li><strong>Estructura:</strong> Abre Excel o Google Sheets. Escribe en <strong>A1</strong> "Gastos Adicionales" y en <strong>E1</strong> "Pago 31 de diciembre".</li>
+        <li><strong>Registro de datos:</strong> Ingresa en la columna A los conceptos (Efectivo, Servicios, Banco, etc.) y en la columna B sus montos.</li>
+        <li><strong>Aplicar Fórmula de SUMA:</strong> En la celda <strong>B7</strong>, escribe: <span class="formula-tag">=SUMA(B2:B6)</span>.</li>
+        <li><strong>Cálculo del Saldo (Resta):</strong> En la celda <strong>F4</strong> calcula el saldo restante con la fórmula: <span class="formula-tag">=F2-F3</span> (o <code>=F2-B7</code>).</li>
+      </ol>
+
+      <h3 style="margin-top: 24px;">6. Reto de Fórmulas Aplicadas:</h3>
+      <table class="table-model">
+        <thead>
+          <tr>
+            <th>Pregunta / Reto</th>
+            <th>Celda Destino</th>
+            <th>Fórmula que debes escribir</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>¿Cómo calculas la suma total de los gastos adicionales?</td>
+            <td style="text-align: center; font-weight: 700;">B7</td>
+            <td><code>=SUMA(B2:B6)</code></td>
+          </tr>
+          <tr>
+            <td>¿Cómo calculas el Saldo Disponible restante?</td>
+            <td style="text-align: center; font-weight: 700;">F4</td>
+            <td><code>=F2-F3</code> o <code>=F2-B7</code></td>
+          </tr>
+          <tr>
+            <td>Si el gasto del Gym cambia a $ 45.000, ¿qué pasa con el Total?</td>
+            <td style="text-align: center; font-weight: 700;">B7 y F4</td>
+            <td><strong>¡Se recalculan automáticamente!</strong></td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <footer style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #e2e8f0; font-size: 0.85rem; color: #94a3b8; text-align: center;">
+      Servicio Nacional de Aprendizaje (SENA) · Alfabetización Informática
+    </footer>
+  </div>
+</body>
+</html>
+
