@@ -1,28 +1,18 @@
-# 🎓 Alfabetización Informática — Sitio Web Educativo SENA
+# 🎓 Portal del Instructor SENA — React + Principios SOLID
 
-> Sitio web institucional moderno, accesible y sereno para el programa de formación complementaria **"Alfabetización Informática"** del SENA (Código 22810239 – Versión 1).
-
----
-
-## 🎨 Paleta y Diseño Institucional SENA
-
-El diseño utiliza los colores tranquilos y profesionales del SENA:
-- **Fondo Principal:** Blanco puro (`#FFFFFF`) y verde muy suave de fondo (`#F7FAF5`, `#E8F5E2`).
-- **Verde Institucional SENA:** `#39A900` (con `#2E8B00` para contraste accesible).
-- **Acentos:** Verde menta suave (`#A5D6A7`), bordes sutiles (`#E0E8DC`).
-- **Textos:** Tono oscuro accesible (`#1B2A1B`, `#4A5D4A`) sobre fondos claros.
-- **Tipografía:** Google Fonts (`Inter` para lectura ágil y `Outfit` para títulos estructurados).
+>Aplicación web educativa desarrollada en **React 18 + Vite** bajo principios de arquitectura limpia y **SOLID** para el Portal del Instructor SENA y el programa **"Alfabetización Informática"** (Código 22810239 – Versión 1).
 
 ---
 
-## 📑 Vistas del Sitio (Multi-Página)
+## 🏗️ Arquitectura React basada en Principios SOLID
 
-| Vista | Archivo | Descripción |
-|---|---|---|
-| **1. Inicio** | [`index.html`](index.html) | Presentación del curso, ficha técnica, 3 beneficios, resumen de las 5 sesiones, testimonios, CTA institucional y footer. |
-| **2. Plan de Estudio** | [`programa.html`](programa.html) | Desglose completo de las **5 sesiones prácticas de apropiación (56 horas)** con RAPs, saberes conceptuales, actividades de taller y evidencias requeridas. |
-| **3. Guía de Aprendizaje** | [`guia.html`](guia.html) | Documento pedagógico formal **Formato GFPI-F-135 (Versión 04)**: Ficha de identificación, presentación, los 4 momentos formativos (Reflexión 2h, Contextualización 4h, Apropiación 56h, Transferencia 8h) y matriz oficial de evaluación. |
-| **4. Glosario & Recursos** | [`glosario.html`](glosario.html) | Glosario oficial con **15 términos técnicos** definidos en la guía, con **buscador interactivo en tiempo real**, referentes bibliográficos del SENA y accesos directos a SOFIA Plus, Zajuna y MiSena. |
+| Principio | Implementación en el Proyecto |
+|---|---|
+| **S — Single Responsibility (SRP)** | Separación estricta entre datos de dominio (`src/data/`), servicios de negocio (`src/services/`), estado reactivo (`src/hooks/`), componentes de presentación (`src/components/`) y páginas (`src/pages/`). |
+| **O — Open/Closed (OCP)** | `SimulatorRegistry.jsx` y `materialMetadataService.js` utilizan mapas declarativos de estrategias. Se pueden agregar nuevos simuladores interactivos o tipos de materiales sin modificar `SessionPanel` ni `CoursePage`. |
+| **L — Liskov Substitution (LSP)** | Todos los simuladores registrados en `SimulatorRegistry` cumplen un contrato uniforme `({ session, course }) => JSX.Element`, siendo intercambiables de manera transparente. |
+| **I — Interface Segregation (ISP)** | Componentes atómicos como `MaterialCardItem`, `CatalogControls` y `CourseCard` reciben únicamente las propiedades específicas que necesitan, sin acoplarse a objetos globales. |
+| **D — Dependency Inversion (DIP)** | `ServiceContext.jsx` inyecta abstracciones (`courseRepository`, `storageService`, `materialMetadataService`, `aiAssistantService`) para desacoplar los componentes y hooks de implementaciones concretas como `window.localStorage`. |
 
 ---
 
@@ -30,51 +20,40 @@ El diseño utiliza los colores tranquilos y profesionales del SENA:
 
 ```text
 Pagina-web-instructor/
-├── css/
-│   └── styles.css        # Hoja de estilos compartida (paleta clara SENA)
-├── js/
-│   └── main.js           # Navbar sticky, menú móvil, modal y buscador en vivo
-├── index.html            # Vista 1: Inicio / Landing
-├── programa.html         # Vista 2: Plan de Estudio (5 sesiones de apropiación)
-├── guia.html             # Vista 3: Guía de Aprendizaje oficial GFPI-F-135
-├── glosario.html         # Vista 4: Glosario de términos con buscador en tiempo real
-└── README.md             # Documentación del proyecto
+├── public/
+│   ├── img/logo-sena.svg          # Logo oficial SENA
+│   └── materiales/                # Guías y hojas de trabajo interactivas por sesión
+├── src/
+│   ├── components/
+│   │   ├── catalog/               # HeroSection, CatalogControls, CourseCard, ClassChecklist
+│   │   ├── course/                # CourseHeroBanner, SessionPanel, SessionMaterialsCard, MaterialCardItem
+│   │   ├── layout/                # Navbar, Footer, MainLayout
+│   │   └── simulators/            # SimulatorRegistry y 5 laboratorios interactivos
+│   ├── context/
+│   │   └── ServiceContext.jsx     # Inyección de dependencias (DIP)
+│   ├── data/                      # Datos modulares de cursos, guía GFPI-F-135, glosario y simuladores
+│   ├── hooks/                     # Custom hooks (useCourseCatalog, useChecklistProgress, useGlossarySearch, useFullscreen)
+│   ├── pages/                     # HomePage, CoursePage, GuidePage, GlossaryPage
+│   ├── services/                  # courseRepository, storageService, materialMetadataService, aiAssistantService
+│   ├── styles/index.css           # Hoja de estilos institucional SENA modernizada
+│   ├── App.jsx                    # Configuración de rutas (React Router v6)
+│   └── main.jsx                   # Punto de entrada React
+├── index.html
+├── package.json
+└── vite.config.js
 ```
 
 ---
 
-## 🚀 Cómo Verlo en Local
-
-### Opción 1: Abrir directamente en el navegador
-Haz doble clic sobre cualquiera de los archivos `.html` (por ejemplo, `index.html`) o arrástralo a tu navegador web favorito (Chrome, Edge, Firefox).
-
-### Opción 2: Servidor local ligero
-En PowerShell o terminal dentro de la carpeta:
+## 🚀 Comandos de Desarrollo y Producción
 
 ```powershell
-# Con Python
-python -m http.server 8080
+# Instalar dependencias
+npm install
+
+# Iniciar servidor de desarrollo (http://localhost:5173)
+npm run dev
+
+# Compilar para producción (carpeta dist/)
+npm run build
 ```
-Luego abre: [http://localhost:8080](http://localhost:8080)
-
-```powershell
-# O con Node.js / npx
-npx serve .
-```
-
----
-
-## 📋 Ficha Técnica y Enfoque Práctico de las 5 Sesiones
-
-- **Denominación del Programa:** Alfabetización Informática
-- **Código del Programa:** 22810239 – Versión 1
-- **Competencia:** 220501046 – Aplicar herramientas ofimáticas, redes sociales y colaborativas de acuerdo con el proyecto a desarrollar.
-- **Duración de la Formación:** 70 Horas Totales
-- **Estructura Práctica de las 5 Sesiones de Apropiación (56 Horas):**
-  1. **Sesión 1 (10h):** *Sistemas Operativos & Dispositivos Móviles* — Familiarización con smartphone/tablet y PC, qué es una app, ajustes esenciales (brillo, Wi-Fi, sonido), tareas cotidianas (poner alarma, contactos) y seguridad básica (bloqueo PIN/patrón).
-  2. **Sesión 2 (11h):** *Documento de Texto & Envío de Correo Electrónico* — Creación de documento base y dominio de los 5 bloques del correo formal: Para, Asunto específico, Saludo cordial, Objetivo/Cuerpo claro, Despedida/Firma y archivos adjuntos.
-  3. **Sesión 3 (14h):** *Hojas de Cálculo: Ingresos y Gastos* — Reconocimiento de Fila (números), Columna (letras) y Celda en Excel. Tabla práctica de presupuesto personal/hogar con fórmulas automáticas de SUMA y cálculo de Saldo Neto.
-  4. **Sesión 4 (10h):** *Internet, Servicios & Prevención de Fraudes* — Navegador vs Buscador, barra de direcciones, identificación de páginas oficiales (.gov.co, .edu.co) y detección interactiva de mensajes fraudulentos (SMS/WhatsApp) y enlaces sospechosos (Phishing).
-  5. **Sesión 5 (11h):** *Inteligencia Artificial (IA) en la Vida Cotidiana* — Desmitificación de la IA, el arte de estructurar un buen Prompt, Actividad "Foto de la pieza" (plan de organización de espacios) y Actividad "Ejercicio del mendigo" (comunicación empática y reflexiva).
-- **Producto Integrador (Transferencia):** *"Mi Solución Digital Práctica"* (8 horas).
-
