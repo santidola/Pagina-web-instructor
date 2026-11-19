@@ -23,7 +23,6 @@ export const COURSES_DATA = [
     coverGradient: 'linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%)',
     description:
       'Curso fundamental estructurado en 5 sesiones prácticas con materiales oficiales del SENA: reconocimiento del dispositivo y gestión de memoria RAM/almacenamiento, productividad en la nube con Google Docs y correo Gmail, hojas de cálculo para finanzas personales con fórmulas automáticas, navegación segura con prevención de fraudes y dominio de Inteligencia Artificial mediante prompts estructurados (Meta AI, ChatGPT).',
-    materialsFolder: 'materiales/alfabetizacion/',
     raps: [
       { code: '2205010460201', text: 'Manejar las funcionalidades básicas de un sistema operativo.' },
       { code: '2205010460202', text: 'Aplicar las funciones de un procesador de texto.' },
@@ -52,15 +51,15 @@ export const COURSES_DATA = [
         ],
         materials: [
           {
+            materialId: 'alfabetizacion-s1-taller-dispositivo',
             name: 'Guía Completa: Dispositivo, Sistema Operativo y Google Fotos',
             type: 'pdf',
-            path: '/materiales/alfabetizacion/sesion-1/Taller_Dispositivo_y_Sistema_Operativo.html',
             available: true
           },
           {
+            materialId: 'alfabetizacion-s1-unir-con-lineas',
             name: 'Hoja de Trabajo: Actividad Práctica Unir con Líneas (8 Iconos)',
             type: 'document',
-            path: '/materiales/alfabetizacion/sesion-1/Actividad_Unir_Con_Lineas.html',
             available: true
           }
         ],
@@ -88,9 +87,9 @@ export const COURSES_DATA = [
         ],
         materials: [
           {
+            materialId: 'alfabetizacion-s2-guia-docs-gmail',
             name: 'Guía Práctica: Productividad con Google Docs y Gmail',
             type: 'pdf',
-            path: '/materiales/alfabetizacion/sesion-2/Guia_Google_Docs_y_Gmail.html',
             available: true
           }
         ],
@@ -119,9 +118,9 @@ export const COURSES_DATA = [
         ],
         materials: [
           {
+            materialId: 'alfabetizacion-s3-taller-finanzas',
             name: 'Taller Práctico Oficial: Hoja de Cálculo para Finanzas Personales',
             type: 'sheet',
-            path: '/materiales/alfabetizacion/sesion-3/Taller_Hoja_Calculo_Finanzas_Personales.html',
             available: true
           }
         ],
@@ -150,9 +149,9 @@ export const COURSES_DATA = [
         ],
         materials: [
           {
+            materialId: 'alfabetizacion-s4-guia-navegacion-segura',
             name: 'Guía y Protocolo de Ciberseguridad: Navegación Segura y Prevención de Fraudes',
             type: 'pdf',
-            path: '/materiales/alfabetizacion/sesion-4/Guia_Navegacion_Segura_y_Protocolo_Pausa.html',
             available: true
           }
         ],
@@ -182,9 +181,9 @@ export const COURSES_DATA = [
         ],
         materials: [
           {
+            materialId: 'alfabetizacion-s5-guia-ia-prompts',
             name: 'Guía y Taller de Inteligencia Artificial: Meta AI y Estructura de Prompts',
             type: 'pdf',
-            path: '/materiales/alfabetizacion/sesion-5/Guia_Taller_Inteligencia_Artificial_Prompts.html',
             available: true
           }
         ],
@@ -217,7 +216,6 @@ export const COURSES_DATA = [
     coverGradient: 'linear-gradient(135deg, #0d47a1 0%, #1565c0 50%, #1976d2 100%)',
     description:
       'Curso complementario orientado al manejo intermedio de procesadores de texto, hojas de cálculo con gráficos dinámicos y presentaciones corporativas de alto impacto.',
-    materialsFolder: 'materiales/ofimaticas/',
     raps: [
       {
         code: 'RAP-01',
@@ -281,7 +279,6 @@ export const COURSES_DATA = [
     coverGradient: 'linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #7b1fa2 100%)',
     description:
       'Aprende a integrar ChatGPT, Claude, Copilot y Meta AI para optimizar tiempos, redacción de informes y resolución de problemas cotidianos.',
-    materialsFolder: 'materiales/ia-productividad/',
     raps: [
       { code: 'RAP-01', text: 'Diseñar secuencias de prompts avanzados aplicados al entorno laboral.' },
       {

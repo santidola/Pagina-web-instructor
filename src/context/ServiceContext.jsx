@@ -1,10 +1,12 @@
 /**
  * Dependency Inversion Principle (DIP):
  * Provides application services via React Context so high-level components
- * and hooks depend on injected abstractions rather than global singletons.
+ * and hooks depend on injected abstractions (including FirestoreCourseRepository)
+ * rather than global singletons.
  */
 import React, { createContext, useContext, useMemo } from 'react';
 import { createCourseRepository } from '../services/courseRepository';
+import { FirestoreCourseRepository } from '../services/FirestoreCourseRepository';
 import { createBrowserStorageService } from '../services/storageService';
 import { createMaterialMetadataService } from '../services/materialMetadataService';
 import { createAiAssistantService } from '../services/aiAssistantService';
@@ -15,6 +17,7 @@ export function ServiceProvider({ children, overrides = {} }) {
   const services = useMemo(
     () => ({
       courseRepository: overrides.courseRepository || createCourseRepository(),
+      firestoreRepository: overrides.firestoreRepository || FirestoreCourseRepository,
       storageService: overrides.storageService || createBrowserStorageService(),
       materialMetadataService: overrides.materialMetadataService || createMaterialMetadataService(),
       aiAssistantService: overrides.aiAssistantService || createAiAssistantService()
