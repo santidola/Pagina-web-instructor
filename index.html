@@ -1,15 +1,20 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Portal de Cursos y Aulas del Instructor — SENA</title>
-  <meta name="description" content="Portal didáctico multi-curso de apoyo para el instructor y aprendices del SENA. Gestión de sesiones, materiales pedagógicos descargables, guías GFPI y simuladores en vivo." />
+  <meta name="description"
+    content="Portal didáctico multi-curso de apoyo para el instructor y aprendices del SENA. Gestión de sesiones, materiales pedagógicos descargables, guías GFPI y simuladores en vivo." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap"
+    rel="stylesheet" />
   <link rel="stylesheet" href="css/styles.css" />
 </head>
+
 <body>
 
   <!-- ========================================
@@ -33,7 +38,8 @@
       </div>
 
       <div style="display: flex; align-items: center; gap: 12px;">
-        <button class="btn btn-secondary" id="btn-projector" type="button" style="padding: 8px 16px; font-size: 0.82rem;">
+        <button class="btn btn-secondary" id="btn-projector" type="button"
+          style="padding: 8px 16px; font-size: 0.82rem;">
           <span>📺 Modo Proyector</span>
         </button>
 
@@ -51,62 +57,24 @@
   ======================================== -->
   <section class="hero" id="inicio">
     <div class="container">
-      
+
       <div class="hero-logo-badge animate-on-scroll">
         <img src="img/logo-sena.svg" alt="SENA" />
         <span>Servicio Nacional de Aprendizaje · Formación Profesional Integral</span>
       </div>
 
-      <h1>
-        Portal de Aulas y Ambientes Digitales<br />
-        <span class="gradient-text">Cursos del Instructor</span>
-      </h1>
-
       <p class="hero-subtitle">
-        Espacio pedagógico centralizado para dictar y proyectar sesiones de clase, compartir materiales de estudio, guiar talleres prácticos y gestionar la formación integral de los aprendices.
+        Espacio pedagógico centralizado para dictar y proyectar sesiones de clase, compartir materiales de estudio,
+        guiar talleres prácticos y gestionar la formación integral de los aprendices.
       </p>
 
-      <!-- BARRA DE HERRAMIENTAS DEL INSTRUCTOR EN VIVO -->
-      <div class="instructor-toolbar animate-on-scroll">
-        <div class="instructor-title">
-          <span style="font-size: 1.6rem;">⏱️</span>
-          <div>
-            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px;">
-              Herramienta de Control en Sala
-            </div>
-            <strong style="font-size: 1rem; color: var(--text-primary);">Temporizador de Práctica & Taller en Vivo</strong>
-          </div>
+        <div class="hero-actions">
+          <a href="#catalogo-cursos" class="btn btn-primary" style="padding: 12px 28px; font-size: 0.95rem;">
+            Explorar Cursos ↓
+          </a>
         </div>
 
-        <!-- WIDGET DE CRONÓMETRO -->
-        <div class="timer-widget">
-          <div class="timer-display">30:00</div>
-          <div class="timer-btn-group">
-            <button class="timer-btn" id="timer-start" title="Iniciar tiempo" type="button">▶</button>
-            <button class="timer-btn" id="timer-pause" title="Pausar" type="button">⏸</button>
-            <button class="timer-btn" id="timer-reset" title="Reiniciar" type="button">↺</button>
-          </div>
-          <div class="timer-presets">
-            <button class="preset-chip" data-mins="15" type="button">15m</button>
-            <button class="preset-chip active" data-mins="30" type="button">30m</button>
-            <button class="preset-chip" data-mins="45" type="button">45m</button>
-          </div>
-        </div>
-
-        <a href="#catalogo-cursos" class="btn btn-primary" style="padding: 10px 22px; font-size: 0.88rem;">
-          Explorar Cursos ↓
-        </a>
       </div>
-
-      <!-- INSIGNIAS TÉCNICAS DEL PORTAL -->
-      <div class="hero-badges">
-        <span class="badge badge-green">Plataforma Multi-Programa</span>
-        <span class="badge badge-outline">Guías GFPI-F-135</span>
-        <span class="badge badge-outline">Simuladores Interactivos</span>
-        <span class="badge badge-outline">Material Descargable por Sesión</span>
-      </div>
-
-    </div>
   </section>
 
   <!-- ========================================
@@ -114,12 +82,13 @@
   ======================================== -->
   <section class="section alt-bg" id="catalogo-cursos">
     <div class="container">
-      
+
       <div class="section-header center animate-on-scroll">
         <span class="section-label">Oferta Pedagógica Modular</span>
         <h2 class="section-title">Catálogo de <span class="gradient-text">Cursos y Programas</span></h2>
         <p class="section-subtitle">
-          Selecciona cualquiera de los cursos disponibles para ingresar a sus sesiones de clase, proyectar dinámicas interactivas y consultar los materiales de apoyo.
+          Selecciona cualquiera de los cursos disponibles para ingresar a sus sesiones de clase, proyectar dinámicas
+          interactivas y consultar los materiales de apoyo.
         </p>
       </div>
 
@@ -127,13 +96,8 @@
       <div class="catalog-controls animate-on-scroll">
         <div class="catalog-search-wrapper">
           <span class="catalog-search-icon">🔍</span>
-          <input 
-            type="text" 
-            id="courses-search-input" 
-            class="catalog-search-input" 
-            placeholder="Buscar por nombre, código o tema de clase..." 
-            aria-label="Buscar curso"
-          />
+          <input type="text" id="courses-search-input" class="catalog-search-input"
+            placeholder="Buscar por nombre, código o tema de clase..." aria-label="Buscar curso" />
         </div>
 
         <div style="display: flex; align-items: center; gap: 16px; flex-wrap: wrap;">
@@ -143,7 +107,8 @@
             <button class="catalog-filter-btn" data-filter="Ofimática" type="button">Ofimática</button>
             <button class="catalog-filter-btn" data-filter="preparacion" type="button">Por Subir Material</button>
           </div>
-          <span id="catalog-courses-count" style="font-size: 0.82rem; font-weight: 700; color: var(--sena-green);"></span>
+          <span id="catalog-courses-count"
+            style="font-size: 0.82rem; font-weight: 700; color: var(--sena-green);"></span>
         </div>
       </div>
 
@@ -158,11 +123,13 @@
         <div class="upload-guide-content">
           <h3>¿Cómo agregar un nuevo curso o subir materiales de sesión?</h3>
           <p>
-            El sistema ya está desacoplado y listo para recibir más cursos. Cuando tengas el material de una nueva formación o sesión, sólo debes seguir estos pasos:
+            El sistema ya está desacoplado y listo para recibir más cursos. Cuando tengas el material de una nueva
+            formación o sesión, sólo debes seguir estos pasos:
           </p>
           <div class="upload-guide-steps">
             <span class="upload-step-pill">1. Pásame el nombre y las sesiones del curso</span>
-            <span class="upload-step-pill">2. Sube tus archivos a la carpeta <code>materiales/[curso]/sesion-X/</code></span>
+            <span class="upload-step-pill">2. Sube tus archivos a la carpeta
+              <code>materiales/[curso]/sesion-X/</code></span>
             <span class="upload-step-pill">3. Quedará publicado y enlazado automáticamente</span>
           </div>
         </div>
@@ -192,35 +159,43 @@
         <div class="task-checklist">
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Actividad 3.1:</strong> Reflexión inicial "¿Cómo utilizo actualmente la tecnología?" (2 Horas)</span>
+            <span class="task-label"><strong>Actividad 3.1:</strong> Reflexión inicial "¿Cómo utilizo actualmente la
+              tecnología?" (2 Horas)</span>
           </div>
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Actividad 3.2:</strong> Diagnóstico práctico "Reconozco mis saberes digitales" (4 Horas)</span>
+            <span class="task-label"><strong>Actividad 3.2:</strong> Diagnóstico práctico "Reconozco mis saberes
+              digitales" (4 Horas)</span>
           </div>
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Sesión 1:</strong> Manejo de dispositivo móvil, apps, ajustes, alarma y seguridad (10 Horas)</span>
+            <span class="task-label"><strong>Sesión 1:</strong> Manejo de dispositivo móvil, apps, ajustes, alarma y
+              seguridad (10 Horas)</span>
           </div>
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Sesión 2:</strong> Creación de documento y redacción estructurada de correo formal (11 Horas)</span>
+            <span class="task-label"><strong>Sesión 2:</strong> Creación de documento y redacción estructurada de correo
+              formal (11 Horas)</span>
           </div>
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Sesión 3:</strong> Filas, columnas y tabla de ingresos y gastos en Excel (14 Horas)</span>
+            <span class="task-label"><strong>Sesión 3:</strong> Filas, columnas y tabla de ingresos y gastos en Excel
+              (14 Horas)</span>
           </div>
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Sesión 4:</strong> Navegación web segura y detección de fraudes y enlaces falsos (10 Horas)</span>
+            <span class="task-label"><strong>Sesión 4:</strong> Navegación web segura y detección de fraudes y enlaces
+              falsos (10 Horas)</span>
           </div>
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Sesión 5:</strong> Inteligencia Artificial en la práctica (prompts, foto de la pieza y mendigo) (11 Horas)</span>
+            <span class="task-label"><strong>Sesión 5:</strong> Inteligencia Artificial en la práctica (prompts, foto de
+              la pieza y mendigo) (11 Horas)</span>
           </div>
           <div class="task-item">
             <div class="task-checkbox">✓</div>
-            <span class="task-label"><strong>Transferencia:</strong> Sustentación del producto "Mi Solución Digital Práctica" (8 Horas)</span>
+            <span class="task-label"><strong>Transferencia:</strong> Sustentación del producto "Mi Solución Digital
+              Práctica" (8 Horas)</span>
           </div>
         </div>
       </div>
@@ -239,7 +214,8 @@
             <h3 style="margin: 0;">Servicio Nacional de Aprendizaje</h3>
           </div>
           <p>
-            Portal Didáctico del Instructor · Proceso de Gestión de Formación Profesional Integral (GFPI). Formación pública, gratuita e inclusiva en toda Colombia.
+            Portal Didáctico del Instructor · Proceso de Gestión de Formación Profesional Integral (GFPI). Formación
+            pública, gratuita e inclusiva en toda Colombia.
           </p>
         </div>
 
@@ -275,7 +251,8 @@
         <div class="footer-bottom-links">
           <a href="https://oferta.senasofiaplus.edu.co/" target="_blank" rel="noopener noreferrer">SOFIA Plus</a>
           <a href="https://zajuna.sena.edu.co/" target="_blank" rel="noopener noreferrer">Zajuna LMS</a>
-          <a href="https://www.sena.edu.co/es-co/transparencia/Paginas/default.aspx" target="_blank" rel="noopener noreferrer">Transparencia</a>
+          <a href="https://www.sena.edu.co/es-co/transparencia/Paginas/default.aspx" target="_blank"
+            rel="noopener noreferrer">Transparencia</a>
         </div>
       </div>
     </div>
@@ -285,4 +262,5 @@
   <script src="js/data/courses.js"></script>
   <script src="js/main.js"></script>
 </body>
+
 </html>

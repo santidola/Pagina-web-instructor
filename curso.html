@@ -64,37 +64,6 @@
         <!-- Renderizado dinámicamente -->
       </div>
 
-      <!-- BARRA DE HERRAMIENTAS Y TEMPORIZADOR DEL INSTRUCTOR EN AULA -->
-      <div class="instructor-toolbar animate-on-scroll">
-        <div class="instructor-title">
-          <span style="font-size: 1.6rem;">⏱️</span>
-          <div>
-            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px;">
-              Herramienta de Control en Aula
-            </div>
-            <strong style="font-size: 1rem; color: var(--text-primary);">Temporizador de Taller en Vivo</strong>
-          </div>
-        </div>
-
-        <div class="timer-widget">
-          <div class="timer-display">30:00</div>
-          <div class="timer-btn-group">
-            <button class="timer-btn" id="timer-start" title="Iniciar taller" type="button">▶</button>
-            <button class="timer-btn" id="timer-pause" title="Pausar taller" type="button">⏸</button>
-            <button class="timer-btn" id="timer-reset" title="Reiniciar tiempo" type="button">↺</button>
-          </div>
-          <div class="timer-presets">
-            <button class="preset-chip" data-mins="15" type="button">15m</button>
-            <button class="preset-chip active" data-mins="30" type="button">30m</button>
-            <button class="preset-chip" data-mins="45" type="button">45m</button>
-          </div>
-        </div>
-
-        <button onclick="window.print()" class="btn btn-secondary" style="padding: 10px 18px; font-size: 0.85rem;" type="button">
-          🖨️ Imprimir Ficha de Clase
-        </button>
-      </div>
-
       <!-- SELECTOR DINÁMICO DE SESIONES (TABS) -->
       <div class="session-nav-tabs animate-on-scroll" id="course-session-tabs" role="tablist">
         <!-- Generado dinámicamente -->

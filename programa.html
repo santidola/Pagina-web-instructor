@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Espacios de Sesión Didáctica · Alfabetización Informática | SENA</title>
-  <meta name="description" content="Espacios interactivos de clase por sesión para el instructor del curso Alfabetización Informática del SENA. Simuladores, guías de taller y temporizador en vivo." />
+  <meta name="description" content="Espacios interactivos de clase por sesión para el instructor del curso Alfabetización Informática del SENA. Simuladores y guías de taller." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@600;700;800&display=swap" rel="stylesheet" />
@@ -55,7 +55,7 @@
       </div>
       <h1>Espacios de Clase y <span class="gradient-text">Apoyo al Instructor</span></h1>
       <p>
-        Módulos interactivos diseñados para proyectar en el aula y guiar a los aprendices en el paso a paso práctico, talleres con temporizador y entrega de evidencias.
+        Módulos interactivos diseñados para proyectar en el aula y guiar a los aprendices en el paso a paso práctico, talleres y entrega de evidencias.
       </p>
     </div>
   </header>
@@ -63,37 +63,6 @@
   <!-- MAIN CONTENT -->
   <main class="section">
     <div class="container">
-
-      <!-- BARRA DE HERRAMIENTAS Y TEMPORIZADOR DEL INSTRUCTOR -->
-      <div class="instructor-toolbar animate-on-scroll">
-        <div class="instructor-title">
-          <span style="font-size: 1.6rem;">⏱️</span>
-          <div>
-            <div style="font-size: 0.75rem; font-weight: 700; text-transform: uppercase; color: var(--sena-green); letter-spacing: 1px;">
-              Herramienta de Control en Sala
-            </div>
-            <strong style="font-size: 1rem; color: var(--text-primary);">Temporizador de Taller en Vivo</strong>
-          </div>
-        </div>
-
-        <div class="timer-widget">
-          <div class="timer-display">30:00</div>
-          <div class="timer-btn-group">
-            <button class="timer-btn" id="timer-start" title="Iniciar taller" type="button">▶</button>
-            <button class="timer-btn" id="timer-pause" title="Pausar taller" type="button">⏸</button>
-            <button class="timer-btn" id="timer-reset" title="Reiniciar tiempo" type="button">↺</button>
-          </div>
-          <div class="timer-presets">
-            <button class="preset-chip" data-mins="15" type="button">15m</button>
-            <button class="preset-chip active" data-mins="30" type="button">30m</button>
-            <button class="preset-chip" data-mins="45" type="button">45m</button>
-          </div>
-        </div>
-
-        <button onclick="window.print()" class="btn btn-secondary" style="padding: 10px 18px; font-size: 0.85rem;" type="button">
-          🖨️ Imprimir Ficha de Clase
-        </button>
-      </div>
 
       <!-- SELECTOR HORIZONTAL DE SESIONES (TABS) -->
       <div class="session-nav-tabs animate-on-scroll" role="tablist">
